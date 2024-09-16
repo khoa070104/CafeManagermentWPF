@@ -1,10 +1,45 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Documents\\CSharpForBeginner\\FunnyCafeManagerment\\",
+  "WorkspaceRootPath": "D:\\Documents\\PRN212\\New folder\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|e:\\documents\\csharpforbeginner\\funnycafemanagerment\\funnycafemanagerment\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\loginwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\forgetwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\forgetwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\forgetwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\forgetwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NCPC\\AppData\\Local\\Temp\\.vsdbgsrc\\0a84cc53936b314ba955b54f50bf4796d8234943f3fd7b93873381b45d404026\\XamlReader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\images\\coffee-cup.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\images\\coffee-cup.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\images\\login_background.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\images\\login_background.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\images\\logo.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\images\\logo.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|d:\\documents\\prn212\\new folder\\funnycafemanagerment\\images\\send.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\images\\send.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,28 +49,138 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ForgetWindow.xaml",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\ForgetWindow.xaml",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\ForgetWindow.xaml",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\ForgetWindow.xaml",
+              "RelativeToolTip": "FunnyCafeManagerment\\ForgetWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-16T05:51:47.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\LoginWindow.xaml",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\LoginWindow.xaml*",
+              "RelativeToolTip": "FunnyCafeManagerment\\LoginWindow.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-16T00:35:32.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "XamlReader.cs",
+              "DocumentMoniker": "C:\\Users\\NCPC\\AppData\\Local\\Temp\\.vsdbgsrc\\0a84cc53936b314ba955b54f50bf4796d8234943f3fd7b93873381b45d404026\\XamlReader.cs",
+              "ToolTip": "C:\\Users\\NCPC\\AppData\\Local\\Temp\\.vsdbgsrc\\0a84cc53936b314ba955b54f50bf4796d8234943f3fd7b93873381b45d404026\\XamlReader.cs [Read Only]",
+              "ViewState": "AgIAAKoBAAAAAAAAAAAvwLUBAAACAAAAAQAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T06:17:25.367Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ForgetWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\ForgetWindow.xaml.cs",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\ForgetWindow.xaml.cs",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\ForgetWindow.xaml.cs",
+              "RelativeToolTip": "FunnyCafeManagerment\\ForgetWindow.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-16T05:53:14.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\App.xaml",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\App.xaml",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\App.xaml",
+              "RelativeToolTip": "FunnyCafeManagerment\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-16T05:45:47.187Z",
+              "EditorCaption": ""
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "E:\\Documents\\CSharpForBeginner\\FunnyCafeManagerment\\FunnyCafeManagerment\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "FunnyCafeManagerment\\MainWindow.xaml.cs",
-              "ToolTip": "E:\\Documents\\CSharpForBeginner\\FunnyCafeManagerment\\FunnyCafeManagerment\\MainWindow.xaml.cs",
-              "RelativeToolTip": "FunnyCafeManagerment\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "LoginWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\LoginWindow.xaml.cs",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\LoginWindow.xaml.cs",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\LoginWindow.xaml.cs",
+              "RelativeToolTip": "FunnyCafeManagerment\\LoginWindow.xaml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAuwDMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-16T00:35:32.202Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "coffee-cup.ico - Icon [16x16, 32 bit, BMP]",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\coffee-cup.ico",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\Images\\coffee-cup.ico",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\coffee-cup.ico - Icon [16x16, 32 bit, BMP]",
+              "RelativeToolTip": "FunnyCafeManagerment\\Images\\coffee-cup.ico - Icon [16x16, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2024-09-16T05:52:57.589Z",
+              "EditorCaption": " - Icon [16x16, 32 bit, BMP]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "login_background.png - PNG [500x500, 32 bit, PNG]",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\login_background.png",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\Images\\login_background.png",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\login_background.png - PNG [500x500, 32 bit, PNG]",
+              "RelativeToolTip": "FunnyCafeManagerment\\Images\\login_background.png - PNG [500x500, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-09-16T05:52:51.981Z",
+              "EditorCaption": " - PNG [500x500, 32 bit, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Logo.png - PNG [666x375, 32 bit, PNG]",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\Logo.png",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\Images\\Logo.png",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\Logo.png - PNG [666x375, 32 bit, PNG]",
+              "RelativeToolTip": "FunnyCafeManagerment\\Images\\Logo.png - PNG [666x375, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-09-16T05:52:42.278Z",
+              "EditorCaption": " - PNG [666x375, 32 bit, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "send.png - PNG [64x64, 32 bit, PNG]",
+              "DocumentMoniker": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\send.png",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\Images\\send.png",
+              "ToolTip": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\Images\\send.png - PNG [64x64, 32 bit, PNG]",
+              "RelativeToolTip": "FunnyCafeManagerment\\Images\\send.png - PNG [64x64, 32 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2024-09-16T05:49:55.623Z",
+              "EditorCaption": " - PNG [64x64, 32 bit, PNG]"
             }
           ]
         }

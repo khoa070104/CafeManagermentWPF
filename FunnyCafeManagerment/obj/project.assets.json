@@ -8,19 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Khoa Bug\\.nuget\\packages\\": {}
+    "C:\\Users\\NCPC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Documents\\CSharpForBeginner\\FunnyCafeManagerment\\FunnyCafeManagerment\\FunnyCafeManagerment.csproj",
+      "projectUniqueName": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\FunnyCafeManagerment.csproj",
       "projectName": "FunnyCafeManagerment",
-      "projectPath": "E:\\Documents\\CSharpForBeginner\\FunnyCafeManagerment\\FunnyCafeManagerment\\FunnyCafeManagerment.csproj",
-      "packagesPath": "C:\\Users\\Khoa Bug\\.nuget\\packages\\",
-      "outputPath": "E:\\Documents\\CSharpForBeginner\\FunnyCafeManagerment\\FunnyCafeManagerment\\obj\\",
+      "projectPath": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\FunnyCafeManagerment.csproj",
+      "packagesPath": "C:\\Users\\NCPC\\.nuget\\packages\\",
+      "outputPath": "D:\\Documents\\PRN212\\New folder\\FunnyCafeManagerment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Khoa Bug\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\NCPC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -70,7 +70,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

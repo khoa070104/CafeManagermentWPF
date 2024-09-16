@@ -8,4 +8,22 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Fonts\UTM-Colossalis.ttf" />
+    <None Remove="Fonts\UTM-Davida.ttf" />
+    <None Remove="Images\coffee-cup.ico" />
+    <None Remove="Images\login_background.png" />
+    <None Remove="Images\Logo.png" />
+    <None Remove="Images\send.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\UTM-Colossalis.ttf" />
+    <Resource Include="Fonts\UTM-Davida.ttf" />
+    <Resource Include="Images\coffee-cup.ico" />
+    <Resource Include="Images\login_background.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\send.png" />
+  </ItemGroup>
+
 </Project>

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Documents\CSharpForBeginner\FunnyCafeManagerment\FunnyCafeManagerment\obj\Debug\net8.0-windows\
+D:\Documents\PRN212\New folder\FunnyCafeManagerment\obj\Debug\net8.0-windows\
 FunnyCafeManagerment
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-E:\Documents\CSharpForBeginner\FunnyCafeManagerment\FunnyCafeManagerment\App.xaml
-11407045341
+D:\Documents\PRN212\New folder\FunnyCafeManagerment\App.xaml
+2-653136402
 
-6-1177706173
+7-2015611634
 198-556154604
-MainWindow.xaml;
+ForgetWindow.xaml;LoginWindow.xaml;
 
-False
+True
 
