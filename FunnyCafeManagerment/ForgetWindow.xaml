@@ -84,31 +84,30 @@
 
                 <!-- Ô nhập email -->
                 <TextBox Style="{StaticResource TextBoxStyle}"
-                    Width="250"
+                    Width="360"
                     Height="35"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Grid.Row="1"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
                     FontSize="20"
                     Grid.ColumnSpan="2"
-                    Margin="0,0,0,10"
+                    Margin="15,69,0,0" Grid.RowSpan="3"
                     />
 
                 <!-- Nút gửi email -->
-                <Button Content="Send Email" 
+                <Button x:Name="SendEmailButton" 
                     Style="{StaticResource ButtonStyle}"
                     
-                    Width="150"
-                    Height="40"
-                    Background="Gray"
+                    Width="48"
+                    Height="35"
+                    Background="#0866FF"
                     Foreground="White"
                     FontWeight="Bold"
                     FontSize="20px"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Grid.Row="2"
-                    Grid.ColumnSpan="2"
-                    Margin="153,0,0,0"/>
+                    VerticalAlignment="Top"
+                    Margin="159,69,0,0" Grid.Column="1" Grid.RowSpan="3">
+                    <Image Source="Images/send.png" Height="29" Width="28"/>
+                </Button>
             </Grid>
         </Border>
     </Grid>

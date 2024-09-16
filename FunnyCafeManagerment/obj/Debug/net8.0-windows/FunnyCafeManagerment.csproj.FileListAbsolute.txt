@@ -22,3 +22,5 @@ D:\Documents\PRN212\New folder\FunnyCafeManagerment\obj\Debug\net8.0-windows\ref
 D:\Documents\PRN212\New folder\FunnyCafeManagerment\obj\Debug\net8.0-windows\FunnyCafeManagerment.pdb
 D:\Documents\PRN212\New folder\FunnyCafeManagerment\obj\Debug\net8.0-windows\FunnyCafeManagerment.genruntimeconfig.cache
 D:\Documents\PRN212\New folder\FunnyCafeManagerment\obj\Debug\net8.0-windows\ref\FunnyCafeManagerment.dll
+D:\Documents\PRN212\New folder\FunnyCafeManagerment\obj\Debug\net8.0-windows\RegisterWindow.baml
+D:\Documents\PRN212\New folder\FunnyCafeManagerment\obj\Debug\net8.0-windows\RegisterWindow.g.cs

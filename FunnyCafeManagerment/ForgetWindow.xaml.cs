@@ -47,5 +47,7 @@ namespace FunnyCafeManagerment
 		{
 			this.Close();
 		}
-	}
+
+		
+    }
 }

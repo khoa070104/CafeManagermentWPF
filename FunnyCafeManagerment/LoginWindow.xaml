@@ -64,12 +64,12 @@
                 <Image HorizontalAlignment="Center" Height="358" VerticalAlignment="Center" Width="598" Source="./Images/login_background.png" Stretch="Fill"/>
 
                 <!-- Border chứa form đăng nhập -->
-                <Border BorderBrush="#E3C241"  BorderThickness="1" HorizontalAlignment="Left" Height="300" Margin="240,0,0,0" VerticalAlignment="Center" Width="338" Background="#D7B08F" CornerRadius="10">
+                <Border HorizontalAlignment="Left" Height="300" Margin="240,0,0,0" VerticalAlignment="Center" Width="338" Background="#D7B08F" CornerRadius="10">
                     <Grid Margin="10" >
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-
+                        <Image Source="Images/logo.png" RenderTransformOrigin="1.921,-0.147" Margin="257,-21,-20,230" />
                         <!-- Label "Đăng nhập" -->
                         <Label Content="Đăng nhập" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource CustomFont}" Margin="0,46,0,0" />
 
@@ -89,10 +89,11 @@
                         <Button Content="Đăng nhập" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,225,0,0" Background="#E3C241" Foreground="White"/>
 
                         <!-- Nút Đăng kí -->
-                        <Button Content="Đăng kí" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="177,225,0,0" Background="#E3C241" Foreground="White"/>
+                        <Button x:Name="RegisterButton" Content="Đăng kí" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="177,225,0,0" Background="#E3C241" Foreground="White" Click="RegisterButton_Click"/>
 
                         <!-- Nút Quên mật khẩu -->
                         <Button x:Name="ForgetPasswordButton" Content="Quên mật khẩu?" Style="{StaticResource ButtonStyle}" Width="80" FontSize="8" Height="13" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,200,0,0" Background="Transparent" Foreground="White" Click="ForgetPasswordButton_Click"/>
+                        <Label Content="funnycoffee" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontStyle="Italic" Height="46" Width="137"/>
 
                     </Grid>
                 </Border>

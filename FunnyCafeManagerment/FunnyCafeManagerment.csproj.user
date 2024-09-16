@@ -10,12 +10,18 @@
     <Compile Update="ForgetWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="RegisterWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="ForgetWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="RegisterWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

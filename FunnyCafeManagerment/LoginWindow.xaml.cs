@@ -11,9 +11,6 @@ using System.Windows.Shapes;
 
 namespace FunnyCafeManagerment
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
 	public partial class LoginWindow : Window
 	{
 		public LoginWindow()
@@ -49,5 +46,12 @@ namespace FunnyCafeManagerment
 			ForgetWindow forgetWindow = new ForgetWindow();
 			forgetWindow.ShowDialog();
         }
-    }
+
+		private void RegisterButton_Click(object sender, RoutedEventArgs e)
+		{
+			RegisterWindow registerWindow = new RegisterWindow();
+			this.Hide();
+			registerWindow.Show();
+		}
+	}
 }
