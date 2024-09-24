@@ -1,0 +1,56 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\hahuy\\Desktop\\wpf\\project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|c:\\users\\hahuy\\desktop\\wpf\\project\\funnycafemanagerment\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|c:\\users\\hahuy\\desktop\\wpf\\project\\funnycafemanagerment\\adminmanageemployeewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{91D04925-0FFB-420E-8980-A95EBB1187B2}|FunnyCafeManagerment\\FunnyCafeManagerment.csproj|solutionrelative:funnycafemanagerment\\adminmanageemployeewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminManageEmployeeWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\hahuy\\Desktop\\wpf\\project\\FunnyCafeManagerment\\AdminManageEmployeeWindow.xaml",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\AdminManageEmployeeWindow.xaml",
+              "ToolTip": "C:\\Users\\hahuy\\Desktop\\wpf\\project\\FunnyCafeManagerment\\AdminManageEmployeeWindow.xaml",
+              "RelativeToolTip": "FunnyCafeManagerment\\AdminManageEmployeeWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-24T14:27:07.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\hahuy\\Desktop\\wpf\\project\\FunnyCafeManagerment\\App.xaml",
+              "RelativeDocumentMoniker": "FunnyCafeManagerment\\App.xaml",
+              "ToolTip": "C:\\Users\\hahuy\\Desktop\\wpf\\project\\FunnyCafeManagerment\\App.xaml",
+              "RelativeToolTip": "FunnyCafeManagerment\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-09-24T02:06:39.26Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
