@@ -7,21 +7,90 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AdminManageEmployeeWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminManageFavoriteWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminManageHistoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminManageProblemWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminManageProductWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminManageRevenueWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminManageTableWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ForgetWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ManageCustomerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="RegisterWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="StaffManageFavoriteWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StaffManageHistoryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StaffManageOrderWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="StaffManageProblemWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AdminManageEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminManageFavoriteWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminManageHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminManageProblemWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminManageProductWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AdminManageRevenueWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="ForgetWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ManageCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="RegisterWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StaffManageFavoriteWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StaffManageHistoryWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StaffManageOrderWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="StaffManageProblemWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

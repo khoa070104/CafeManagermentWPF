@@ -1,0 +1,720 @@
+﻿<Window x:Class="FunnyCafeManagerment.AdminManageEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AdminManageEmployeeWindow"
+        Height="720"
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1">
+                            <Border.CornerRadius>
+                                <!-- Bo tròn tất cả 4 góc -->
+                                <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20"/>
+                            </Border.CornerRadius>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <!-- Main content with rounded corners -->
+    <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+        <Grid>
+            <!-- Thanh tiêu đề tùy chỉnh -->
+            <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
+                <Grid>
+                    <!-- Icon và Tiêu đề -->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                        <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
+                        <!-- Đường dẫn đến logo của bạn -->
+                        <TextBlock Text="Mangage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Nút chức năng trên thanh tiêu đề -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                        <!-- Nút thu nhỏ -->
+                        <Button Content="-" Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <!-- Nút phóng to/thu nhỏ -->
+                        <Button Content="□" Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <!-- Nút đóng -->
+                        <Button Content="X" Width="30" Height="30" Click="CloseWindow_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Nội dung cửa sổ -->
+            <Grid Margin="0,40,0,0">
+                <Grid>
+                    <!-- Header -->
+                    <Grid Background="#FCEFE8" Height="50" VerticalAlignment="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Arrow Button -->
+                        <Button Background="Transparent" BorderThickness="0" Width="35" Height="35" Margin="5" Click="ShowSidebarForm_Click">
+                            <Border Width="30" Height="30" CornerRadius="20" Background="#D7B08F" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <TextBlock Text="&lt;" FontSize="16" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Height="24"/>
+                            </Border>
+                        </Button>
+
+                        <!-- Title Button -->
+                        <Button Grid.Column="1" Content="Coffee Shop" Foreground="#D7B08F" FontSize="20" HorizontalAlignment="Left" 
+Margin="10,0,0,0" VerticalAlignment="Center" BorderThickness="0" 
+FontWeight="Bold" Background="Transparent" />
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+                            <!-- Username -->
+                            <TextBlock Text="Nguyen Van A" FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <!-- User Icon Button -->
+                            <Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <!-- Main Content -->
+                    <Grid Margin="0,60,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Margin="10">
+                            <!-- Define two columns: one for the "Khách hàng" text, the other for the search bar -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <!-- For "Khách hàng" text -->
+                                <ColumnDefinition Width="*"/>
+                                <!-- For the search bar and button on the right -->
+                            </Grid.ColumnDefinitions>
+
+                            <!-- "Khách hàng" text on the left -->
+                            <TextBlock Text="Nhân viên" FontSize="16" FontWeight="Bold" Foreground="#D7B08F" VerticalAlignment="Center" Margin="10,0"/>
+
+                            <!-- Search bar and button on the right -->
+                            <StackPanel Grid.Column="1" Height="50" Width="400" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Border CornerRadius="15" Height="30" BorderBrush="#D8B694" BorderThickness="1" Background="#FCEFE8" Padding="5" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBox Width="300" Height="30" VerticalAlignment="Center" Padding="5" Name="searchTextBox" Text="Tìm kiếm" Foreground="Gray"
+                 GotFocus="searchTextBox_GotFocus" LostFocus="searchTextBox_LostFocus" BorderThickness="0" Background="Transparent"/>
+                                        <Button Width="30" Height="30" Content="&#x1F50E;" VerticalAlignment="Center" BorderThickness="0" Background="Transparent"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Nút Add hình tròn -->
+                                <Button Width="40" Height="40" Content="&#x2795;" BorderThickness="0" Background="#D8B694" Foreground="White" 
+        Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="18" FontWeight="Bold" Click="ShowAddForm_Click">
+                                    <Button.Clip>
+                                        <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
+                                    </Button.Clip>
+
+                                    <!-- Áp dụng ControlTemplate để tùy chỉnh hoàn toàn giao diện của nút -->
+                                    <Button.Template>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border x:Name="border" Background="{TemplateBinding Background}" 
+                    BorderThickness="{TemplateBinding BorderThickness}" 
+                    CornerRadius="20">
+                                                <!-- Bo tròn theo kích thước nút -->
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <!-- Trigger khi hover chuột vào nút -->
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="#B08866"/>
+                                                    <!-- Màu đậm hơn khi hover -->
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Button.Template>
+
+                                    <!-- Áp dụng Style để tùy chỉnh các thuộc tính -->
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="#D8B694"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                            </StackPanel>
+
+                        </Grid>
+
+
+                        <!-- Customer Table wrapped with Border -->
+                        <Border Grid.Row="1" Margin="20" BorderBrush="#D8B694" BorderThickness="2" CornerRadius="20" Padding="10" Background="White">
+                            <DataGrid x:Name="customerDataGrid" 
+                            AutoGenerateColumns="False" 
+                            CanUserAddRows="False" 
+                            HeadersVisibility="Column" 
+                            FontSize="14" 
+                            ItemsSource="{Binding employees}" 
+                            Background="White" 
+                            BorderThickness="0" 
+                            RowBackground="White" 
+                            AlternatingRowBackground="White" 
+                            GridLinesVisibility="None"
+                            ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
+                            RowStyle="{StaticResource CustomRowStyle}">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Họ tên" Width="*" Binding="{Binding HoTen}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Số điện thoại" Width="auto" Binding="{Binding SoDienThoai}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Email" Width="auto" Binding="{Binding Email}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Giới tính" Width="auto" Binding="{Binding Sex}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Ngày sinh" Width="auto" Binding="{Binding DateOfBirth}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Ngày bắt đầu" Width="auto" Binding="{Binding StartDate}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Chức vụ" Width="*" Binding="{Binding Position}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Lương" Width="auto" Binding="{Binding Salary}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Header="Trạng thái" Width="auto" Binding="{Binding Status}">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+
+                                    <!-- Cột chứa các nút Edit và Delete -->
+                                    <DataGridTemplateColumn Header="Actions" Width="*">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <!-- Nút Edit -->
+                                                    <Button Content="&#x270E;" FontSize="16" Width="30" Height="30" Margin="5,0,0,0"
+        Background="Transparent" BorderThickness="0" Padding="0" 
+        ToolTip="Edit" Click="ShowEditForm_Click">
+                                                        <Button.Style>
+                                                            <Style TargetType="Button">
+                                                                <Setter Property="Foreground" Value="#FF884D"/>
+                                                                <!-- Màu cam cho biểu tượng -->
+                                                                <Setter Property="Cursor" Value="Hand"/>
+                                                            </Style>
+                                                        </Button.Style>
+                                                    </Button>
+
+                                                    <!-- Nút Delete -->
+                                                    <Button Content="&#x1F5D1;" FontSize="16" Width="30" Height="30" Margin="5,0,0,0" 
+        Background="Transparent" BorderThickness="0" Padding="0" 
+        ToolTip="Delete" Click="ShowDeleteForm_Click">
+                                                        <Button.Style>
+                                                            <Style TargetType="Button">
+                                                                <Setter Property="Foreground" Value="#00AEEF"/>
+                                                                <!-- Màu xanh cho biểu tượng -->
+                                                                <Setter Property="Cursor" Value="Hand"/>
+                                                            </Style>
+                                                        </Button.Style>
+                                                    </Button>
+
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid x:Name="DeleteForm" Visibility="Collapsed" Background="Transparent" Width="400" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+                    <Grid Background="Transparent">
+                        <!-- Đặt Background là Transparent -->
+                        <!-- Thanh tiêu đề tùy chỉnh -->
+                        <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
+                            <Grid>
+                                <!-- Icon và Tiêu đề -->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                    <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
+                                    <TextBlock Text="Warning" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <!-- Nút chức năng trên thanh tiêu đề -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                                    <Button Content="X" Width="30" Height="30" Click="HideDeleteForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <!-- Nội dung cửa sổ -->
+                        <Grid Margin="0,40,0,0" Background="Transparent">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                                    <TextBlock Text="⚠️" FontSize="40" Foreground="Red" HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Bạn có chắc chắn muốn xóa không?" 
+                       FontSize="16" 
+                       FontWeight="Bold" 
+                       Foreground="Black" 
+                       HorizontalAlignment="Center" 
+                       Margin="10"/>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                                    <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="HideDeleteForm_Click" Margin="10,0">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="3" BlurRadius="10" Opacity="0.5" />
+                                                    </Border.Effect>
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+
+                                    <Button Content="Không" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#E85350" Foreground="White" Click="HideDeleteForm_Click" Margin="10,0" HorizontalAlignment="Right">
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="3" BlurRadius="10" Opacity="0.5" />
+                                                    </Border.Effect>
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="AddForm" Visibility="Collapsed" Background="Transparent" Width="800" Height="700" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+                    <Grid>
+                        <!-- Thanh tiêu đề tùy chỉnh -->
+                        <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
+                            <Grid>
+                                <!-- Icon và Tiêu đề -->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                    <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
+                                    <!-- Đường dẫn đến logo của bạn -->
+                                    <TextBlock Text="Add Employee" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <!-- Nút chức năng trên thanh tiêu đề -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                                    <!-- Nút đóng -->
+                                    <Button Content="X" Width="30" Height="30" Click="HideAddForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Grid Margin="0,40,0,0">
+                            <Grid>
+                                <!-- Title -->
+                                <TextBlock Text="Thêm nhân viên" FontSize="24" FontWeight="Bold" Foreground="#E5721A" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+                                <!-- Form layout -->
+                                <Grid Margin="40,70,40,30">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Left Column -->
+                                    <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,10,0">
+                                        <TextBlock Text="Họ và tên" FontStyle="Italic" FontWeight="Bold" />
+                                        <TextBox x:Name="HoTenTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập họ tên" Foreground="Gray" 
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Email" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <TextBox x:Name="EmailTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập email" Foreground="Gray"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Số điện thoại" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <TextBox x:Name="SoDienThoaiTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập số điện thoại" Foreground="Gray"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Chức vụ" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <ComboBox Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" Background="#F5F5F5" 
+Width="350" HorizontalAlignment="Left" SelectedIndex="0">
+                                            <ComboBoxItem Content="Nhân viên"/>
+                                            <ComboBoxItem Content="Quản lý"/>
+                                        </ComboBox>
+
+                                        <TextBlock Text="Lương" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <TextBox x:Name="LuongTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập lương" Foreground="Gray"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                    </StackPanel>
+
+                                    <!-- Right Column -->
+                                    <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                        <TextBlock Text="Giới tính" FontStyle="Italic" FontWeight="Bold" />
+                                        <TextBox x:Name="GioiTinhTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Text="Nhập giới tính" Width="350" HorizontalAlignment="Left"
+             Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Ngày sinh" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <DatePicker Height="30" Padding="5" BorderThickness="1"
+                SelectedDate="2004-08-19" Width="350" HorizontalAlignment="Left"/>
+
+                                        <TextBlock Text="Ngày bắt đầu" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <DatePicker Height="30" Padding="5" BorderThickness="1"
+                SelectedDate="2024-06-23" Width="350" HorizontalAlignment="Left"/>
+
+                                        <TextBlock Text="Trạng thái" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <ComboBox Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" Background="#F5F5F5" 
+              Width="350" HorizontalAlignment="Left" SelectedIndex="0">
+                                            <ComboBoxItem Content="Đã nghỉ việc"/>
+                                            <ComboBoxItem Content="Đang làm việc"/>
+                                        </ComboBox>
+                                    </StackPanel>
+
+                                    <!-- Login Information Section in One Column -->
+                                    <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,20,0,0" HorizontalAlignment="Left">
+                                        <TextBlock Text="Thông tin đăng nhập" FontStyle="Italic" FontWeight="Bold" Margin="0,0,0,10" />
+
+                                        <TextBlock Text="Họ và tên" FontStyle="Italic" FontWeight="Bold"/>
+                                        <TextBox x:Name="LoginHoTenTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" Margin="0,0,0,10"
+             Text="Nhập họ tên đăng nhập" Foreground="Gray" 
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <!-- Mật khẩu -->
+                                        <TextBlock Text="Mật khẩu" FontStyle="Italic" FontWeight="Bold"/>
+                                        <TextBox x:Name="PasswordTextBoxVisible" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+         Background="#F5F5F5" Width="350" Margin="0,0,0,10"
+         Text="Nhập mật khẩu" Foreground="Gray" GotFocus="PasswordTextBoxVisible_GotFocus" Visibility="Visible"/>
+                                        <PasswordBox x:Name="PasswordBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" Margin="0,0,0,10" Visibility="Collapsed"
+             LostFocus="PasswordBox_LostFocus"/>
+
+                                        <!-- Xác nhận mật khẩu -->
+                                        <TextBlock Text="Xác nhận" FontStyle="Italic" FontWeight="Bold"/>
+                                        <TextBox x:Name="ConfirmPasswordTextBoxVisible" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+         Background="#F5F5F5" Width="350" Margin="0,0,0,10"
+         Text="Xác nhận mật khẩu" Foreground="Gray" GotFocus="ConfirmPasswordTextBoxVisible_GotFocus" Visibility="Visible"/>
+                                        <PasswordBox x:Name="ConfirmPasswordBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" Margin="0,0,0,10" Visibility="Collapsed"
+             LostFocus="ConfirmPasswordBox_LostFocus"/>
+
+
+                                        <!-- Checkbox Hiện mật khẩu -->
+                                        <CheckBox Content="Hiện mật khẩu" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+
+                                    </StackPanel>
+
+                                    <!-- Buttons -->
+                                    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                        <Button Content="Thêm" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" 
+Height="30" Background="#D7B08F" Foreground="White" Margin="10,0"
+Click="AddButton_Click">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                        <!-- Apply DropShadowEffect to Border -->
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
+                                                        </Border.Effect>
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+
+                                        <Button Content="Hủy" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#E0E0E0" Foreground="Black" Margin="10,0"
+Click="HideAddForm_Click">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                        <!-- Apply DropShadowEffect to Border -->
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
+                                                        </Border.Effect>
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid x:Name="EditForm" Visibility="Collapsed" Background="Transparent" Width="800" Height="700" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+                    <Grid>
+                        <!-- Thanh tiêu đề tùy chỉnh -->
+                        <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
+                            <Grid>
+                                <!-- Icon và Tiêu đề -->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                    <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
+                                    <!-- Đường dẫn đến logo của bạn -->
+                                    <TextBlock Text="Edit Employee" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <!-- Nút chức năng trên thanh tiêu đề -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                                    <!-- Nút đóng -->
+                                    <Button Content="X" Width="30" Height="30" Click="HideEditForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Grid Margin="0,40,0,0">
+                            <Grid>
+                                <!-- Title -->
+                                <TextBlock Text="sửa nhân viên" FontSize="24" FontWeight="Bold" Foreground="#E5721A" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+                                <!-- Form layout -->
+                                <Grid Margin="40,70,40,30">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Left Column -->
+                                    <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,10,0">
+                                        <TextBlock Text="Họ và tên" FontStyle="Italic" FontWeight="Bold" />
+                                        <TextBox x:Name="EditHoTenTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập họ tên" Foreground="Gray" 
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Email" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <TextBox x:Name="EditEmailTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập email" Foreground="Gray"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Số điện thoại" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <TextBox x:Name="EditSoDienThoaiTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập số điện thoại" Foreground="Gray"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Chức vụ" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <ComboBox Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" Background="#F5F5F5" 
+Width="350" HorizontalAlignment="Left" SelectedIndex="0">
+                                            <ComboBoxItem Content="Nhân viên"/>
+                                            <ComboBoxItem Content="Quản lý"/>
+                                        </ComboBox>
+
+                                        <TextBlock Text="Lương" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <TextBox x:Name="EditLuongTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" HorizontalAlignment="Left"
+             Text="Nhập lương" Foreground="Gray"
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                    </StackPanel>
+
+                                    <!-- Right Column -->
+                                    <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                        <TextBlock Text="Giới tính" FontStyle="Italic" FontWeight="Bold" />
+                                        <TextBox x:Name="EditGioiTinhTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Text="Nhập giới tính" Width="350" HorizontalAlignment="Left"
+             Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <TextBlock Text="Ngày sinh" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <DatePicker Height="30" Padding="5" BorderThickness="1"
+                SelectedDate="2004-08-19" Width="350" HorizontalAlignment="Left"/>
+
+                                        <TextBlock Text="Ngày bắt đầu" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <DatePicker Height="30" Padding="5" BorderThickness="1"
+                SelectedDate="2024-06-23" Width="350" HorizontalAlignment="Left"/>
+
+                                        <TextBlock Text="Trạng thái" FontStyle="Italic" FontWeight="Bold" Margin="0,10,0,0" />
+                                        <ComboBox Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" Background="#F5F5F5" 
+              Width="350" HorizontalAlignment="Left" SelectedIndex="0">
+                                            <ComboBoxItem Content="Đã nghỉ việc"/>
+                                            <ComboBoxItem Content="Đang làm việc"/>
+                                        </ComboBox>
+                                    </StackPanel>
+
+                                    <!-- Login Information Section in One Column -->
+                                    <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0,20,0,0" HorizontalAlignment="Left">
+                                        <TextBlock Text="Thông tin đăng nhập" FontStyle="Italic" FontWeight="Bold" Margin="0,0,0,10" />
+
+                                        <TextBlock Text="Họ và tên" FontStyle="Italic" FontWeight="Bold"/>
+                                        <TextBox x:Name="EditLoginHoTenTextBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" Margin="0,0,0,10"
+             Text="Nhập họ tên đăng nhập" Foreground="Gray" 
+             GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+
+                                        <!-- Mật khẩu -->
+                                        <TextBlock Text="Mật khẩu" FontStyle="Italic" FontWeight="Bold"/>
+                                        <TextBox x:Name="EditPasswordTextBoxVisible" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+         Background="#F5F5F5" Width="350" Margin="0,0,0,10"
+         Text="Nhập mật khẩu" Foreground="Gray" GotFocus="PasswordTextBoxVisible_GotFocus" Visibility="Visible"/>
+                                        <PasswordBox x:Name="EditPasswordBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" Margin="0,0,0,10" Visibility="Collapsed"
+             LostFocus="PasswordBox_LostFocus"/>
+
+                                        <!-- Xác nhận mật khẩu -->
+                                        <TextBlock Text="Xác nhận" FontStyle="Italic" FontWeight="Bold"/>
+                                        <TextBox x:Name="EditConfirmPasswordTextBoxVisible" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+         Background="#F5F5F5" Width="350" Margin="0,0,0,10"
+         Text="Xác nhận mật khẩu" Foreground="Gray" GotFocus="ConfirmPasswordTextBoxVisible_GotFocus" Visibility="Visible"/>
+                                        <PasswordBox x:Name="EditConfirmPasswordBox" Height="30" Padding="5" BorderThickness="1" BorderBrush="#DDDDDD" 
+             Background="#F5F5F5" Width="350" Margin="0,0,0,10" Visibility="Collapsed"
+             LostFocus="ConfirmPasswordBox_LostFocus"/>
+
+
+                                        <!-- Checkbox Hiện mật khẩu -->
+                                        <CheckBox Content="Hiện mật khẩu" HorizontalAlignment="Left" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+
+                                    </StackPanel>
+
+                                    <!-- Buttons -->
+                                    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+                                        <Button Content="Sửa" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" 
+Height="30" Background="#D7B08F" Foreground="White" Margin="10,0"
+Click="HideEditForm_Click">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                        <!-- Apply DropShadowEffect to Border -->
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
+                                                        </Border.Effect>
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+
+                                        <Button Content="Hủy" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#E0E0E0" Foreground="Black" Margin="10,0"
+Click="HideEditForm_Click">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                        <!-- Apply DropShadowEffect to Border -->
+                                                        <Border.Effect>
+                                                            <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
+                                                        </Border.Effect>
+                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Grid>
+                <!-- SidebarForm and overlay grid -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <!-- SidebarForm width -->
+                    <ColumnDefinition Width="*"/>
+                    <!-- Right overlay width -->
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="SidebarForm" Background="#FCEFE8" Width="240" Height="680" HorizontalAlignment="Left" VerticalAlignment="Center" Visibility="Collapsed" Margin="0,40,0,0">
+                    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Margin="20,0,0,0">
+                        <!-- Title with Back Button -->
+                        <StackPanel Orientation="Horizontal" Margin="20,0,0,20">
+                            <TextBlock Text="Coffee Shop" FontSize="20" FontWeight="Bold" Foreground="#D7B08F" VerticalAlignment="Center"/>
+                            <!-- Arrow Button -->
+                            <Button Background="Transparent" BorderThickness="0" Width="35" Height="35" Margin="5" Click="HideSidebarForm_Click">
+                                <Border Width="30" Height="30" CornerRadius="20" Background="#D7B08F" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text=">" FontSize="16" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Height="24"/>
+                                </Border>
+                            </Button>
+                        </StackPanel>
+
+                        <!-- Menu Items using the shared SidebarButtonStyle -->
+                        <Button Content="Sản phẩm" Tag="📦" Style="{StaticResource SidebarButtonStyle}" Click="OpenSanPhamWindow"/>
+                        <Button Content="Nhân viên" Tag="&#x1F464;" Style="{StaticResource ProductButtonStyle}" Click="OpenNhanVienWindow"/>
+                        <Button Content="Bàn" Tag="&#x1F37D;" Style="{StaticResource SidebarButtonStyle}" Click="OpenBanWindow"/>
+                        <Button Content="Khách hàng" Tag="&#x1F464;" Style="{StaticResource SidebarButtonStyle}" Click="OpenKhachHangWindow"/>
+                        <Button Content="Thống kê" Tag="📊" Style="{StaticResource SidebarButtonStyle}" Click="OpenThongKeWindow"/>
+                        <Button Content="Sự cố" Tag="&#x26A0;" Style="{StaticResource SidebarButtonStyle}" Click="OpenSuCoWindow"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="RightOverlay" Grid.Column="1" Background="Transparent" 
+                      Visibility="Collapsed" Margin="0,40,0,0" MouseDown="HideSidebarForm_Click">
+                    <!-- Overlay background which becomes dim when Sidebar is shown -->
+                    <Rectangle x:Name="DimBackground" Fill="Black" Opacity="0" IsHitTestVisible="False"/>
+
+                    <!-- You can add BlurEffect to this section when Sidebar is shown -->
+                    <ContentPresenter x:Name="MainContentPresenter" Content="{Binding}" />
+                </Grid>
+
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
