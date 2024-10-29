@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FunnyCafeManagerment_Service\FunnyCafeManagerment_Service.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Fonts\UTM-Colossalis.ttf" />
     <Resource Include="Fonts\UTM-Davida.ttf" />
     <Resource Include="Images\coffee-cup.ico" />

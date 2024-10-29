@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunnyCafeManagerment", "FunnyCafeManagerment\FunnyCafeManagerment.csproj", "{91D04925-0FFB-420E-8980-A95EBB1187B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunnyCafeManagerment", "FunnyCafeManagerment\FunnyCafeManagerment.csproj", "{91D04925-0FFB-420E-8980-A95EBB1187B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunnyCafeManagerment_Service", "FunnyCafeManagerment_Service\FunnyCafeManagerment_Service.csproj", "{0CFB3904-07FB-4842-805B-FDE6C08B63AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunnyCafeManagerment_DataAccess", "FunnyCafeManagerment_DataAccess\FunnyCafeManagerment_DataAccess.csproj", "{CA2C49CD-9486-4B06-BD80-C3FD4BE08661}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunnyCafeManagerment_Utility", "FunnyCafeManagerment_Utility\FunnyCafeManagerment_Utility.csproj", "{61299231-19A5-433F-A4A3-928CFF51F4B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{91D04925-0FFB-420E-8980-A95EBB1187B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D04925-0FFB-420E-8980-A95EBB1187B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91D04925-0FFB-420E-8980-A95EBB1187B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CFB3904-07FB-4842-805B-FDE6C08B63AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CFB3904-07FB-4842-805B-FDE6C08B63AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CFB3904-07FB-4842-805B-FDE6C08B63AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CFB3904-07FB-4842-805B-FDE6C08B63AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA2C49CD-9486-4B06-BD80-C3FD4BE08661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA2C49CD-9486-4B06-BD80-C3FD4BE08661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA2C49CD-9486-4B06-BD80-C3FD4BE08661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA2C49CD-9486-4B06-BD80-C3FD4BE08661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61299231-19A5-433F-A4A3-928CFF51F4B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61299231-19A5-433F-A4A3-928CFF51F4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61299231-19A5-433F-A4A3-928CFF51F4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61299231-19A5-433F-A4A3-928CFF51F4B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
