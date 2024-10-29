@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FunnyCafeManagerment_DataAccess.Models;
+using FunnyCafeManagerment_DataAccess.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace FunnyCafeManagerment
 {
@@ -20,9 +23,12 @@ namespace FunnyCafeManagerment
     /// </summary>
     public partial class AdminManageEmployeeWindow : Window
     {
+        public UserVM edited { get; set; } = null;
         public AdminManageEmployeeWindow()
         {
+            
             InitializeComponent();
+            LoadData();
             List<Employee> employees = new List<Employee>
         {
                 new Employee { ID = 1, HoTen = "Nguyễn Văn A", SoDienThoai = "0909123456", Email = "a@gmail.com", Sex = "Nam", DateOfBirth = "01/01/1990", StartDate = "01/01/2022", Position = "Nhân viên", Salary = 10000000, Status = "Đang làm việc" },
@@ -58,7 +64,6 @@ namespace FunnyCafeManagerment
             }
         }
 
-        // Xử lý sự kiện LostFocus cho searchTextBox
         private void searchTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -396,6 +401,11 @@ namespace FunnyCafeManagerment
         private void CloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        public void LoadData()
+        {
+            NameLabel.Content = edited.FullName;
         }
     }
 }

@@ -77,16 +77,16 @@
                         <Label Content="Username" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,72,0,0" Foreground="White" FontStyle="Italic"/>
 
                         <!-- Ô nhập Username -->
-                        <TextBox Style="{StaticResource TextBoxStyle}" Width="296" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,101,0,0" FontSize="22"/>
+                        <TextBox x:Name="txtUsername" Style="{StaticResource TextBoxStyle}" Width="296" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,101,0,0" FontSize="22"/>
 
                         <!-- Label "Password" -->
                         <Label Content="Password" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,136,0,0" Foreground="White" FontStyle="Italic"/>
 
                         <!-- Ô nhập Password -->
-                        <PasswordBox Style="{StaticResource PasswordBoxStyle}" Width="296" Height="30"   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,165,0,0" FontSize="22"/>
+                        <PasswordBox x:Name="txtPassword" Style="{StaticResource PasswordBoxStyle}" Width="296" Height="30"   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,165,0,0" FontSize="22"/>
 
                         <!-- Nút Đăng nhập -->
-                        <Button Content="Đăng nhập" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,225,0,0" Background="#E3C241" Foreground="White"/>
+                        <Button x:Name="LoginButton" Content="Đăng nhập" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,225,0,0" Background="#E3C241" Foreground="White" Click="LoginButton_Click"/>
 
                         <!-- Nút Đăng kí -->
                         <Button x:Name="RegisterButton" Content="Đăng kí" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="177,225,0,0" Background="#E3C241" Foreground="White" Click="RegisterButton_Click"/>

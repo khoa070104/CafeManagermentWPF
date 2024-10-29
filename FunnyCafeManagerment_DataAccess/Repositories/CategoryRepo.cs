@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace FunnyCafeManagerment_DataAccess.Repositories
 {
-    internal class CategoryRepo
+    public class CategoryRepo
     {
+
     }
 }

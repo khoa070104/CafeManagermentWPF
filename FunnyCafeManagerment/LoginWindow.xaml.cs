@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using FunnyCafeManagerment_DataAccess.ViewModels;
+using FunnyCafeManagerment_Service.Services;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,8 +15,10 @@ namespace FunnyCafeManagerment
 {
 	public partial class LoginWindow : Window
 	{
+		UserService userService;
 		public LoginWindow()
 		{
+			userService = new UserService();
 			InitializeComponent();
 		}
 		private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
@@ -53,5 +57,31 @@ namespace FunnyCafeManagerment
 			this.Hide();
 			registerWindow.Show();
 		}
-	}
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+			if (txtUsername.Text != null && txtPassword.Password != null)
+			{
+				UserVM userVM = new()
+				{
+					Username = txtUsername.Text,
+					Password = txtPassword.Password
+				};
+
+				var user = userService.Login(userVM);
+				if (user != null && user.Role.Equals("Admin"))
+				{
+					AdminManageEmployeeWindow aME = new();
+					userVM.FullName = user.FullName;
+					aME.edited = userVM;
+					this.Hide();
+                    aME.Show();
+					return;
+				}
+			}
+			MessageBox.Show("Please enter invalid username or password", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
+
+			
+        }
+    }
 }
