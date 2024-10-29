@@ -11,7 +11,7 @@ public partial class Inventory
 
     public int? StockQuantity { get; set; }
 
-    public DateOnly? LastRestocked { get; set; }
+    public DateTime? LastRestocked { get; set; }
 
     public virtual Product? Product { get; set; }
 }

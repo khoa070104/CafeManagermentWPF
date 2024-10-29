@@ -19,9 +19,9 @@ public partial class User
 
     public string? Phone { get; set; }
 
-    public DateOnly? Dob { get; set; }
+    public DateTime? Dob { get; set; }
 
-    public DateOnly? StartDay { get; set; }
+    public DateTime? StartDay { get; set; }
 
     public string? Status { get; set; }
 

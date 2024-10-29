@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace FunnyCafeManagerment_DataAccess.Models;
 
@@ -30,16 +31,21 @@ public partial class ManageCafeShopContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-F5JIJSO\\KHOASEVER;Database=ManageCafeShop;User Id=sa;Password=123;TrustServerCertificate=true;Trusted_Connection=SSPI;Encrypt=false;");
-
+    {
+        var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+        var connectionString = configuration.GetConnectionString("DefaultConnection");
+        optionsBuilder.UseSqlServer(connectionString);
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A2B256F5678");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A2B91F993CC");
 
-            entity.HasIndex(e => e.CategoryName, "UQ__Categori__8517B2E01464E540").IsUnique();
+            entity.HasIndex(e => e.CategoryName, "UQ__Categori__8517B2E0112B7DC1").IsUnique();
 
             entity.Property(e => e.CategoryId)
                 .HasMaxLength(5)
@@ -51,7 +57,7 @@ public partial class ManageCafeShopContext : DbContext
 
         modelBuilder.Entity<Inventory>(entity =>
         {
-            entity.HasKey(e => e.InventoryId).HasName("PK__Inventor__F5FDE6D3B9DD02FD");
+            entity.HasKey(e => e.InventoryId).HasName("PK__Inventor__F5FDE6D3D362DAA4");
 
             entity.ToTable("Inventory");
 
@@ -60,6 +66,7 @@ public partial class ManageCafeShopContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength()
                 .HasColumnName("InventoryID");
+            entity.Property(e => e.LastRestocked).HasColumnType("datetime");
             entity.Property(e => e.ProductId)
                 .HasMaxLength(5)
                 .IsUnicode(false)
@@ -74,11 +81,12 @@ public partial class ManageCafeShopContext : DbContext
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF9D894CB7");
+            entity.HasKey(e => e.OrderId).HasName("PK__Orders__C3905BAF225498AF");
 
             entity.Property(e => e.OrderId)
                 .ValueGeneratedNever()
                 .HasColumnName("OrderID");
+            entity.Property(e => e.OrderDate).HasColumnType("datetime");
             entity.Property(e => e.TotalAmount).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
@@ -90,7 +98,7 @@ public partial class ManageCafeShopContext : DbContext
 
         modelBuilder.Entity<OrderDetail>(entity =>
         {
-            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30C028545AA");
+            entity.HasKey(e => e.OrderDetailId).HasName("PK__OrderDet__D3B9D30C93A36E56");
 
             entity.Property(e => e.OrderDetailId)
                 .ValueGeneratedNever()
@@ -116,7 +124,7 @@ public partial class ManageCafeShopContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6ED14D4E96E");
+            entity.HasKey(e => e.ProductId).HasName("PK__Products__B40CC6ED9D8E1EB3");
 
             entity.Property(e => e.ProductId)
                 .HasMaxLength(5)
@@ -140,7 +148,7 @@ public partial class ManageCafeShopContext : DbContext
 
         modelBuilder.Entity<Table>(entity =>
         {
-            entity.HasKey(e => e.TableId).HasName("PK__Tables__7D5F018E41DC4205");
+            entity.HasKey(e => e.TableId).HasName("PK__Tables__7D5F018EBAF52A66");
 
             entity.Property(e => e.TableId)
                 .HasMaxLength(5)
@@ -153,16 +161,18 @@ public partial class ManageCafeShopContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCACE8975114");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCACFC91716A");
 
-            entity.HasIndex(e => e.Username, "UQ__Users__536C85E47B9C3960").IsUnique();
+            entity.HasIndex(e => e.Username, "UQ__Users__536C85E4E5CE51AD").IsUnique();
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534E55B7DE8").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D105344CDF0AC5").IsUnique();
 
             entity.Property(e => e.UserId)
                 .ValueGeneratedNever()
                 .HasColumnName("UserID");
-            entity.Property(e => e.Dob).HasColumnName("DOB");
+            entity.Property(e => e.Dob)
+                .HasColumnType("datetime")
+                .HasColumnName("DOB");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .IsUnicode(false);
@@ -177,6 +187,7 @@ public partial class ManageCafeShopContext : DbContext
             entity.Property(e => e.Role)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+            entity.Property(e => e.StartDay).HasColumnType("datetime");
             entity.Property(e => e.Status)
                 .HasMaxLength(100)
                 .IsUnicode(false);
