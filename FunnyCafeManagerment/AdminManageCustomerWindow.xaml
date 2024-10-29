@@ -1,4 +1,4 @@
-﻿<Window x:Class="FunnyCafeManagerment.ManageCustomerWindow"
+﻿<Window x:Class="FunnyCafeManagerment.AdminManageCustomerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -579,6 +579,7 @@ FontWeight="Bold" Background="Transparent" />
                         </StackPanel>
 
                         <!-- Menu Items using the shared SidebarButtonStyle -->
+                        <Button Content="Trang chủ" Tag="🏠" Style="{StaticResource SidebarButtonStyle}" Click="OpenAdminHomePageWindow"/>
                         <Button Content="Sản phẩm" Tag="📦" Style="{StaticResource SidebarButtonStyle}" Click="OpenSanPhamWindow"/>
                         <Button Content="Nhân viên" Tag="&#x1F464;" Style="{StaticResource SidebarButtonStyle}" Click="OpenNhanVienWindow"/>
                         <Button Content="Bàn" Tag="&#x1F37D;" Style="{StaticResource SidebarButtonStyle}" Click="OpenBanWindow"/>

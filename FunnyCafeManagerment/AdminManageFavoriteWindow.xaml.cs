@@ -109,6 +109,13 @@ namespace FunnyCafeManagerment
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
 
+        private void OpenAdminHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            AdminHomePageWindow adminHomePageWindow = new AdminHomePageWindow();
+            adminHomePageWindow.Show();
+            this.Close();
+        }
+
         private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
         {
             AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
@@ -132,7 +139,7 @@ namespace FunnyCafeManagerment
 
         private void OpenKhachHangWindow(object sender, RoutedEventArgs e)
         {
-            ManageCustomerWindow khachHangWindow = new ManageCustomerWindow();
+            AdminManageCustomerWindow khachHangWindow = new AdminManageCustomerWindow();
             khachHangWindow.Show();
             this.Close();
         }

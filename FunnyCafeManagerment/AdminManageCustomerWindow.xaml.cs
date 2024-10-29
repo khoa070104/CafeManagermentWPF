@@ -17,11 +17,11 @@ using System.Windows.Media.Animation;
 namespace FunnyCafeManagerment
 {
     /// <summary>
-    /// Interaction logic for ManageCustomerWindow.xaml
+    /// Interaction logic for AdminManageCustomerWindow.xaml
     /// </summary>
-    public partial class ManageCustomerWindow : Window
+    public partial class AdminManageCustomerWindow : Window
     {
-        public ManageCustomerWindow()
+        public AdminManageCustomerWindow()
         {
             InitializeComponent();
             LoadCustomerData();
@@ -198,6 +198,13 @@ namespace FunnyCafeManagerment
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
 
+        private void OpenAdminHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            AdminHomePageWindow adminHomePageWindow = new AdminHomePageWindow();
+            adminHomePageWindow.Show();
+            this.Close();
+        }
+
         private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
         {
             AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
@@ -221,7 +228,7 @@ namespace FunnyCafeManagerment
 
         private void OpenKhachHangWindow(object sender, RoutedEventArgs e)
         {
-            ManageCustomerWindow khachHangWindow = new ManageCustomerWindow();
+            AdminManageCustomerWindow khachHangWindow = new AdminManageCustomerWindow();
             khachHangWindow.Show();
             this.Close();
         }

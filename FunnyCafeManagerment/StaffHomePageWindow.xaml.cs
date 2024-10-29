@@ -16,77 +16,14 @@ using System.Windows.Shapes;
 namespace FunnyCafeManagerment
 {
     /// <summary>
-    /// Interaction logic for StaffManageFavoriteWindow.xaml
+    /// Interaction logic for StaffHomePageWindow.xaml
     /// </summary>
-    public partial class StaffManageFavoriteWindow : Window
+    public partial class StaffHomePageWindow : Window
     {
-        public StaffManageFavoriteWindow()
+        public StaffHomePageWindow()
         {
             InitializeComponent();
-            LoadFavoriteItemData();
         }
-        private void LoadFavoriteItemData()
-        {
-            // Tạo dữ liệu mẫu
-            List<MenuFavoriteItem> menuFavoriteItems = new List<MenuFavoriteItem>
-    {
-        new MenuFavoriteItem { STT = 1, TenMon = "Cà phê đen", SoLuong = 5, DoanhThu = 100000 },
-        new MenuFavoriteItem { STT = 2, TenMon = "Cà phê sữa", SoLuong = 3, DoanhThu = 75000 },
-        new MenuFavoriteItem { STT = 3, TenMon = "Trà sữa", SoLuong = 2, DoanhThu = 60000 },
-        new MenuFavoriteItem { STT = 4, TenMon = "Bánh mì", SoLuong = 4, DoanhThu = 80000 }
-    };
-
-            // Gán danh sách vào DataGrid
-            FavoriteItemDataGrid.ItemsSource = menuFavoriteItems;
-        }
-
-        public class MenuFavoriteItem
-        {
-            public int STT { get; set; }
-            public string TenMon { get; set; }
-            public int SoLuong { get; set; }
-            public decimal DoanhThu { get; set; }
-        }
-        private void History_Click(object sender, RoutedEventArgs e)
-        {
-            // Tạo một đối tượng của HistoryWindow và mở nó
-            StaffManageHistoryWindow historyWindow = new StaffManageHistoryWindow();
-            historyWindow.Show();
-            this.Close();
-        }
-        private void Favorite_Click(object sender, RoutedEventArgs e)
-        {
-            // Tạo một đối tượng của FavoriteWindow và mở nó
-            StaffManageFavoriteWindow favoriteWindow = new StaffManageFavoriteWindow();
-            favoriteWindow.Show();
-            this.Close();
-        }
-
-        // Xử lý sự kiện khi nhấn vào nút Delete
-        private void ShowDeleteForm_Click(object sender, RoutedEventArgs e)
-        {
-            // Hiển thị form
-            DeleteForm.Visibility = Visibility.Visible;
-        }
-
-        private void HideDeleteForm_Click(object sender, RoutedEventArgs e)
-        {
-            // Ẩn form
-            DeleteForm.Visibility = Visibility.Collapsed;
-        }
-
-        private void YesButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Đóng cửa sổ sau khi người dùng nhấn "Có"
-            this.Close();
-        }
-
-        // Xử lý sự kiện click cho nút "Không"
-        private void NoButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         // hiện slide bar
         private void ShowSidebarForm_Click(object sender, RoutedEventArgs e)
         {
@@ -112,7 +49,6 @@ namespace FunnyCafeManagerment
             };
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
-
         private void OpenStaffHomePageWindow(object sender, RoutedEventArgs e)
         {
             StaffHomePageWindow staffHomePageWindow = new StaffHomePageWindow();
@@ -140,12 +76,10 @@ namespace FunnyCafeManagerment
             suCoWindow.Show();
             this.Close();
         }
-
         private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
-
         // Sự kiện phóng to cửa sổ
         private void MaximizeWindow_Click(object sender, RoutedEventArgs e)
         {

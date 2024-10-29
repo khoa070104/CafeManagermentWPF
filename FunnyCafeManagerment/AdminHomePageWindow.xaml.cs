@@ -16,59 +16,14 @@ using System.Windows.Shapes;
 namespace FunnyCafeManagerment
 {
     /// <summary>
-    /// Interaction logic for AdminManageRevenueWindow.xaml
+    /// Interaction logic for AdminHomePageWindow.xaml
     /// </summary>
-    public partial class AdminManageRevenueWindow : Window
+    public partial class AdminHomePageWindow : Window
     {
-        public AdminManageRevenueWindow()
+        public AdminHomePageWindow()
         {
             InitializeComponent();
-            LoadRevenueItemData();
         }
-        private void LoadRevenueItemData()
-        {
-            // Tạo dữ liệu mẫu
-            List<MenuRevenueItem> menuRevenueItems = new List<MenuRevenueItem>
-    {
-        new MenuRevenueItem { ID = 1, Ngay = DateTime.Now.AddDays(-1), DoanhThu = 150000 },
-        new MenuRevenueItem { ID = 2, Ngay = DateTime.Now.AddDays(-2), DoanhThu = 200000 },
-        new MenuRevenueItem { ID = 3, Ngay = DateTime.Now.AddDays(-3), DoanhThu = 100000 },
-        new MenuRevenueItem { ID = 4, Ngay = DateTime.Now.AddDays(-4), DoanhThu = 250000 }
-    };
-
-            // Gán danh sách vào DataGrid
-            RevenueItemDataGrid.ItemsSource = menuRevenueItems;
-        }
-
-        public class MenuRevenueItem
-        {
-            public int ID { get; set; }        // ID của giao dịch hoặc đơn hàng
-            public DateTime Ngay { get; set; }  // Ngày giao dịch
-            public decimal DoanhThu { get; set; } // Doanh thu của đơn hàng
-        }
-
-        private void History_Click(object sender, RoutedEventArgs e)
-        {
-            // Tạo một đối tượng của HistoryWindow và mở nó
-            AdminManageHistoryWindow historyWindow = new AdminManageHistoryWindow();
-            historyWindow.Show();
-            this.Close();
-        }
-        private void Revenue_Click(object sender, RoutedEventArgs e)
-        {
-            // Tạo một đối tượng của RevenueWindow và mở nó
-            AdminManageRevenueWindow revenueWindow = new AdminManageRevenueWindow();
-            revenueWindow.Show();
-            this.Close();
-        }
-        private void Favorite_Click(object sender, RoutedEventArgs e)
-        {
-            // Tạo một đối tượng của FavoriteWindow và mở nó
-            AdminManageFavoriteWindow favoriteWindow = new AdminManageFavoriteWindow();
-            favoriteWindow.Show();
-            this.Close();
-        }
-
         // hiện slide bar
         private void ShowSidebarForm_Click(object sender, RoutedEventArgs e)
         {
@@ -94,18 +49,16 @@ namespace FunnyCafeManagerment
             };
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
-
-        private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
-        {
-            AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
-            sanPhamWindow.Show();
-            this.Close();
-        }
-
         private void OpenAdminHomePageWindow(object sender, RoutedEventArgs e)
         {
             AdminHomePageWindow adminHomePageWindow = new AdminHomePageWindow();
             adminHomePageWindow.Show();
+            this.Close();
+        }
+        private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
+        {
+            AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
+            sanPhamWindow.Show();
             this.Close();
         }
 
@@ -143,7 +96,6 @@ namespace FunnyCafeManagerment
             suCoWindow.Show();
             this.Close();
         }
-
 
         private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
         {

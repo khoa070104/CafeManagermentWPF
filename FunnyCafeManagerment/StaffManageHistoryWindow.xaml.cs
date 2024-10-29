@@ -142,6 +142,13 @@ namespace FunnyCafeManagerment
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
 
+        private void OpenStaffHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            StaffHomePageWindow staffHomePageWindow = new StaffHomePageWindow();
+            staffHomePageWindow.Show();
+            this.Close();
+        }
+
         private void OpenBanHangWindow(object sender, RoutedEventArgs e)
         {
             StaffManageOrderWindow banHangWindow = new StaffManageOrderWindow();
