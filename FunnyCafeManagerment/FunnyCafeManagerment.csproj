@@ -30,4 +30,8 @@
     <Resource Include="Images\send.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
 </Project>

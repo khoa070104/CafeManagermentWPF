@@ -23,12 +23,11 @@ namespace FunnyCafeManagerment
     /// </summary>
     public partial class AdminManageEmployeeWindow : Window
     {
-        public UserVM edited { get; set; } = null;
         public AdminManageEmployeeWindow()
         {
-            
             InitializeComponent();
-            LoadData();
+            DataContext = App.MainViewModel;
+
             List<Employee> employees = new List<Employee>
         {
                 new Employee { ID = 1, HoTen = "Nguyễn Văn A", SoDienThoai = "0909123456", Email = "a@gmail.com", Sex = "Nam", DateOfBirth = "01/01/1990", StartDate = "01/01/2022", Position = "Nhân viên", Salary = 10000000, Status = "Đang làm việc" },
@@ -40,6 +39,7 @@ namespace FunnyCafeManagerment
             // Gán dữ liệu vào DataGrid
             customerDataGrid.ItemsSource = employees;
         }
+
         public class Employee
         {
             public int ID { get; set; }
@@ -401,11 +401,6 @@ namespace FunnyCafeManagerment
         private void CloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        public void LoadData()
-        {
-            NameLabel.Content = edited.FullName;
         }
     }
 }

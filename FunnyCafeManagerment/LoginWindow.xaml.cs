@@ -71,11 +71,12 @@ namespace FunnyCafeManagerment
 				var user = userService.Login(userVM);
 				if (user != null && user.Role.Equals("Admin"))
 				{
-					AdminManageEmployeeWindow aME = new();
 					userVM.FullName = user.FullName;
-					aME.edited = userVM;
+					App.MainViewModel.CurrentUser = userVM;
+					
+					AdminManageEmployeeWindow aME = new();
 					this.Hide();
-                    aME.Show();
+					aME.Show();
 					return;
 				}
 			}

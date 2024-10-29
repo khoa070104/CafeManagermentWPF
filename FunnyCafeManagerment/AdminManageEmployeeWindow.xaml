@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FunnyCafeManagerment"
         mc:Ignorable="d"
         Title="AdminManageEmployeeWindow"
         Height="720"
@@ -82,10 +83,17 @@ FontWeight="Bold" Background="Transparent" />
 
                         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
                             <!-- Username -->
-                            
-                            <Label x:Name="NameLabel" Content="Admin"   FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding CurrentUser.FullName}"
+                                   FontSize="20" 
+                                   Foreground="#D7B08F" 
+                                   VerticalAlignment="Center" 
+                                   Margin="0,0,5,0"/>
                             <!-- User Icon Button -->
-                            <Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
+                            <Button Content="&#x1F464;" 
+                                    FontSize="20" 
+                                    BorderThickness="0" 
+                                    Foreground="#D7B08F" 
+                                    Background="Transparent"/>
                         </StackPanel>
                     </Grid>
 
