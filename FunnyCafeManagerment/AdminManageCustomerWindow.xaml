@@ -283,7 +283,7 @@ FontWeight="Bold" Background="Transparent" />
                        Margin="10"/>
 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                                    <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="HideDeleteForm_Click" Margin="10,0">
+                                    <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="YesButton_Click" Margin="10,0">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
@@ -518,7 +518,7 @@ FontWeight="Bold" Background="Transparent" />
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,40">
                                     <Button Content="Sửa" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#D7B08F"
                                 Foreground="White" Margin="10,0"
-                                Click="HideEditForm_Click">
+                                Click="EditButton_Click">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
