@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FunnyCafeManagerment_DataAccess.Contexts;
 
 namespace FunnyCafeManagerment
 {
@@ -27,17 +28,23 @@ namespace FunnyCafeManagerment
         }
         private void LoadFavoriteItemData()
         {
-            // Tạo dữ liệu mẫu
-            List<MenuFavoriteItem> menuFavoriteItems = new List<MenuFavoriteItem>
-    {
-        new MenuFavoriteItem { STT = 1, TenMon = "Cà phê đen", SoLuong = 5, DoanhThu = 100000 },
-        new MenuFavoriteItem { STT = 2, TenMon = "Cà phê sữa", SoLuong = 3, DoanhThu = 75000 },
-        new MenuFavoriteItem { STT = 3, TenMon = "Trà sữa", SoLuong = 2, DoanhThu = 60000 },
-        new MenuFavoriteItem { STT = 4, TenMon = "Bánh mì", SoLuong = 4, DoanhThu = 80000 }
-    };
+            using (var context = new FunnyCafeContext())
+            {
+                var favoriteItems = context.ProductFavorites
+                    .Join(context.Products,
+                          favorite => favorite.ProductID,
+                          product => product.ProductId,
+                          (favorite, product) => new
+                          {
+                              favorite.ProductFavoriteID,
+                              ProductName = product.ProductName,
+                              favorite.Quantity,
+                              favorite.Revenue
+                          })
+                    .ToList();
 
-            // Gán danh sách vào DataGrid
-            FavoriteItemDataGrid.ItemsSource = menuFavoriteItems;
+                FavoriteItemDataGrid.ItemsSource = favoriteItems;
+            }
         }
 
         public class MenuFavoriteItem
@@ -111,6 +118,13 @@ namespace FunnyCafeManagerment
                 RightOverlay.Visibility = Visibility.Collapsed;
             };
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
+        }
+
+        private void OpenStaffHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            StaffHomePageWindow staffHomePageWindow = new StaffHomePageWindow();
+            staffHomePageWindow.Show();
+            this.Close();
         }
 
         private void OpenBanHangWindow(object sender, RoutedEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FunnyCafeManagerment_DataAccess.Contexts;
+using FunnyCafeManagerment_DataAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +22,66 @@ namespace FunnyCafeManagerment
     /// </summary>
     public partial class AdminManageTableWindow : Window
     {
+        private int _currentEditingTableId; // Biến lưu trữ ID của bàn đang được chỉnh sửa
+
         public AdminManageTableWindow()
         {
             InitializeComponent();
+            LoadTableData();
         }
+
+        private void LoadTableData(string statusFilter = null)
+        {
+            using (var context = new FunnyCafeContext())
+            {
+                var tablesQuery = context.Tables.AsQueryable();
+
+                if (!string.IsNullOrEmpty(statusFilter) && statusFilter != "Tất cả")
+                {
+                    tablesQuery = tablesQuery.Where(t => t.Status == statusFilter);
+                }
+
+                var tables = tablesQuery
+                    .Select(table => new
+                    {
+                        table.TableId,
+                        TableName = table.TableName,
+                        Status = table.Status,
+                        StatusColor = table.Status == "Còn trống" ? "#3CB043" : "#FF0000"
+                    })
+                    .ToList();
+
+                DataContext = tables;
+            }
+        }
+
+        private void FilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Đặt lại style cho tất cả các nút về style mặc định
+            ResetButtonStyles();
+
+            // Áp dụng style được chọn cho nút vừa được nhấn
+            Button clickedButton = sender as Button;
+            if (clickedButton != null)
+            {
+                clickedButton.Style = (Style)FindResource("SelectedButtonStyle");
+                string statusFilter = clickedButton.Content.ToString();
+                LoadTableData(statusFilter);
+            }
+        }
+
+        private void ResetButtonStyles()
+        {
+            // Lặp qua tất cả các Button trong MenuStackPanel để đặt lại style
+            foreach (var child in MenuStackPanel.Children)
+            {
+                if (child is Button btn)
+                {
+                    btn.Style = (Style)FindResource("MenuButtonStyle");
+                }
+            }
+        }
+
         private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -117,25 +175,13 @@ namespace FunnyCafeManagerment
             }
         }
 
-        private void ResetButtonStyles()
-        {
-            // Lặp qua tất cả các Button trong MenuStackPanel để đặt lại style
-            foreach (var child in MenuStackPanel.Children)
-            {
-                if (child is Button btn)
-                {
-                    btn.Style = (Style)FindResource("MenuButtonStyle");
-                }
-            }
-        }
-
-
-
         // Xử lý sự kiện khi nhấn vào nút Delete
         private void ShowDeleteForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            DeleteForm.Visibility = Visibility.Visible;
+            // Lấy TableId từ đối tượng được chọn
+            var button = sender as Button;
+            var tableId = (button.DataContext as dynamic).TableId;
+            DeleteTable(tableId);
         }
 
         private void HideDeleteForm_Click(object sender, RoutedEventArgs e)
@@ -156,7 +202,18 @@ namespace FunnyCafeManagerment
         }
         private void ShowEditForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
+            // Lấy TableId từ đối tượng được chọn
+            var button = sender as Button;
+            var table = button.DataContext as dynamic;
+            _currentEditingTableId = table.TableId;
+
+            // Điền thông tin hiện tại vào form chỉnh sửa
+            EditTableNameTextBox.Text = table.TableName;
+            EditTrangThaiComboBox.SelectedItem = EditTrangThaiComboBox.Items
+                .Cast<ComboBoxItem>()
+                .FirstOrDefault(item => item.Content.ToString() == table.Status);
+
+            // Hiển thị form chỉnh sửa
             EditForm.Visibility = Visibility.Visible;
         }
 
@@ -165,10 +222,50 @@ namespace FunnyCafeManagerment
             // Ẩn form
             EditForm.Visibility = Visibility.Collapsed;
         }
+
+        private void SaveEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            string newTableName = EditTableNameTextBox.Text;
+            string newStatus = (EditTrangThaiComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+            EditTable(_currentEditingTableId, newTableName, newStatus);
+            HideEditForm_Click(sender, e);
+        }
+
+        private void EditTable(int tableId, string newTableName, string newStatus)
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var tableToEdit = context.Tables.FirstOrDefault(t => t.TableId == tableId);
+                    if (tableToEdit != null)
+                    {
+                        tableToEdit.TableName = newTableName;
+                        tableToEdit.Status = newStatus;
+                        context.SaveChanges();
+                        MessageBox.Show("Bàn đã được cập nhật thành công.");
+                        LoadTableData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy bàn để cập nhật.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi cập nhật bàn: " + ex.Message);
+            }
+        }
+
         // Hàm xử lý sự kiện cho nút "Thêm"
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            string tableName = TableNameTextBox.Text;
+            string status = (TrangThaiComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            AddTable(tableName, status);
+            HideAddForm_Click(sender, e);
         }
         private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
         {
@@ -201,6 +298,13 @@ namespace FunnyCafeManagerment
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
 
+        private void OpenAdminHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            AdminHomePageWindow adminHomePageWindow = new AdminHomePageWindow();
+            adminHomePageWindow.Show();
+            this.Close();
+        }
+
         private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
         {
             AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
@@ -224,7 +328,7 @@ namespace FunnyCafeManagerment
 
         private void OpenKhachHangWindow(object sender, RoutedEventArgs e)
         {
-            ManageCustomerWindow khachHangWindow = new ManageCustomerWindow();
+            AdminManageCustomerWindow khachHangWindow = new AdminManageCustomerWindow();
             khachHangWindow.Show();
             this.Close();
         }
@@ -260,6 +364,56 @@ namespace FunnyCafeManagerment
         private void CloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void AddTable(string tableName, string status)
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var newTable = new FunnyCafeManagerment_DataAccess.Models.Table
+                    {
+                        TableName = tableName,
+                        Status = status
+                    };
+
+                    context.Tables.Add(newTable);
+                    context.SaveChanges();
+                    MessageBox.Show("Bàn mới đã được thêm thành công.");
+                    LoadTableData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi thêm bàn: " + ex.Message);
+            }
+        }
+
+        private void DeleteTable(int tableId)
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var tableToDelete = context.Tables.FirstOrDefault(t => t.TableId == tableId);
+                    if (tableToDelete != null)
+                    {
+                        context.Tables.Remove(tableToDelete);
+                        context.SaveChanges();
+                        MessageBox.Show("Bàn đã được xóa thành công.");
+                        LoadTableData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy bàn để xóa.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi xóa bàn: " + ex.Message);
+            }
         }
     }
 }

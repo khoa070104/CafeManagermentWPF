@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FunnyCafeManagerment_DataAccess.Contexts;
 
 namespace FunnyCafeManagerment
 {
@@ -27,29 +28,20 @@ namespace FunnyCafeManagerment
         }
         private void LoadHistoryItemData()
         {
-            // Tạo dữ liệu mẫu
-            List<MenuHistoryItem> menuHistoryItems = new List<MenuHistoryItem>
-    {
-        new MenuHistoryItem { STT = 1, TenKhachHang = "Nguyễn Văn A", ThoiGian = DateTime.Now.AddHours(-1), GiaTriHoaDon = 150000 },
-        new MenuHistoryItem { STT = 2, TenKhachHang = "Trần Thị B", ThoiGian = DateTime.Now.AddHours(-2), GiaTriHoaDon = 200000 },
-        new MenuHistoryItem { STT = 3, TenKhachHang = "Lê Văn C", ThoiGian = DateTime.Now.AddHours(-3), GiaTriHoaDon = 100000 },
-        new MenuHistoryItem { STT = 4, TenKhachHang = "Phạm Thị D", ThoiGian = DateTime.Now.AddHours(-4), GiaTriHoaDon = 250000 }
-    };
-
-            // Gán danh sách vào DataGrid
-            HistoryItemDataGrid.ItemsSource = menuHistoryItems;
-
-            // Tạo danh sách sản phẩm mẫu
-            List<Product> products = new List<Product>
+            using (var context = new FunnyCafeContext())
             {
-                new Product { STT = 1, TenSanPham = "Sản phẩm A", SoLuong = 10, DonGia = 20000 },
-                new Product { STT = 2, TenSanPham = "Sản phẩm B", SoLuong = 5, DonGia = 30000 },
-                new Product { STT = 3, TenSanPham = "Sản phẩm C", SoLuong = 20, DonGia = 15000 },
-                new Product { STT = 4, TenSanPham = "Sản phẩm D", SoLuong = 15, DonGia = 25000 }
-            };
+                var menuHistoryItems = context.Orders
+                    .Select(order => new
+                    {
+                        STT = order.OrderId,
+                        TenKhachHang = order.User != null ? order.User.FullName : "Khách vãng lai",
+                        ThoiGian = order.OrderDate ?? DateTime.MinValue,
+                        GiaTriHoaDon = order.TotalAmount ?? 0
+                    })
+                    .ToList();
 
-            // Đặt ItemsSource cho DataGrid
-            ProductDataGrid.ItemsSource = products;
+                HistoryItemDataGrid.ItemsSource = menuHistoryItems;
+            }
         }
         public class MenuHistoryItem
         {
@@ -57,14 +49,6 @@ namespace FunnyCafeManagerment
             public string TenKhachHang { get; set; }
             public DateTime ThoiGian { get; set; }
             public decimal GiaTriHoaDon { get; set; }
-        }
-        public class Product
-        {
-            public int STT { get; set; }
-            public string TenSanPham { get; set; }
-            public int SoLuong { get; set; }
-            public decimal DonGia { get; set; }
-            public decimal ThanhTien => SoLuong * DonGia; // Tính thành tiền
         }
         private void History_Click(object sender, RoutedEventArgs e)
         {
@@ -140,6 +124,13 @@ namespace FunnyCafeManagerment
                 RightOverlay.Visibility = Visibility.Collapsed;
             };
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
+        }
+
+        private void OpenStaffHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            StaffHomePageWindow staffHomePageWindow = new StaffHomePageWindow();
+            staffHomePageWindow.Show();
+            this.Close();
         }
 
         private void OpenBanHangWindow(object sender, RoutedEventArgs e)

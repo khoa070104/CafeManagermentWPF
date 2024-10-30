@@ -13,40 +13,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections.Generic;
 using System.Windows.Media.Animation;
+using FunnyCafeManagerment_DataAccess.Contexts;
 
 namespace FunnyCafeManagerment
 {
     /// <summary>
-    /// Interaction logic for ManageCustomerWindow.xaml
+    /// Interaction logic for AdminManageCustomerWindow.xaml
     /// </summary>
-    public partial class ManageCustomerWindow : Window
+    public partial class AdminManageCustomerWindow : Window
     {
-        public ManageCustomerWindow()
+        public AdminManageCustomerWindow()
         {
             InitializeComponent();
             LoadCustomerData();
         }
+
         private void LoadCustomerData()
         {
-            // Tạo dữ liệu mẫu
-            List<Customer> customers = new List<Customer>
+            using (var context = new FunnyCafeContext())
             {
-                new Customer { ID = 1, TenKhachHang = "Nguyen Van A", SoDienThoai = "0123456789", Email = "nguyenvana@gmail.com", ChiTieu = 1500000, GhiChu = "Khách quen" },
-                new Customer { ID = 2, TenKhachHang = "Tran Thi B", SoDienThoai = "0987654321", Email = "tranthib@gmail.com", ChiTieu = 2000000, GhiChu = "Khách mới" },
-                new Customer { ID = 3, TenKhachHang = "Le Van C", SoDienThoai = "0912345678", Email = "levanc@gmail.com", ChiTieu = 500000, GhiChu = "Khách thân thiết" }
-            };
-
-            // Gán danh sách vào DataGrid
-            customerDataGrid.ItemsSource = customers;
-        }
-        public class Customer
-        {
-            public int ID { get; set; }
-            public string TenKhachHang { get; set; }
-            public string SoDienThoai { get; set; }
-            public string Email { get; set; }
-            public decimal ChiTieu { get; set; }
-            public string GhiChu { get; set; }
+                var customers = context.Customers.ToList();
+                customerDataGrid.ItemsSource = customers;
+            }
         }
         private void searchTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -198,6 +186,13 @@ namespace FunnyCafeManagerment
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
 
+        private void OpenAdminHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            AdminHomePageWindow adminHomePageWindow = new AdminHomePageWindow();
+            adminHomePageWindow.Show();
+            this.Close();
+        }
+
         private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
         {
             AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
@@ -221,7 +216,7 @@ namespace FunnyCafeManagerment
 
         private void OpenKhachHangWindow(object sender, RoutedEventArgs e)
         {
-            ManageCustomerWindow khachHangWindow = new ManageCustomerWindow();
+            AdminManageCustomerWindow khachHangWindow = new AdminManageCustomerWindow();
             khachHangWindow.Show();
             this.Close();
         }

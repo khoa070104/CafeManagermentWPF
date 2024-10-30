@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FunnyCafeManagerment_DataAccess.Contexts;
+using FunnyCafeManagerment_DataAccess.Models;
 
 namespace FunnyCafeManagerment
 {
@@ -27,25 +29,36 @@ namespace FunnyCafeManagerment
         }
         private void LoadProblemItemData()
         {
-            // Tạo dữ liệu mẫu
-            List<ProblemItem> problemItems = new List<ProblemItem>
-    {
-        new ProblemItem { Id = 1, TenSuCo = "Gãy cây", TrangThai = "Chưa sửa", GhiChu = "Đang chờ xử lý" },
-        new ProblemItem { Id = 2, TenSuCo = "Hỏng điện", TrangThai = "Đang sửa", GhiChu = "Có thợ đang sửa" },
-        new ProblemItem { Id = 3, TenSuCo = "Rò rỉ nước", TrangThai = "Đã sửa", GhiChu = "Hoàn tất vào hôm qua" },
-        new ProblemItem { Id = 4, TenSuCo = "Vỡ kính", TrangThai = "Chưa sửa", GhiChu = "Cần thay kính mới" }
-    };
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var problemItems = context.Problems
+                        .Select(p => new ProblemItem
+                        {
+                            ProblemId = p.ProblemId,
+                            ProblemName = p.ProblemName,
+                            Status = p.Status,
+                            Note = p.Note
+                        })
+                        .ToList();
 
-            // Gán danh sách vào DataGrid
-            ProblemDataGrid.ItemsSource = problemItems;
+                    ProblemDataGrid.ItemsSource = problemItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi tải dữ liệu: " + ex.Message);
+            }
+
         }
 
         public class ProblemItem
         {
-            public int Id { get; set; }           // Viết hoa I trong Id
-            public string TenSuCo { get; set; }   // Sử dụng PascalCase cho TenSuCo
-            public string TrangThai { get; set; } // Viết hoa T trong TrangThai
-            public string GhiChu { get; set; }    // Viết hoa G trong GhiChu
+            public int ProblemId { get; set; }
+            public string ProblemName { get; set; }
+            public string Status { get; set; }
+            public string Note { get; set; }
         }
 
         private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -100,8 +113,10 @@ namespace FunnyCafeManagerment
         // Xử lý sự kiện khi nhấn vào nút Delete
         private void ShowDeleteForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            DeleteForm.Visibility = Visibility.Visible;
+            if (ProblemDataGrid.SelectedItem is ProblemItem selectedProblem)
+            {
+                DeleteForm.Visibility = Visibility.Visible;
+            }
         }
 
         private void HideDeleteForm_Click(object sender, RoutedEventArgs e)
@@ -111,6 +126,9 @@ namespace FunnyCafeManagerment
         }
         private void ShowAddProblemForm_Click(object sender, RoutedEventArgs e)
         {
+            // Đặt giá trị mặc định cho ComboBox
+            ProblemStatusComboBox.SelectedIndex = 0;
+
             // Hiển thị form
             AddProblemForm.Visibility = Visibility.Visible;
         }
@@ -122,8 +140,12 @@ namespace FunnyCafeManagerment
         }
         private void ShowEditProblemForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            EditProblemForm.Visibility = Visibility.Visible;
+            if (ProblemDataGrid.SelectedItem is ProblemItem selectedProblem)
+            {
+                EditTrangThaiComboBox.SelectedItem = selectedProblem.Status;
+                EditGhiChuTextBox.Text = selectedProblem.Note;
+                EditProblemForm.Visibility = Visibility.Visible;
+            }
         }
 
         private void HideEditProblemForm_Click(object sender, RoutedEventArgs e)
@@ -137,12 +159,52 @@ namespace FunnyCafeManagerment
         }
         private void Sua_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (ProblemDataGrid.SelectedItem is ProblemItem selectedProblem)
+            {
+                try
+                {
+                    using (var context = new FunnyCafeContext())
+                    {
+                        var problem = context.Problems.Find(selectedProblem.ProblemId);
+                        if (problem != null)
+                        {
+                            problem.Status = (EditTrangThaiComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                            problem.Note = EditGhiChuTextBox.Text;
+                            context.SaveChanges();
+                            LoadProblemItemData(); // Refresh data grid
+                            HideEditProblemForm_Click(sender, e); // Close the form
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi cập nhật sự cố: " + ex.Message);
+                }
+            }
         }
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            // Đóng cửa sổ sau khi người dùng nhấn "Có"
-            this.Close();
+            if (ProblemDataGrid.SelectedItem is ProblemItem selectedProblem)
+            {
+                try
+                {
+                    using (var context = new FunnyCafeContext())
+                    {
+                        var problem = context.Problems.Find(selectedProblem.ProblemId);
+                        if (problem != null)
+                        {
+                            context.Problems.Remove(problem);
+                            context.SaveChanges();
+                            LoadProblemItemData(); // Refresh data grid
+                            HideDeleteForm_Click(sender, e); // Close the form
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi xóa sự cố: " + ex.Message);
+                }
+            }
         }
 
         // Xử lý sự kiện click cho nút "Không"
@@ -176,6 +238,13 @@ namespace FunnyCafeManagerment
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
 
+        private void OpenAdminHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            AdminHomePageWindow adminHomePageWindow = new AdminHomePageWindow();
+            adminHomePageWindow.Show();
+            this.Close();
+        }
+
         private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
         {
             AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
@@ -199,7 +268,7 @@ namespace FunnyCafeManagerment
 
         private void OpenKhachHangWindow(object sender, RoutedEventArgs e)
         {
-            ManageCustomerWindow khachHangWindow = new ManageCustomerWindow();
+            AdminManageCustomerWindow khachHangWindow = new AdminManageCustomerWindow();
             khachHangWindow.Show();
             this.Close();
         }
@@ -238,6 +307,31 @@ namespace FunnyCafeManagerment
         private void CloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void AddProblemButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var newProblem = new Problem
+                    {
+                        ProblemName = ProblemNameTextBox.Text,
+                        Status = (ProblemStatusComboBox.SelectedItem as ComboBoxItem)?.Content.ToString(),
+                        Note = ProblemNoteTextBox.Text
+                    };
+
+                    context.Problems.Add(newProblem);
+                    context.SaveChanges();
+                    LoadProblemItemData(); // Refresh data grid
+                    HideAddProblemForm_Click(sender, e); // Close the form
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi thêm sự cố: " + ex.Message);
+            }
         }
     }
 }

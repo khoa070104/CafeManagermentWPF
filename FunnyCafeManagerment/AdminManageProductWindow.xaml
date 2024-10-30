@@ -166,333 +166,43 @@ FontWeight="Bold" Background="Transparent" />
                         <!-- Right Content -->
                         <Border Grid.Column="1" Margin="0,40,20,40" BorderBrush="#D8B694" BorderThickness="2" CornerRadius="20" Padding="10" Background="White">
                             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                <WrapPanel Orientation="Horizontal" ItemWidth="210" ItemHeight="260" HorizontalAlignment="Left">
+                                <ItemsControl x:Name="ProductItemsControl">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <WrapPanel Orientation="Horizontal" ItemWidth="210" ItemHeight="260" HorizontalAlignment="Left"/>
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
+                                                <StackPanel>
+                                                    <!-- Hình ảnh sản phẩm -->
+                                                    <Image Source="{Binding ProductImage}" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
 
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
+                                                    <!-- Tên sản phẩm -->
+                                                    <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                                                    <!-- Giá sản phẩm -->
+                                                    <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
 
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                                                        Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                                                        Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                     Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                     Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                                   Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                                   Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                                                        Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                                                        Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                     Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                     Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                                   Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                                   Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                                                        Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                                                        Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                     Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                     Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                                   Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                                   Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                    <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="240" Padding="10" Margin="10">
-                                        <StackPanel>
-                                            <!-- Hình ảnh sản phẩm -->
-                                            <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
-                                            <!-- Tên sản phẩm -->
-                                            <TextBlock Text="Đen đá không đường" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
-                                            <!-- Giá sản phẩm -->
-                                            <TextBlock Text="20.000đ" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
-                                            <!-- Nút chỉnh sửa và xóa -->
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                                                <!-- Nút chỉnh sửa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-Click="ShowEditForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-
-                                                <!-- Nút xóa -->
-                                                <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-Margin="5,0,0,0" Click="ShowDeleteForm_Click">
-                                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
-                                                </Button>
-                                            </StackPanel>
-                                        </StackPanel>
-                                    </Border>
-                                </WrapPanel>
+                                                    <!-- Nút chỉnh sửa và xóa -->
+                                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                                                        <!-- Nút chỉnh sửa -->
+                                                        <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
+                                                                Click="ShowEditForm_Click">
+                                                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
+                                                        </Button>
+                                                        <!-- Nút xóa -->
+                                                        <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
+                                                                Margin="5,0,0,0" Click="ShowDeleteForm_Click">
+                                                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </StackPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </ScrollViewer>
                         </Border>
 
@@ -776,6 +486,7 @@ Margin="5,0,0,0" Click="ShowDeleteForm_Click">
                         </StackPanel>
 
                         <!-- Menu Items using the shared SidebarButtonStyle -->
+                        <Button Content="Trang chủ" Tag="🏠" Style="{StaticResource SidebarButtonStyle}" Click="OpenAdminHomePageWindow"/>
                         <Button Content="Sản phẩm" Tag="📦" Style="{StaticResource ProductButtonStyle}" Click="OpenSanPhamWindow"/>
                         <Button Content="Nhân viên" Tag="&#x1F464;" Style="{StaticResource SidebarButtonStyle}" Click="OpenNhanVienWindow"/>
                         <Button Content="Bàn" Tag="&#x1F37D;" Style="{StaticResource SidebarButtonStyle}" Click="OpenBanWindow"/>

@@ -123,8 +123,8 @@ FontWeight="Bold" Background="Transparent" />
                     </Grid>
                     <Grid Margin="0,50,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="7*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="8*" />
                         </Grid.ColumnDefinitions>
 
                         <!-- Left Menu -->
@@ -179,40 +179,38 @@ FontWeight="Bold" Background="Transparent" />
                             CanUserAddRows="False" 
                             HeadersVisibility="Column" 
                             FontSize="14" 
-                            ItemsSource="{Binding problemItems}" 
                             Background="White" 
                             BorderThickness="0" 
                             RowBackground="White" 
                             AlternatingRowBackground="White" 
                             GridLinesVisibility="None"
                             ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
-                            RowStyle="{StaticResource CustomRowStyle}"
-                                      >
+                            RowStyle="{StaticResource CustomRowStyle}">
 
                                 <DataGrid.Columns>
                                     <!-- Column for ID -->
-                                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True">
+                                    <DataGridTextColumn Header="ID" Binding="{Binding ProblemId}" Width="50" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Tên sự cố -->
-                                    <DataGridTextColumn Header="Tên sự cố" Binding="{Binding TenSuCo}" Width="*" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Tên sự cố" Binding="{Binding ProblemName}" Width="250" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Trạng thái -->
-                                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai}" Width="100" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Ghi chú -->
-                                    <DataGridTextColumn Header="Ghi chú" Binding="{Binding GhiChu}" Width="150" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Ghi chú" Binding="{Binding Note}" Width="*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
@@ -293,7 +291,7 @@ FontWeight="Bold" Background="Transparent" />
            Margin="10"/>
 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                                    <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="HideDeleteForm_Click" Margin="10,0">
+                                    <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="YesButton_Click" Margin="10,0">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
@@ -324,99 +322,52 @@ FontWeight="Bold" Background="Transparent" />
                     </Grid>
                 </Border>
             </Grid>
-            <Grid x:Name="AddProblemForm" Visibility="Collapsed" Background="Transparent" Width="330" Height="430" HorizontalAlignment="Center" VerticalAlignment="Center">
+                
+            <Grid x:Name="AddProblemForm" Visibility="Collapsed" Background="Transparent" Width="320" Height="400" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
                     <Grid>
                         <!-- Thanh tiêu đề tùy chỉnh -->
                         <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
                             <Grid>
-                                <!-- Icon và Tiêu đề -->
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
                                     <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
-                                    <!-- Đường dẫn đến logo của bạn -->
                                     <TextBlock Text="Add Problem" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                                 </StackPanel>
-
-                                <!-- Nút chức năng trên thanh tiêu đề -->
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">                                    
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
                                     <Button Content="X" Width="30" Height="30" Click="HideAddProblemForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
                                 </StackPanel>
                             </Grid>
                         </Border>
 
-                        <!-- Nội dung cửa sổ -->
                         <Grid Margin="0,40,0,0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                            <StackPanel Margin="20,50,20,20">
+                                <!-- Tên sự cố -->
+                                <TextBlock Text="Tên sự cố" FontWeight="Bold"/>
+                                <TextBox x:Name="ProblemNameTextBox" Width="250" Height="30" Margin="0,10,0,20" />
 
-                                <!-- Title -->
-                                <TextBlock Text="Báo cáo sự cố" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#DD702E" Margin="0,20,0,10"/>
+                                <!-- Trạng thái -->
+                                <TextBlock Text="Trạng thái" FontWeight="Bold"/>
+                                <ComboBox x:Name="ProblemStatusComboBox" Width="250" Height="30" Margin="0,10,0,20">
+                                    <ComboBoxItem Content="Chưa xử lý"/>
+                                    <ComboBoxItem Content="Đang xử lý"/>
+                                    <ComboBoxItem Content="Đã xử lý"/>
+                                </ComboBox>
 
-                                <!-- Form Section -->
-                                <StackPanel Grid.Row="1" Margin="20">
-                                    <!-- Tên sự cố -->
-                                    <TextBlock Text="Tên sự cố" FontStyle="Italic" FontWeight="Bold"/>
-                                    <TextBox x:Name="TenSuCoTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Foreground="Gray"
-                         Text="Nhập tên sự cố" Height="30" Margin="0,5,0,20" 
-     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                <!-- Ghi chú -->
+                                <TextBlock Text="Ghi chú" FontWeight="Bold"/>
+                                <TextBox x:Name="ProblemNoteTextBox" Width="250" Height="30" Margin="0,10,0,20" />
+                            </StackPanel>
 
-                                    <!-- Trạng thái -->
-                                    <TextBlock Text="Trạng thái" FontStyle="Italic" FontWeight="Bold"/>
-                                    <ComboBox x:Name="TrangThaiComboBox" VerticalContentAlignment="Center" SelectedIndex="0" Height="30" Margin="0,5,0,20">
-                                        <ComboBoxItem Content="Chưa sửa" />
-                                        <ComboBoxItem Content="Đang sửa" />
-                                        <ComboBoxItem Content="Đã sửa" />
-                                    </ComboBox>
-
-                                    <!-- Ghi chú -->
-                                    <TextBlock Text="Ghi chú" FontStyle="Italic" FontWeight="Bold"/>
-                                    <TextBox x:Name="GhiChuTextBox" VerticalContentAlignment="Center" Foreground="Gray" Text="Nhập ghi chú" 
-                         Height="30" Margin="0,5,0,20" 
-     GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                </StackPanel>
-
-                                <!-- Buttons -->
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,40">
-                                    <Button Content="Báo cáo" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100"
-                                            Height="30" Background="#D7B08F" Foreground="White" Click="BaoCao_Click" Margin="10,0">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                    <!-- Apply DropShadowEffect to Border -->
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
-                                                    </Border.Effect>
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-
-                                    <Button Content="Đóng" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30"
-                                            Background="#E0E0E0" Foreground="Black" Click="HideAddProblemForm_Click" Margin="10,0">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                    <!-- Apply DropShadowEffect to Border -->
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
-                                                    </Border.Effect>
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-
-                                </StackPanel>
-                            </Grid>
+                            <!-- Buttons: Thêm và Bỏ qua -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                                <Button Content="Thêm" FontWeight="Bold" Width="120" Height="40" Background="#D7B08F" Foreground="White" Margin="10,0" Click="AddProblemButton_Click"/>
+                                <Button Content="Bỏ qua" FontWeight="Bold" Width="120" Height="40" Background="#E0E0E0" Foreground="Black" Margin="10,0" Click="HideAddProblemForm_Click"/>
+                            </StackPanel>
                         </Grid>
                     </Grid>
                 </Border>
             </Grid>
+
             <Grid x:Name="EditProblemForm" Visibility="Collapsed" Background="Transparent" Width="330" Height="430" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
                     <Grid>
@@ -525,6 +476,7 @@ FontWeight="Bold" Background="Transparent" />
                         </StackPanel>
 
                         <!-- Menu Items using the shared SidebarButtonStyle -->
+                        <Button Content="Trang chủ" Tag="🏠" Style="{StaticResource SidebarButtonStyle}" Click="OpenAdminHomePageWindow"/>
                         <Button Content="Sản phẩm" Tag="📦" Style="{StaticResource SidebarButtonStyle}" Click="OpenSanPhamWindow"/>
                         <Button Content="Nhân viên" Tag="&#x1F464;" Style="{StaticResource SidebarButtonStyle}" Click="OpenNhanVienWindow"/>
                         <Button Content="Bàn" Tag="&#x1F37D;" Style="{StaticResource SidebarButtonStyle}" Click="OpenBanWindow"/>

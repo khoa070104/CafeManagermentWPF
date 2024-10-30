@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using static FunnyCafeManagerment.StaffManageOrderWindow;
+using FunnyCafeManagerment_DataAccess.Contexts;
 
 namespace FunnyCafeManagerment
 {
@@ -27,6 +28,8 @@ namespace FunnyCafeManagerment
         {
             InitializeComponent();
             LoadProductItemData();
+            LoadTableData();
+            LoadProductData();
         }
         private void LoadProductItemData()
         {
@@ -41,6 +44,43 @@ namespace FunnyCafeManagerment
 
             // Gán danh sách vào DataGrid
             OrderDataGrid.ItemsSource = productItems;
+        }
+
+        private void LoadTableData()
+        {
+            using (var context = new FunnyCafeContext())
+            {
+                var tables = context.Tables
+                    .Select(table => new
+                    {
+                        table.TableId,
+                        TableName = table.TableName,
+                        Status = table.Status,
+                        StatusColor = table.Status == "Còn trống" ? "#3CB043" : "#FF0000" // Màu sắc dựa trên trạng thái
+                    })
+                    .ToList();
+
+                BanRow.DataContext = tables;
+            }
+        }
+
+        private void LoadProductData()
+        {
+            using (var context = new FunnyCafeContext())
+            {
+                var products = context.Products
+                    .Select(product => new
+                    {
+                        product.ProductId,
+                        ProductName = product.ProductName,
+                        Price = product.Price ?? 0,
+                        ProductImage = product.ProductImage
+                        //Quantity = 100 
+                    })
+                    .ToList();
+
+                ThucDonRow.DataContext = products;
+            }
         }
 
         // Lớp ProductItem đại diện cho mỗi sản phẩm
@@ -190,6 +230,13 @@ namespace FunnyCafeManagerment
                 RightOverlay.Visibility = Visibility.Collapsed;
             };
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
+        }
+
+        private void OpenStaffHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            StaffHomePageWindow staffHomePageWindow = new StaffHomePageWindow();
+            staffHomePageWindow.Show();
+            this.Close();
         }
 
         private void OpenBanHangWindow(object sender, RoutedEventArgs e)

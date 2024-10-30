@@ -1,4 +1,4 @@
-﻿<Window x:Class="FunnyCafeManagerment.ManageCustomerWindow"
+﻿<Window x:Class="FunnyCafeManagerment.AdminManageCustomerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -42,7 +42,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
                         <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
                         <!-- Đường dẫn đến logo của bạn -->
-                        <TextBlock Text="Mangage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <TextBlock Text="Manage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <!-- Nút chức năng trên thanh tiêu đề -->
@@ -174,17 +174,17 @@ FontWeight="Bold" Background="Transparent" />
                             ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
                             RowStyle="{StaticResource CustomRowStyle}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}">
+                                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding CustomerId}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Tên khách hàng" Width="*" Binding="{Binding TenKhachHang}">
+                                    <DataGridTextColumn Header="Tên khách hàng" Width="*" Binding="{Binding FullName}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Số điện thoại" Width="auto" Binding="{Binding SoDienThoai}">
+                                    <DataGridTextColumn Header="Số điện thoại" Width="auto" Binding="{Binding PhoneNumber}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
@@ -194,12 +194,12 @@ FontWeight="Bold" Background="Transparent" />
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Chi tiêu" Width="100" Binding="{Binding ChiTieu}">
+                                    <DataGridTextColumn Header="Chi tiêu" Width="100" Binding="{Binding Spending}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Ghi chú" Width="*" Binding="{Binding GhiChu}">
+                                    <DataGridTextColumn Header="Ghi chú" Width="*" Binding="{Binding Notes}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
@@ -579,6 +579,7 @@ FontWeight="Bold" Background="Transparent" />
                         </StackPanel>
 
                         <!-- Menu Items using the shared SidebarButtonStyle -->
+                        <Button Content="Trang chủ" Tag="🏠" Style="{StaticResource SidebarButtonStyle}" Click="OpenAdminHomePageWindow"/>
                         <Button Content="Sản phẩm" Tag="📦" Style="{StaticResource SidebarButtonStyle}" Click="OpenSanPhamWindow"/>
                         <Button Content="Nhân viên" Tag="&#x1F464;" Style="{StaticResource SidebarButtonStyle}" Click="OpenNhanVienWindow"/>
                         <Button Content="Bàn" Tag="&#x1F37D;" Style="{StaticResource SidebarButtonStyle}" Click="OpenBanWindow"/>

@@ -1,4 +1,5 @@
-﻿using FunnyCafeManagerment_DataAccess.Models;
+﻿using FunnyCafeManagerment_DataAccess.Contexts;
+using FunnyCafeManagerment_DataAccess.Models;
 using FunnyCafeManagerment_DataAccess.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -26,34 +27,17 @@ namespace FunnyCafeManagerment
         public AdminManageEmployeeWindow()
         {
             InitializeComponent();
-            DataContext = App.MainViewModel;
-
-            List<Employee> employees = new List<Employee>
-        {
-                new Employee { ID = 1, HoTen = "Nguyễn Văn A", SoDienThoai = "0909123456", Email = "a@gmail.com", Sex = "Nam", DateOfBirth = "01/01/1990", StartDate = "01/01/2022", Position = "Nhân viên", Salary = 10000000, Status = "Đang làm việc" },
-                new Employee { ID = 2, HoTen = "Trần Thị B", SoDienThoai = "0911123456", Email = "b@gmail.com", Sex = "Nữ", DateOfBirth = "02/02/1991", StartDate = "15/03/2021", Position = "Quản lý", Salary = 15000000, Status = "Đang làm việc" },
-                new Employee { ID = 3, HoTen = "Lê Văn C", SoDienThoai = "0922123456", Email = "c@gmail.com", Sex = "Nam", DateOfBirth = "03/03/1992", StartDate = "10/06/2020", Position = "Nhân viên", Salary = 12000000, Status = "Nghỉ việc" },
-                new Employee { ID = 4, HoTen = "Phạm Văn D", SoDienThoai = "0933123456", Email = "d@gmail.com", Sex = "Nam", DateOfBirth = "04/04/1993", StartDate = "20/09/2019", Position = "Nhân viên", Salary = 11000000, Status = "Đang làm việc" }
-            };
-
-            // Gán dữ liệu vào DataGrid
-            customerDataGrid.ItemsSource = employees;
+            LoadEmployeeData();
         }
 
-        public class Employee
+        private void LoadEmployeeData()
         {
-            public int ID { get; set; }
-            public string HoTen { get; set; }
-            public string SoDienThoai { get; set; }
-            public string Email { get; set; }
-            public string Sex { get; set; }
-            public string DateOfBirth { get; set; }
-            public string StartDate { get; set; }
-            public string Position { get; set; }
-            public int Salary { get; set; }
-            public string Status { get; set; }
+            using (var context = new FunnyCafeContext())
+            {
+                var employees = context.Users.ToList();
+                customerDataGrid.ItemsSource = employees;
+            }
         }
-
         private void searchTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -337,6 +321,13 @@ namespace FunnyCafeManagerment
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
         }
 
+        private void OpenAdminHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            AdminHomePageWindow adminHomePageWindow = new AdminHomePageWindow();
+            adminHomePageWindow.Show();
+            this.Close();
+        }
+
         private void OpenSanPhamWindow(object sender, RoutedEventArgs e)
         {
             AdminManageProductWindow sanPhamWindow = new AdminManageProductWindow();
@@ -360,7 +351,7 @@ namespace FunnyCafeManagerment
 
         private void OpenKhachHangWindow(object sender, RoutedEventArgs e)
         {
-            ManageCustomerWindow khachHangWindow = new ManageCustomerWindow();
+            AdminManageCustomerWindow khachHangWindow = new AdminManageCustomerWindow();
             khachHangWindow.Show();
             this.Close();
         }

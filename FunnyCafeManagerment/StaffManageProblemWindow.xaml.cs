@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FunnyCafeManagerment_DataAccess.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,25 +28,35 @@ namespace FunnyCafeManagerment
         }
         private void LoadProblemItemData()
         {
-            // Tạo dữ liệu mẫu
-            List<ProblemItem> problemItems = new List<ProblemItem>
-    {
-        new ProblemItem { Id = 1, TenSuCo = "Gãy cây", TrangThai = "Chưa sửa", GhiChu = "Đang chờ xử lý" },
-        new ProblemItem { Id = 2, TenSuCo = "Hỏng điện", TrangThai = "Đang sửa", GhiChu = "Có thợ đang sửa" },
-        new ProblemItem { Id = 3, TenSuCo = "Rò rỉ nước", TrangThai = "Đã sửa", GhiChu = "Hoàn tất vào hôm qua" },
-        new ProblemItem { Id = 4, TenSuCo = "Vỡ kính", TrangThai = "Chưa sửa", GhiChu = "Cần thay kính mới" }
-    };
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var problemItems = context.Problems
+                        .Select(p => new ProblemItem
+                        {
+                            ProblemId = p.ProblemId,
+                            ProblemName = p.ProblemName,
+                            Status = p.Status,
+                            Note = p.Note
+                        })
+                        .ToList();
 
-            // Gán danh sách vào DataGrid
-            ProblemDataGrid.ItemsSource = problemItems;
+                    ProblemDataGrid.ItemsSource = problemItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi tải dữ liệu: " + ex.Message);
+            }
         }
 
         public class ProblemItem
         {
-            public int Id { get; set; }           // Viết hoa I trong Id
-            public string TenSuCo { get; set; }   // Sử dụng PascalCase cho TenSuCo
-            public string TrangThai { get; set; } // Viết hoa T trong TrangThai
-            public string GhiChu { get; set; }    // Viết hoa G trong GhiChu
+            public int ProblemId { get; set; }
+            public string ProblemName { get; set; }
+            public string Status { get; set; }
+            public string Note { get; set; }
         }
 
         private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -174,6 +185,13 @@ namespace FunnyCafeManagerment
                 RightOverlay.Visibility = Visibility.Collapsed;
             };
             DimBackground.BeginAnimation(OpacityProperty, fadeOut);
+        }
+
+        private void OpenStaffHomePageWindow(object sender, RoutedEventArgs e)
+        {
+            StaffHomePageWindow staffHomePageWindow = new StaffHomePageWindow();
+            staffHomePageWindow.Show();
+            this.Close();
         }
 
         private void OpenBanHangWindow(object sender, RoutedEventArgs e)

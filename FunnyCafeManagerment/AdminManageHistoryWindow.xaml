@@ -43,7 +43,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
                         <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
                         <!-- Đường dẫn đến logo của bạn -->
-                        <TextBlock Text="Mangage History" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <TextBlock Text="Manage History" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <!-- Nút chức năng trên thanh tiêu đề -->
@@ -194,14 +194,14 @@ RowStyle="{StaticResource CustomRowStyle}">
                                     </DataGridTextColumn>
 
                                     <!-- Column for Tên khách hàng -->
-                                    <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding TenKhachHang}" Width="150" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding TenKhachHang}" Width="*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Thời gian -->
-                                    <DataGridTextColumn Header="Thời gian" Binding="{Binding ThoiGian, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="120" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Thời gian" Binding="{Binding ThoiGian, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
@@ -498,6 +498,7 @@ ToolTip="Delete" Click="ShowDeleteForm_Click">
                         </StackPanel>
 
                         <!-- Menu Items using the shared SidebarButtonStyle -->
+                        <Button Content="Trang chủ" Tag="🏠" Style="{StaticResource SidebarButtonStyle}" Click="OpenAdminHomePageWindow"/>
                         <Button Content="Sản phẩm" Tag="📦" Style="{StaticResource SidebarButtonStyle}" Click="OpenSanPhamWindow"/>
                         <Button Content="Nhân viên" Tag="&#x1F464;" Style="{StaticResource SidebarButtonStyle}" Click="OpenNhanVienWindow"/>
                         <Button Content="Bàn" Tag="&#x1F37D;" Style="{StaticResource SidebarButtonStyle}" Click="OpenBanWindow"/>

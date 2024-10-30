@@ -250,224 +250,60 @@ FontWeight="Bold" Background="Transparent" />
                             <!-- Row 3: Hien thi ban an-->
                             <Border x:Name="BanRow" Grid.Row="2" Background="#FDF2EB" CornerRadius="0,0,20,20" VerticalAlignment="Stretch" Visibility="Visible">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="230" HorizontalAlignment="Left">
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 1" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 2" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 3" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 4" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 5" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 5" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 5" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-                                                <TextBlock Text="1 ghế" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Bàn 5" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                                                <TextBlock Text="Còn trống" FontSize="14" Foreground="#3CB043" Margin="0,0,0,0" HorizontalAlignment="Center"/>
-                                            </StackPanel>
-                                        </Border>
-
-                                    </WrapPanel>
+                                    <ItemsControl ItemsSource="{Binding}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="230" HorizontalAlignment="Left"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
+                                                    <StackPanel>
+                                                        <Image Source="./Images/dining-table.png" Height="140" Stretch="UniformToFill" Margin="0,0,0,5" />
+                                                        <!--
+                                                        <TextBlock Text="{Binding Seats}" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+                                                        -->
+                                                        <TextBlock Text="{Binding TableName}" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                                        <TextBlock Text="{Binding Status}" FontSize="14" Foreground="{Binding StatusColor}" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </ScrollViewer>
                             </Border>
                             
                             <!-- Row 3: Hiển thị thực đơn (ban đầu ẩn) -->
                             <Border x:Name="ThucDonRow" Grid.Row="2" Background="#FDF2EB" CornerRadius="0,0,20,20" VerticalAlignment="Stretch" Visibility="Collapsed">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="230" HorizontalAlignment="Left">
-                                        <!-- Nội dung thực đơn -->
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
-                                            <StackPanel>
-                                                <Image Source="./Images/login_background.png" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
-
-                                                <TextBlock Text="Trà đào" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
-
-                                                <Grid>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="Auto" />
-                                                    </Grid.ColumnDefinitions>
-
-                                                    <TextBlock Text="45,000 VND" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
-                                                    <TextBlock Text="SL: 100" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
-                                                </Grid>
-                                            </StackPanel>
-                                        </Border>
-                                    </WrapPanel>
+                                    <ItemsControl ItemsSource="{Binding}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="230" HorizontalAlignment="Left"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
+                                                    <StackPanel>
+                                                        <Image Source="{Binding ProductImage}" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
+                                                        <TextBlock Text="{Binding ProductName}" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <TextBlock Text="{Binding Price, StringFormat={}{0:N0} VND}" FontSize="14" Foreground="#DD702E" VerticalAlignment="Center" Grid.Column="0" Margin="0,10,0,0"/>
+                                                            <!--
+                                                            <TextBlock Text="{Binding Quantity, StringFormat='SL: {0}'}" FontSize="14" FontWeight="Medium" Foreground="Black" VerticalAlignment="Center" Grid.Column="1" Margin="10,10,0,0" />
+                                                            -->
+                                                        </Grid>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </ScrollViewer>
                             </Border>
                         </Grid>
@@ -787,6 +623,7 @@ Margin="10"/>
                         </StackPanel>
 
                         <!-- Menu Items using the shared SidebarButtonStyle -->
+                        <Button Content="Trang chủ" Tag="🏠" Style="{StaticResource SidebarButtonStyle}" Click="OpenStaffHomePageWindow"/>
                         <Button Content="Bán hàng" Tag="📦" Style="{StaticResource ProductButtonStyle}" Click="OpenBanHangWindow"/>
                         <Button Content="Lịch sử bán" Tag="📊" Style="{StaticResource SidebarButtonStyle}" Click="OpenLichSuWindow"/>
                         <Button Content="Sự cố" Tag="&#x26A0;" Style="{StaticResource SidebarButtonStyle}" Click="OpenSuCoWindow"/>
