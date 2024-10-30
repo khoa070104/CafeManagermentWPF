@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Collections.Generic;
 using System.Windows.Media.Animation;
 using FunnyCafeManagerment_DataAccess.Contexts;
+using FunnyCafeManagerment_DataAccess.Models;
 
 namespace FunnyCafeManagerment
 {
@@ -22,6 +23,8 @@ namespace FunnyCafeManagerment
     /// </summary>
     public partial class AdminManageCustomerWindow : Window
     {
+        private Customer _selectedCustomer;
+
         public AdminManageCustomerWindow()
         {
             InitializeComponent();
@@ -60,13 +63,23 @@ namespace FunnyCafeManagerment
         // Xử lý sự kiện khi nhấn vào nút Delete
         private void ShowDeleteForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            DeleteForm.Visibility = Visibility.Visible;
+            // Lấy khách hàng được chọn từ DataGrid
+            _selectedCustomer = customerDataGrid.SelectedItem as Customer;
+
+            if (_selectedCustomer != null)
+            {
+                // Hiển thị form xóa
+                DeleteForm.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một khách hàng để xóa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void HideDeleteForm_Click(object sender, RoutedEventArgs e)
         {
-            // Ẩn form
+            // Ẩn form xóa
             DeleteForm.Visibility = Visibility.Collapsed;
         }
         private void ShowAddForm_Click(object sender, RoutedEventArgs e)
@@ -82,8 +95,51 @@ namespace FunnyCafeManagerment
         }
         private void ShowEditForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            EditForm.Visibility = Visibility.Visible;
+            // Lấy khách hàng được chọn từ DataGrid
+            _selectedCustomer = customerDataGrid.SelectedItem as Customer;
+
+            if (_selectedCustomer != null)
+            {
+                // Hiển thị thông tin khách hàng trong EditForm
+                EditHoTenTextBox.Text = _selectedCustomer.FullName;
+                EditEmailTextBox.Text = _selectedCustomer.Email;
+                EditSoDienThoaiTextBox.Text = _selectedCustomer.PhoneNumber;
+                EditChiTieuTextBox.Text = _selectedCustomer.Spending?.ToString() ?? string.Empty;
+                EditGhiChuTextBox.Text = _selectedCustomer.Notes;
+
+                // Hiển thị form chỉnh sửa
+                EditForm.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một khách hàng để chỉnh sửa.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_selectedCustomer != null)
+            {
+                // Cập nhật thông tin khách hàng
+                _selectedCustomer.FullName = EditHoTenTextBox.Text;
+                _selectedCustomer.Email = EditEmailTextBox.Text;
+                _selectedCustomer.PhoneNumber = EditSoDienThoaiTextBox.Text;
+                _selectedCustomer.Spending = decimal.TryParse(EditChiTieuTextBox.Text, out var spending) ? spending : (decimal?)null;
+                _selectedCustomer.Notes = EditGhiChuTextBox.Text;
+
+                // Lưu thay đổi vào cơ sở dữ liệu
+                using (var context = new FunnyCafeContext())
+                {
+                    context.Customers.Update(_selectedCustomer);
+                    context.SaveChanges();
+                }
+
+                // Cập nhật lại DataGrid
+                LoadCustomerData();
+
+                // Ẩn form chỉnh sửa
+                EditForm.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void HideEditForm_Click(object sender, RoutedEventArgs e)
@@ -93,8 +149,21 @@ namespace FunnyCafeManagerment
         }
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            // Đóng cửa sổ sau khi người dùng nhấn "Có"
-            this.Close();
+            if (_selectedCustomer != null)
+            {
+                // Xóa khách hàng khỏi cơ sở dữ liệu
+                using (var context = new FunnyCafeContext())
+                {
+                    context.Customers.Remove(_selectedCustomer);
+                    context.SaveChanges();
+                }
+
+                // Cập nhật lại DataGrid
+                LoadCustomerData();
+
+                // Ẩn form xóa
+                DeleteForm.Visibility = Visibility.Collapsed;
+            }
         }
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -158,7 +227,28 @@ namespace FunnyCafeManagerment
         // Hàm xử lý sự kiện cho nút "Thêm"
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            // Tạo đối tượng Customer mới
+            var newCustomer = new Customer
+            {
+                FullName = HoTenTextBox.Text,
+                Email = EmailTextBox.Text,
+                PhoneNumber = SoDienThoaiTextBox.Text,
+                Spending = decimal.TryParse(ChiTieuTextBox.Text, out var spending) ? spending : (decimal?)null,
+                Notes = GhiChuTextBox.Text
+            };
+
+            // Lưu vào cơ sở dữ liệu
+            using (var context = new FunnyCafeContext())
+            {
+                context.Customers.Add(newCustomer);
+                context.SaveChanges();
+            }
+
+            // Cập nhật lại DataGrid
+            LoadCustomerData();
+
+            // Ẩn form thêm
+            AddForm.Visibility = Visibility.Collapsed;
         }
         // hiện slide bar
         private void ShowSidebarForm_Click(object sender, RoutedEventArgs e)

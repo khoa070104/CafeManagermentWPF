@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FunnyCafeManagerment_DataAccess.Models;
 
 namespace FunnyCafeManagerment
 {
@@ -113,6 +114,51 @@ namespace FunnyCafeManagerment
         {
             // Hiển thị form
             DeleteForm.Visibility = Visibility.Visible;
+
+            // Lưu trữ thông tin sự cố cần xóa
+            var button = sender as Button;
+            var problemItem = button?.DataContext as ProblemItem;
+            if (problemItem != null)
+            {
+                // Lưu trữ ID của sự cố cần xóa
+                DeleteProblemId = problemItem.ProblemId;
+            }
+        }
+
+        private int DeleteProblemId { get; set; }
+
+        private void YesButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Xóa sự cố khi người dùng nhấn "Có"
+            DeleteProblem(DeleteProblemId);
+        }
+
+        private void DeleteProblem(int problemId)
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var problemToDelete = context.Problems.Find(problemId);
+                    if (problemToDelete != null)
+                    {
+                        context.Problems.Remove(problemToDelete);
+                        context.SaveChanges();
+
+                        MessageBox.Show("Sự cố đã được xóa thành công.");
+                        LoadProblemItemData(); // Tải lại dữ liệu để cập nhật danh sách
+                        HideDeleteForm_Click(null, null); // Ẩn form sau khi xóa
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy sự cố để xóa.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi xóa sự cố: " + ex.Message);
+            }
         }
 
         private void HideDeleteForm_Click(object sender, RoutedEventArgs e)
@@ -135,6 +181,19 @@ namespace FunnyCafeManagerment
         {
             // Hiển thị form
             EditProblemForm.Visibility = Visibility.Visible;
+
+            // Lưu trữ thông tin sự cố cần chỉnh sửa
+            var button = sender as Button;
+            var problemItem = button?.DataContext as ProblemItem;
+            if (problemItem != null)
+            {
+                // Lưu trữ ID của sự cố cần chỉnh sửa
+                EditProblemId = problemItem.ProblemId;
+
+                // Điền thông tin vào form
+                EditTrangThaiComboBox.SelectedItem = problemItem.Status;
+                EditGhiChuTextBox.Text = problemItem.Note;
+            }
         }
 
         private void HideEditProblemForm_Click(object sender, RoutedEventArgs e)
@@ -144,19 +203,98 @@ namespace FunnyCafeManagerment
         }
         private void BaoCao_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-        private void Sua_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-        private void YesButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Đóng cửa sổ sau khi người dùng nhấn "Có"
-            this.Close();
+            // Lấy thông tin từ các TextBox và ComboBox
+            string tenSuCo = TenSuCoTextBox.Text;
+            string trangThai = (TrangThaiComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string ghiChu = GhiChuTextBox.Text;
+
+            // Kiểm tra nếu các trường cần thiết không rỗng
+            if (!string.IsNullOrWhiteSpace(tenSuCo) && !string.IsNullOrWhiteSpace(trangThai))
+            {
+                // Gọi phương thức để thêm sự cố mới
+                AddNewProblem(tenSuCo, trangThai, ghiChu);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+            }
         }
 
-        // Xử lý sự kiện click cho nút "Không"
+        private void AddNewProblem(string problemName, string status, string note)
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var newProblem = new Problem
+                    {
+                        ProblemName = problemName,
+                        Status = status,
+                        Note = note
+                    };
+
+                    context.Problems.Add(newProblem);
+                    context.SaveChanges();
+
+                    MessageBox.Show("Sự cố đã được thêm thành công.");
+                    LoadProblemItemData(); // Tải lại dữ liệu để hiển thị sự cố mới
+                    HideAddProblemForm_Click(null, null); // Ẩn form sau khi thêm
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi thêm sự cố: " + ex.Message);
+            }
+        }
+
+        private void Sua_Click(object sender, RoutedEventArgs e)
+        {
+            // Lấy thông tin từ các TextBox và ComboBox
+            string trangThai = (EditTrangThaiComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+            string ghiChu = EditGhiChuTextBox.Text;
+
+            // Kiểm tra nếu các trường cần thiết không rỗng
+            if (!string.IsNullOrWhiteSpace(trangThai))
+            {
+                // Gọi phương thức để cập nhật sự cố
+                UpdateProblem(EditProblemId, trangThai, ghiChu);
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+            }
+        }
+
+        private void UpdateProblem(int problemId, string status, string note)
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var problemToUpdate = context.Problems.Find(problemId);
+                    if (problemToUpdate != null)
+                    {
+                        problemToUpdate.Status = status;
+                        problemToUpdate.Note = note;
+
+                        context.SaveChanges();
+
+                        MessageBox.Show("Sự cố đã được cập nhật thành công.");
+                        LoadProblemItemData(); // Tải lại dữ liệu để cập nhật danh sách
+                        HideEditProblemForm_Click(null, null); // Ẩn form sau khi cập nhật
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy sự cố để cập nhật.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi cập nhật sự cố: " + ex.Message);
+            }
+        }
+
         private void NoButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -236,5 +374,8 @@ namespace FunnyCafeManagerment
         {
             this.Close();
         }
+
+        // Khai báo biến EditProblemId để lưu trữ ID của sự cố cần chỉnh sửa
+        private int EditProblemId { get; set; }
     }
 }

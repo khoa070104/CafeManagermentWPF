@@ -405,9 +405,9 @@ FontWeight="Bold" Background="Transparent" />
                                     <!-- Trạng thái -->
                                     <TextBlock Text="Trạng thái" FontStyle="Italic" FontWeight="Bold"/>
                                     <ComboBox x:Name="EditTrangThaiComboBox" VerticalContentAlignment="Center" SelectedIndex="0" Height="30" Margin="0,5,0,20">
-                                        <ComboBoxItem Content="Chưa sửa" />
-                                        <ComboBoxItem Content="Đang sửa" />
-                                        <ComboBoxItem Content="Đã sửa" />
+                                        <ComboBoxItem Content="Chưa xử lý" />
+                                        <ComboBoxItem Content="Đang xử lý" />
+                                        <ComboBoxItem Content="Đã xử lý" />
                                     </ComboBox>
 
                                     <!-- Ghi chú -->
