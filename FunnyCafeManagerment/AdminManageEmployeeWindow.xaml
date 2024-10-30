@@ -43,7 +43,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
                         <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
                         <!-- Đường dẫn đến logo của bạn -->
-                        <TextBlock Text="Mangage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <TextBlock Text="Mangage Employee" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <!-- Nút chức năng trên thanh tiêu đề -->
@@ -183,17 +183,17 @@ FontWeight="Bold" Background="Transparent" />
                             ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
                             RowStyle="{StaticResource CustomRowStyle}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}">
+                                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding UserId}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Họ tên" Width="*" Binding="{Binding HoTen}">
+                                    <DataGridTextColumn Header="Họ tên" Width="*" Binding="{Binding FullName}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Số điện thoại" Width="auto" Binding="{Binding SoDienThoai}">
+                                    <DataGridTextColumn Header="Số điện thoại" Width="auto" Binding="{Binding Phone}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
@@ -203,22 +203,22 @@ FontWeight="Bold" Background="Transparent" />
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Giới tính" Width="auto" Binding="{Binding Sex}">
+                                    <DataGridTextColumn Header="Giới tính" Width="auto" Binding="{Binding Gender}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Ngày sinh" Width="auto" Binding="{Binding DateOfBirth}">
+                                    <DataGridTextColumn Header="Ngày sinh" Width="auto" Binding="{Binding Dob, StringFormat='{}{0:dd/MM/yyyy}'}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Ngày bắt đầu" Width="auto" Binding="{Binding StartDate}">
+                                    <DataGridTextColumn Header="Ngày bắt đầu" Width="auto" Binding="{Binding StartDay, StringFormat='{}{0:dd/MM/yyyy}'}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Chức vụ" Width="*" Binding="{Binding Position}">
+                                    <DataGridTextColumn Header="Chức vụ" Width="*" Binding="{Binding Role}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>

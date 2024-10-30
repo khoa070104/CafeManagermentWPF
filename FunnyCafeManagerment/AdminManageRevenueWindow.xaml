@@ -43,7 +43,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
                         <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
                         <!-- Đường dẫn đến logo của bạn -->
-                        <TextBlock Text="Mangage Revenue" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <TextBlock Text="Manage Revenue" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <!-- Nút chức năng trên thanh tiêu đề -->
@@ -62,7 +62,6 @@
             <Grid Margin="0,40,0,0">
                 <Grid>
                     <!-- Header -->
-
                     <Grid Background="#FCEFE8" Height="50" VerticalAlignment="Top">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
@@ -186,26 +185,25 @@ Cursor="Hand" Click="Favorite_Click"/>
                             AlternatingRowBackground="White" 
                             GridLinesVisibility="None"
                             ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
-                            RowStyle="{StaticResource CustomRowStyle}"
-          >
+                            RowStyle="{StaticResource CustomRowStyle}">
 
                                 <DataGrid.Columns>
-                                    <!-- Column for ID -->
-                                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="3*" IsReadOnly="True">
+                                    <!-- Column for STT -->
+                                    <DataGridTextColumn Header="STT" Binding="{Binding RevenueId}" Width="3*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock"/>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Ngày -->
-                                    <DataGridTextColumn Header="Ngày" Binding="{Binding Ngay, StringFormat={}{0:dd/MM/yyyy}}" Width="4*" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Ngày" Binding="{Binding RevenueDate, StringFormat={}{0:dd/MM/yyyy}}" Width="4*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock"/>
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Doanh thu -->
-                                    <DataGridTextColumn Header="Doanh thu" Binding="{Binding DoanhThu, StringFormat=N0}" Width="4*" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Doanh thu" Binding="{Binding TotalRevenue, StringFormat=N0}" Width="4*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock"/>
                                         </DataGridTextColumn.ElementStyle>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FunnyCafeManagerment_DataAccess.Contexts;
+using FunnyCafeManagerment_DataAccess.Models;
 
 namespace FunnyCafeManagerment
 {
@@ -27,27 +29,21 @@ namespace FunnyCafeManagerment
         }
         private void LoadRevenueItemData()
         {
-            // Tạo dữ liệu mẫu
-            List<MenuRevenueItem> menuRevenueItems = new List<MenuRevenueItem>
-    {
-        new MenuRevenueItem { ID = 1, Ngay = DateTime.Now.AddDays(-1), DoanhThu = 150000 },
-        new MenuRevenueItem { ID = 2, Ngay = DateTime.Now.AddDays(-2), DoanhThu = 200000 },
-        new MenuRevenueItem { ID = 3, Ngay = DateTime.Now.AddDays(-3), DoanhThu = 100000 },
-        new MenuRevenueItem { ID = 4, Ngay = DateTime.Now.AddDays(-4), DoanhThu = 250000 }
-    };
+            using (var context = new FunnyCafeContext())
+            {
+                var revenueItems = context.Revenue
+                    .Select(revenue => new
+                    {
+                        revenue.RevenueId,
+                        revenue.RevenueDate,
+                        TotalRevenue = revenue.TotalRevenue ?? 0
+                    })
+                    .ToList();
 
-            // Gán danh sách vào DataGrid
-            RevenueItemDataGrid.ItemsSource = menuRevenueItems;
+                RevenueItemDataGrid.ItemsSource = revenueItems;
+            }
         }
-
-        public class MenuRevenueItem
-        {
-            public int ID { get; set; }        // ID của giao dịch hoặc đơn hàng
-            public DateTime Ngay { get; set; }  // Ngày giao dịch
-            public decimal DoanhThu { get; set; } // Doanh thu của đơn hàng
-        }
-
-        private void History_Click(object sender, RoutedEventArgs e)
+            private void History_Click(object sender, RoutedEventArgs e)
         {
             // Tạo một đối tượng của HistoryWindow và mở nó
             AdminManageHistoryWindow historyWindow = new AdminManageHistoryWindow();

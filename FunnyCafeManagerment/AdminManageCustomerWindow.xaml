@@ -42,7 +42,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
                         <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
                         <!-- Đường dẫn đến logo của bạn -->
-                        <TextBlock Text="Mangage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <TextBlock Text="Manage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <!-- Nút chức năng trên thanh tiêu đề -->
@@ -174,17 +174,17 @@ FontWeight="Bold" Background="Transparent" />
                             ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
                             RowStyle="{StaticResource CustomRowStyle}">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding ID}">
+                                    <DataGridTextColumn Header="ID" Width="auto" Binding="{Binding CustomerId}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Tên khách hàng" Width="*" Binding="{Binding TenKhachHang}">
+                                    <DataGridTextColumn Header="Tên khách hàng" Width="*" Binding="{Binding FullName}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Số điện thoại" Width="auto" Binding="{Binding SoDienThoai}">
+                                    <DataGridTextColumn Header="Số điện thoại" Width="auto" Binding="{Binding PhoneNumber}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
@@ -194,12 +194,12 @@ FontWeight="Bold" Background="Transparent" />
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Chi tiêu" Width="100" Binding="{Binding ChiTieu}">
+                                    <DataGridTextColumn Header="Chi tiêu" Width="100" Binding="{Binding Spending}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
-                                    <DataGridTextColumn Header="Ghi chú" Width="*" Binding="{Binding GhiChu}">
+                                    <DataGridTextColumn Header="Ghi chú" Width="*" Binding="{Binding Notes}">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>

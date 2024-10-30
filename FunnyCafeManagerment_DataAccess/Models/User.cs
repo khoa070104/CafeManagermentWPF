@@ -29,6 +29,7 @@ public partial class User
     // Admin
     // Manager
     // Employee
+    public int Salary { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

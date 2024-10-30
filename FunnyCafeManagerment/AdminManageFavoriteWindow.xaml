@@ -193,28 +193,28 @@
 
                                 <DataGrid.Columns>
                                     <!-- Column for STT -->
-                                    <DataGridTextColumn Header="STT" Binding="{Binding STT}" Width="50" IsReadOnly="True">
+                                    <DataGridTextColumn Header="STT" Binding="{Binding ProductFavoriteID}" Width="50" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Tên món -->
-                                    <DataGridTextColumn Header="Tên món" Binding="{Binding TenMon}" Width="*" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Tên món" Binding="{Binding ProductName}" Width="*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Số lượng -->
-                                    <DataGridTextColumn Header="Số lượng" Binding="{Binding SoLuong}" Width="100" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity, StringFormat=N0}" Width="100" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Doanh thu -->
-                                    <DataGridTextColumn Header="Doanh thu" Binding="{Binding DoanhThu, StringFormat=N0}" Width="150" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Doanh thu" Binding="{Binding Revenue, StringFormat=N0}" Width="150" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>

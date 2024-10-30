@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FunnyCafeManagerment_DataAccess.Contexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace FunnyCafeManagerment
         public AdminManageTableWindow()
         {
             InitializeComponent();
+            LoadTableData();
+        }
+
+        private void LoadTableData()
+        {
+            using (var context = new FunnyCafeContext())
+            {
+                var tables = context.Tables
+                    .Select(table => new
+                    {
+                        table.TableId,
+                        TableName = table.TableName,
+                        //Seats = "1 ghế",
+                        Status = table.Status,
+                        StatusColor = table.Status == "Còn trống" ? "#3CB043" : "#FF0000"
+                    })
+                    .ToList();
+
+                DataContext = tables;
+            }
         }
         private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
         {

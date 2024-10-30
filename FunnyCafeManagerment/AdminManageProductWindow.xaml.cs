@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using FunnyCafeManagerment_DataAccess.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace FunnyCafeManagerment
 {
@@ -23,7 +25,36 @@ namespace FunnyCafeManagerment
         public AdminManageProductWindow()
         {
             InitializeComponent();
+            LoadProductData();
         }
+
+        private void LoadProductData()
+        {
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    var productItems = context.Products
+                    .Include(p => p.Category)
+                    .Select(p => new
+                    {
+                        p.ProductId,
+                        p.ProductName,
+                        CategoryName = p.Category != null ? p.Category.CategoryName : "Unknown",
+                        p.Price,
+                        p.ProductImage
+                    })
+                    .ToList();
+
+                    ProductItemsControl.ItemsSource = productItems;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi tải dữ liệu sản phẩm: " + ex.Message);
+            }
+        }
+
         private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;

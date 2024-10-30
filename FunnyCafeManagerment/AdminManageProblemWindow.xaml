@@ -123,8 +123,8 @@ FontWeight="Bold" Background="Transparent" />
                     </Grid>
                     <Grid Margin="0,50,0,0">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="7*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="8*" />
                         </Grid.ColumnDefinitions>
 
                         <!-- Left Menu -->
@@ -179,40 +179,38 @@ FontWeight="Bold" Background="Transparent" />
                             CanUserAddRows="False" 
                             HeadersVisibility="Column" 
                             FontSize="14" 
-                            ItemsSource="{Binding problemItems}" 
                             Background="White" 
                             BorderThickness="0" 
                             RowBackground="White" 
                             AlternatingRowBackground="White" 
                             GridLinesVisibility="None"
                             ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
-                            RowStyle="{StaticResource CustomRowStyle}"
-                                      >
+                            RowStyle="{StaticResource CustomRowStyle}">
 
                                 <DataGrid.Columns>
                                     <!-- Column for ID -->
-                                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" IsReadOnly="True">
+                                    <DataGridTextColumn Header="ID" Binding="{Binding ProblemId}" Width="50" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Tên sự cố -->
-                                    <DataGridTextColumn Header="Tên sự cố" Binding="{Binding TenSuCo}" Width="*" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Tên sự cố" Binding="{Binding ProblemName}" Width="250" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Trạng thái -->
-                                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding TrangThai}" Width="100" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="100" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Ghi chú -->
-                                    <DataGridTextColumn Header="Ghi chú" Binding="{Binding GhiChu}" Width="150" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Ghi chú" Binding="{Binding Note}" Width="*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>

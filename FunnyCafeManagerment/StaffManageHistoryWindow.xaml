@@ -188,14 +188,14 @@ RowStyle="{StaticResource CustomRowStyle}">
                                     </DataGridTextColumn>
 
                                     <!-- Column for Tên khách hàng -->
-                                    <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding TenKhachHang}" Width="150" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Tên khách hàng" Binding="{Binding TenKhachHang}" Width="*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
                                     </DataGridTextColumn>
 
                                     <!-- Column for Thời gian -->
-                                    <DataGridTextColumn Header="Thời gian" Binding="{Binding ThoiGian, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="120" IsReadOnly="True">
+                                    <DataGridTextColumn Header="Thời gian" Binding="{Binding ThoiGian, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Width="*" IsReadOnly="True">
                                         <DataGridTextColumn.ElementStyle>
                                             <StaticResource ResourceKey="CenterAlignedTextBlock" />
                                         </DataGridTextColumn.ElementStyle>
