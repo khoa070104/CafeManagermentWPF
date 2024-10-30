@@ -31,6 +31,11 @@ namespace FunnyCafeManagerment_DataAccess.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().ToTable("Categories"); // Chỉ định tên bảng là "Categories"
+            
+            // Đảm bảo rằng TableId là tự tăng
+            modelBuilder.Entity<Table>()
+                .Property(t => t.TableId)
+                .ValueGeneratedOnAdd();
         }
     }
 }

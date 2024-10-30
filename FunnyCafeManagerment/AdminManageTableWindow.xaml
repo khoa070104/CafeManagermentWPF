@@ -95,7 +95,7 @@ FontWeight="Bold" Background="Transparent" />
                         </Grid.ColumnDefinitions>
 
                         <!-- Left Menu -->
-                        <StackPanel Background="White" x:Name="MenuStackPanel" Grid.Column="0" Margin="0,50,0,0" 
+                        <StackPanel Background="White" Grid.Column="0" Margin="0,50,0,0" 
                                     VerticalAlignment="Top" HorizontalAlignment="Center" Width="230">
 
                             <Button Width="190" Height="40" Margin="20,20,0,0" Background="#D7B08F" Foreground="White" FontSize="16" Padding="10,0"
@@ -132,21 +132,26 @@ FontWeight="Bold" Background="Transparent" />
                                 </StackPanel>
                             </Border>
 
-                            <Button Content="Tất cả" Style="{StaticResource SelectedButtonStyle}" 
-        Click="Button_Click" Width="190" Height="40" Margin="20,20,0,5" Padding="0,0,0,5" 
+                            <StackPanel x:Name="MenuStackPanel" Background="White" Grid.Column="0" Margin="0,50,0,0" 
+            VerticalAlignment="Top" HorizontalAlignment="Center" Width="230">
+
+                                <Button Content="Tất cả" Style="{StaticResource SelectedButtonStyle}" 
+        Click="FilterButton_Click" Width="190" Height="40" Margin="20,20,0,5" Padding="0,0,0,5" 
         Cursor="Hand" />
 
-                            <Button Content="Còn trống" Style="{StaticResource MenuButtonStyle}" 
-        Click="Button_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
+                                <Button Content="Còn trống" Style="{StaticResource MenuButtonStyle}" 
+        Click="FilterButton_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
         Cursor="Hand" />
 
-                            <Button Content="Đã đặt" Style="{StaticResource MenuButtonStyle}" 
-        Click="Button_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
+                                <Button Content="Đã đặt" Style="{StaticResource MenuButtonStyle}" 
+        Click="FilterButton_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
         Cursor="Hand" />
 
-                            <Button Content="Đang sửa chữa" Style="{StaticResource MenuButtonStyle}" 
-        Click="Button_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
+                                <Button Content="Đang sửa chữa" Style="{StaticResource MenuButtonStyle}" 
+        Click="FilterButton_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
         Cursor="Hand" />
+
+                            </StackPanel>
 
                         </StackPanel>
 
@@ -219,7 +224,7 @@ FontWeight="Bold" Background="Transparent" />
                         <Grid Margin="0,40,0,0" Background="Transparent">
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
                                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                                    <TextBlock Text="⚠️" FontSize="40" Foreground="Red" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="️" FontSize="40" Foreground="Red" HorizontalAlignment="Center"/>
                                 </StackPanel>
 
                                 <TextBlock Text="Bạn có chắc chắn muốn xóa không?" 
@@ -290,25 +295,17 @@ FontWeight="Bold" Background="Transparent" />
                             <!-- Column 1: Form Inputs -->
                             <StackPanel Grid.Column="0" Margin="20,50,20,20">
                                 <!-- Loại bàn -->
-                                <TextBlock Text="Loại bàn" FontWeight="Bold"/>
-                                <ComboBox x:Name="LoaiBanComboBox" HorizontalAlignment="Center" Width="250" Height="40" 
-                          Margin="0,10,0,20" Padding="10" BorderBrush="#DDDDDD" BorderThickness="1" 
-                          Background="#F5F5F5" SelectedIndex="0">
-                                    <ComboBoxItem Content="1 ghế"/>
-                                    <ComboBoxItem Content="1 ghế"/>
-                                    <ComboBoxItem Content="2 ghế"/>
-                                    <ComboBoxItem Content="3 ghế"/>
-                                    <ComboBoxItem Content="4 ghế"/>
-                                </ComboBox>
+                                <TextBlock Text="Tên bàn" FontWeight="Bold"/>
+                                <TextBox x:Name="TableNameTextBox" Width="250" Height="30" Margin="0,10,0,20" />
 
                                 <!-- Trạng thái -->
                                 <TextBlock Text="Trạng thái" FontWeight="Bold"/>
                                 <ComboBox x:Name="TrangThaiComboBox" HorizontalAlignment="Center" Width="250" Height="40" 
   Margin="0,10,0,20" Padding="10" BorderBrush="#DDDDDD" BorderThickness="1" 
   Background="#F5F5F5" SelectedIndex="0">
-                                    <ComboBoxItem Content="Sẵn sàng"/>
-                                    <ComboBoxItem Content="Đang sử dụng"/>
-                                    <ComboBoxItem Content="Bảo trì"/>
+                                    <ComboBoxItem Content="Còn trống"/>
+                                    <ComboBoxItem Content="Đã đặt"/>
+                                    <ComboBoxItem Content="Đang sửa"/>
                                 </ComboBox>
                             </StackPanel>
 
@@ -338,7 +335,7 @@ FontWeight="Bold" Background="Transparent" />
                                     <TextBlock Text="Edit Table" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                                 </StackPanel>
 
-                                <!-- Nút chức năng trên thanh tiêu đề -->
+                                <!-- Nút chức năng trn thanh tiêu đề -->
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
                                     <!-- Nút đóng -->
                                     <Button Content="X" Width="30" Height="30" Click="HideEditForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
@@ -347,48 +344,28 @@ FontWeight="Bold" Background="Transparent" />
                         </Border>
 
                         <Grid Margin="0,40,0,0">
-
-                            <!-- Title -->
-                            <TextBlock Text="Thêm sản phẩm" FontSize="22" FontWeight="Bold" Foreground="#DD702E" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0,10,0,20"/>
-
-                            <!-- Column 1: Form Inputs -->
-                            <StackPanel Grid.Column="0" Margin="20,50,20,20">
-                                <!-- Loại bàn -->
-                                <TextBlock Text="Loại bàn" FontWeight="Bold"/>
-                                <ComboBox x:Name="EditLoaiBanComboBox" HorizontalAlignment="Center" Width="250" Height="40" 
-                                  Margin="0,10,0,20" Padding="10" BorderBrush="#DDDDDD" BorderThickness="1" 
-                                  Background="#F5F5F5" SelectedIndex="0">
-                                    <ComboBoxItem Content="1 ghế"/>
-                                    <ComboBoxItem Content="1 ghế"/>
-                                    <ComboBoxItem Content="2 ghế"/>
-                                    <ComboBoxItem Content="3 ghế"/>
-                                    <ComboBoxItem Content="4 ghế"/>
-                                </ComboBox>
+                            <StackPanel Margin="20,50,20,20">
+                                <!-- Tên bàn -->
+                                <TextBlock Text="Tên bàn" FontWeight="Bold"/>
+                                <TextBox x:Name="EditTableNameTextBox" Width="250" Height="30" Margin="0,10,0,20" />
 
                                 <!-- Trạng thái -->
                                 <TextBlock Text="Trạng thái" FontWeight="Bold"/>
-                                <ComboBox x:Name="EditTrangThaiComboBox" HorizontalAlignment="Center" Width="250" Height="40" 
-          Margin="0,10,0,20" Padding="10" BorderBrush="#DDDDDD" BorderThickness="1" 
-          Background="#F5F5F5" SelectedIndex="0">
-                                    <ComboBoxItem Content="Sẵn sàng"/>
-                                    <ComboBoxItem Content="Đang sử dụng"/>
-                                    <ComboBoxItem Content="Bảo trì"/>
+                                <ComboBox x:Name="EditTrangThaiComboBox" Width="250" Height="30" Margin="0,10,0,20">
+                                    <ComboBoxItem Content="Còn trống"/>
+                                    <ComboBoxItem Content="Đã đặt"/>
+                                    <ComboBoxItem Content="Đang sửa"/>
                                 </ComboBox>
                             </StackPanel>
 
-
-
-                            <!-- Buttons: Thêm và Bỏ qua -->
-                            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-                                <Button Content="Thêm" FontWeight="Bold" Width="120" Height="40" Background="#D7B08F" Foreground="White" Margin="10,0" Click="AddButton_Click"/>
+                            <!-- Buttons: Lưu và Bỏ qua -->
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
+                                <Button Content="Lưu" FontWeight="Bold" Width="120" Height="40" Background="#D7B08F" Foreground="White" Margin="10,0" Click="SaveEditButton_Click"/>
                                 <Button Content="Bỏ qua" FontWeight="Bold" Width="120" Height="40" Background="#E0E0E0" Foreground="Black" Margin="10,0" Click="HideEditForm_Click"/>
                             </StackPanel>
                         </Grid>
-
-
                     </Grid>
                 </Border>
-
             </Grid>
 
             <Grid>
