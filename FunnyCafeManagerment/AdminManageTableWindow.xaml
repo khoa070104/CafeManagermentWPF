@@ -147,7 +147,7 @@ FontWeight="Bold" Background="Transparent" />
         Click="FilterButton_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
         Cursor="Hand" />
 
-                                <Button Content="Đang sửa chữa" Style="{StaticResource MenuButtonStyle}" 
+                                <Button Content="Đang sửa" Style="{StaticResource MenuButtonStyle}" 
         Click="FilterButton_Click" Width="190" Height="40" Margin="20,10,0,5" Padding="0,0,0,5" 
         Cursor="Hand" />
 
