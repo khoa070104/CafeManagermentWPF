@@ -446,10 +446,10 @@ ToolTip="Delete" Click="ShowDeleteForm_Click">
                                     </Grid.ColumnDefinitions>
 
                                     <!-- Thời gian -->
-                                    <TextBlock Grid.Column="0" Text="Thời gian: 23/08/2024 12:27:00" HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="OrderDateTextBlock" Grid.Column="0" HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Center" />
 
                                     <!-- Tổng tiền -->
-                                    <TextBlock Grid.Column="1" Text="Tổng: 90,000 đ" HorizontalAlignment="Right" FontWeight="Bold" VerticalAlignment="Center" />
+                                    <TextBlock x:Name="TotalAmountTextBlock" Grid.Column="1" HorizontalAlignment="Right" FontWeight="Bold" VerticalAlignment="Center" />
                                 </Grid>
 
                                 <!-- Buttons -->
