@@ -87,7 +87,6 @@ public partial class ManageCafeShopContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("OrderID");
             entity.Property(e => e.OrderDate).HasColumnType("datetime");
-            entity.Property(e => e.TotalAmount).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
@@ -104,7 +103,6 @@ public partial class ManageCafeShopContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("OrderDetailID");
             entity.Property(e => e.OrderId).HasColumnName("OrderID");
-            entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.ProductId)
                 .HasMaxLength(5)
                 .IsUnicode(false)
