@@ -41,7 +41,8 @@ namespace FunnyCafeManagerment
                         STT = order.OrderId,
                         TenKhachHang = order.User != null ? order.User.FullName : "Khách vãng lai",
                         ThoiGian = order.OrderDate ?? DateTime.MinValue,
-                        GiaTriHoaDon = order.TotalAmount ?? 0
+                        GiaTriHoaDon = order.OrderDetails
+                            .Sum(od => (od.Quantity ?? 0) * (od.Product != null ? od.Product.Price ?? 0 : 0))
                     })
                     .ToList();
 
@@ -59,15 +60,53 @@ namespace FunnyCafeManagerment
 
         private void ShowOrderDetailForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            OrderDetailForm.Visibility = Visibility.Visible;
+            if (HistoryItemDataGrid.SelectedItem is not null)
+            {
+                var selectedOrder = (dynamic)HistoryItemDataGrid.SelectedItem;
+                LoadOrderDetails(selectedOrder.STT);
+                OrderDetailForm.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void LoadOrderDetails(int orderId)
+        {
+            using (var context = new FunnyCafeContext())
+            {
+                var order = context.Orders
+                    .Where(o => o.OrderId == orderId)
+                    .Select(o => new
+                    {
+                        CustomerName = o.Customer != null ? o.Customer.FullName : "Khách vãng lai",
+                        EmployeeName = o.User != null ? o.User.FullName : "Không rõ",
+                        OrderDate = o.OrderDate,
+                        TotalAmount = o.OrderDetails.Sum(od => (od.Quantity ?? 0) * (od.Product != null ? od.Product.Price ?? 0 : 0)),
+                        Products = o.OrderDetails.Select(od => new
+                        {
+                            STT = od.OrderDetailId,
+                            TenSanPham = od.Product != null ? od.Product.ProductName : "Không rõ",
+                            SoLuong = od.Quantity,
+                            DonGia = od.Product != null ? od.Product.Price : 0,
+                            ThanhTien = (od.Quantity ?? 0) * (od.Product != null ? od.Product.Price ?? 0 : 0)
+                        }).ToList()
+                    })
+                    .FirstOrDefault();
+
+                if (order != null)
+                {
+                    HoTenTextBox.Text = order.CustomerName;
+                    EmployeeBox.Text = order.EmployeeName;
+                    ProductDataGrid.ItemsSource = order.Products;
+                    OrderDateTextBlock.Text = $"Thời gian: {order.OrderDate:dd/MM/yyyy HH:mm:ss}";
+                    TotalAmountTextBlock.Text = $"Tổng: {order.TotalAmount:N0} đ";
+                }
+            }
         }
 
         private void HideOrderDetailForm_Click(object sender, RoutedEventArgs e)
         {
-            // Ẩn form
             OrderDetailForm.Visibility = Visibility.Collapsed;
         }
+
         private void History_Click(object sender, RoutedEventArgs e)
         {
             // Tạo một đối tượng của HistoryWindow và mở nó

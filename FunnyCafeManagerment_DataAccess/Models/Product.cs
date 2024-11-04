@@ -5,7 +5,7 @@ namespace FunnyCafeManagerment_DataAccess.Models;
 
 public partial class Product
 {
-    public string ProductId { get; set; } = null!;
+    public int ProductId { get; set; }
 
     public string? CategoryId { get; set; }
 
