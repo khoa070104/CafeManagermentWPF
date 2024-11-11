@@ -133,10 +133,8 @@ Foreground="#D7B08F" FontSize="20" HorizontalAlignment="Center"
 Cursor="Hand" Click="Favorite_Click"/>
 
 
-                            <!-- Date Filter wrapped inside a Border -->
+                            <!-- Date Filter wrapped inside a Border 
                             <Border Background="#FFECE5" Margin="30,30,10,0" Padding="0,10,15,0" Width="190" CornerRadius="10">
-                                <!-- Loại bỏ HorizontalAlignment="Center" -->
-                                <!-- Khung lọc có màu da -->
                                 <StackPanel>
                                     <TextBlock Text="Lịch sử bán" FontWeight="Bold" Foreground="#D8B694" FontSize="18" HorizontalAlignment="Center"/>
 
@@ -156,7 +154,6 @@ Cursor="Hand" Click="Favorite_Click"/>
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                    <!-- Apply DropShadowEffect to Border -->
                                                     <Border.Effect>
                                                         <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
                                                     </Border.Effect>
@@ -167,6 +164,7 @@ Cursor="Hand" Click="Favorite_Click"/>
                                     </Button>
                                 </StackPanel>
                             </Border>
+                            -->
 
                         </StackPanel>
 

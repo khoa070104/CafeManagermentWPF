@@ -10,6 +10,6 @@ namespace FunnyCafeManagerment_DataAccess.Models
         public decimal Revenue { get; set; }
 
         // Navigation property
-        public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+        public virtual Product Product { get; set; }
     }
-} 
+}

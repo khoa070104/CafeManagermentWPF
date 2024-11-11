@@ -31,7 +31,7 @@ namespace FunnyCafeManagerment
         {
             using (var context = new FunnyCafeContext())
             {
-                var revenueItems = context.Revenue
+                var revenueItems = context.Revenues
                     .Select(revenue => new
                     {
                         revenue.RevenueId,

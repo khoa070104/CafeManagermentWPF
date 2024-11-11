@@ -128,18 +128,6 @@ namespace FunnyCafeManagerment
             favoriteWindow.Show();
             this.Close();
         }
-        // Xử lý sự kiện khi nhấn vào nút Delete
-        private void ShowDeleteForm_Click(object sender, RoutedEventArgs e)
-        {
-            // Hiển thị form
-            DeleteForm.Visibility = Visibility.Visible;
-        }
-
-        private void HideDeleteForm_Click(object sender, RoutedEventArgs e)
-        {
-            // Ẩn form
-            DeleteForm.Visibility = Visibility.Collapsed;
-        }
 
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {

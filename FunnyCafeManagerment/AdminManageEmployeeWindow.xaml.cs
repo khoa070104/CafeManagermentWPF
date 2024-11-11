@@ -24,6 +24,8 @@ namespace FunnyCafeManagerment
     /// </summary>
     public partial class AdminManageEmployeeWindow : Window
     {
+        private User selectedUser;
+        private User userToDelete; 
         public AdminManageEmployeeWindow()
         {
             InitializeComponent();
@@ -65,7 +67,7 @@ namespace FunnyCafeManagerment
             if (textBox != null && (textBox.Text == "Nhập họ tên" || textBox.Text == "Nhập email" || textBox.Text == "Nhập giới tính" ||
                                     textBox.Text == "Nhập số điện thoại" || textBox.Text == "Nhập lương" ||
                                     textBox.Text == "Nhập họ tên đăng nhập" ||
-                                    textBox.Text == "Nhập mật khẩu" || textBox.Text == "Xác nhận mật khẩu"))
+                                    textBox.Text == "Nhập mật khẩu"))
             {
                 textBox.Text = string.Empty;  // Xóa placeholder
                 textBox.Foreground = new SolidColorBrush(Colors.Black);  // Đổi màu chữ thành đen khi nhập liệu
@@ -105,214 +107,138 @@ namespace FunnyCafeManagerment
                 {
                     textBox.Text = "Nhập giới tính";
                 }
-            }
-        }
-
-        private void PasswordTextBoxVisible_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-
-            // Kiểm tra nếu đây là TextBox của Add form hay Edit form
-            if (textBox.Name == "PasswordTextBoxVisible")
-            {
-                PasswordTextBoxVisible.Visibility = Visibility.Collapsed;  // Ẩn TextBox (Add form)
-                PasswordBox.Visibility = Visibility.Visible;  // Hiện PasswordBox (Add form)
-                PasswordBox.Focus();  // Đặt focus vào PasswordBox (Add form)
-            }
-            else if (textBox.Name == "EditPasswordTextBoxVisible")
-            {
-                EditPasswordTextBoxVisible.Visibility = Visibility.Collapsed;  // Ẩn TextBox (Edit form)
-                EditPasswordBox.Visibility = Visibility.Visible;  // Hiện PasswordBox (Edit form)
-                EditPasswordBox.Focus();  // Đặt focus vào PasswordBox (Edit form)
-            }
-            else if (textBox.Name == "ConfirmPasswordTextBoxVisible")
-            {
-                ConfirmPasswordTextBoxVisible.Visibility = Visibility.Collapsed;  // Ẩn TextBox (Add form)
-                ConfirmPasswordBox.Visibility = Visibility.Visible;  // Hiện PasswordBox (Add form)
-                ConfirmPasswordBox.Focus();  // Đặt focus vào PasswordBox (Add form)
-            }
-            else if (textBox.Name == "EditConfirmPasswordTextBoxVisible")
-            {
-                EditConfirmPasswordTextBoxVisible.Visibility = Visibility.Collapsed;  // Ẩn TextBox (Edit form)
-                EditConfirmPasswordBox.Visibility = Visibility.Visible;  // Hiện PasswordBox (Edit form)
-                EditConfirmPasswordBox.Focus();  // Đặt focus vào PasswordBox (Edit form)
-            }
-        }
-
-        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordBox passwordBox = sender as PasswordBox;
-
-            // Kiểm tra nếu đây là PasswordBox của Add form hay Edit form
-            if (string.IsNullOrEmpty(passwordBox.Password))
-            {
-                if (passwordBox.Name == "PasswordBox")
+                else if (textBox.Name == "PasswordTextBox" || textBox.Name == "EditPasswordTextBox")
                 {
-                    PasswordBox.Visibility = Visibility.Collapsed;  // Ẩn PasswordBox (Add form)
-                    PasswordTextBoxVisible.Visibility = Visibility.Visible;  // Hiện TextBox (Add form)
-                }
-                else if (passwordBox.Name == "EditPasswordBox")
-                {
-                    EditPasswordBox.Visibility = Visibility.Collapsed;  // Ẩn PasswordBox (Edit form)
-                    EditPasswordTextBoxVisible.Visibility = Visibility.Visible;  // Hiện TextBox (Edit form)
-                }
-                else if (passwordBox.Name == "ConfirmPasswordBox")
-                {
-                    ConfirmPasswordBox.Visibility = Visibility.Collapsed;  // Ẩn PasswordBox (Add form)
-                    ConfirmPasswordTextBoxVisible.Visibility = Visibility.Visible;  // Hiện TextBox (Add form)
-                }
-                else if (passwordBox.Name == "EditConfirmPasswordBox")
-                {
-                    EditConfirmPasswordBox.Visibility = Visibility.Collapsed;  // Ẩn PasswordBox (Edit form)
-                    EditConfirmPasswordTextBoxVisible.Visibility = Visibility.Visible;  // Hiện TextBox (Edit form)
+                    textBox.Text = "Nhập mật khẩu";
                 }
             }
-        }
-
-        private void ConfirmPasswordTextBoxVisible_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-
-            // Xử lý focus cho ConfirmPassword của Add form và Edit form
-            if (textBox.Name == "ConfirmPasswordTextBoxVisible")
-            {
-                ConfirmPasswordTextBoxVisible.Visibility = Visibility.Collapsed;  // Ẩn TextBox (Add form)
-                ConfirmPasswordBox.Visibility = Visibility.Visible;  // Hiện PasswordBox (Add form)
-                ConfirmPasswordBox.Focus();  // Đặt focus vào PasswordBox (Add form)
-            }
-            else if (textBox.Name == "EditConfirmPasswordTextBoxVisible")
-            {
-                EditConfirmPasswordTextBoxVisible.Visibility = Visibility.Collapsed;  // Ẩn TextBox (Edit form)
-                EditConfirmPasswordBox.Visibility = Visibility.Visible;  // Hiện PasswordBox (Edit form)
-                EditConfirmPasswordBox.Focus();  // Đặt focus vào PasswordBox (Edit form)
-            }
-        }
-
-        private void ConfirmPasswordBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordBox passwordBox = sender as PasswordBox;
-
-            // Kiểm tra nếu đây là ConfirmPasswordBox của Add form hay Edit form
-            if (string.IsNullOrEmpty(passwordBox.Password))
-            {
-                if (passwordBox.Name == "ConfirmPasswordBox")
-                {
-                    ConfirmPasswordBox.Visibility = Visibility.Collapsed;  // Ẩn PasswordBox (Add form)
-                    ConfirmPasswordTextBoxVisible.Visibility = Visibility.Visible;  // Hiện TextBox (Add form)
-                }
-                else if (passwordBox.Name == "EditConfirmPasswordBox")
-                {
-                    EditConfirmPasswordBox.Visibility = Visibility.Collapsed;  // Ẩn PasswordBox (Edit form)
-                    EditConfirmPasswordTextBoxVisible.Visibility = Visibility.Visible;  // Hiện TextBox (Edit form)
-                }
-            }
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            // Hiển thị mật khẩu
-            PasswordTextBoxVisible.Text = PasswordBox.Password;
-            PasswordTextBoxVisible.Visibility = Visibility.Visible;
-            PasswordBox.Visibility = Visibility.Collapsed;
-
-            ConfirmPasswordTextBoxVisible.Text = ConfirmPasswordBox.Password;
-            ConfirmPasswordTextBoxVisible.Visibility = Visibility.Visible;
-            ConfirmPasswordBox.Visibility = Visibility.Collapsed;
-
-            // Edit form
-            EditPasswordTextBoxVisible.Text = EditPasswordBox.Password;
-            EditPasswordTextBoxVisible.Visibility = Visibility.Visible;
-            EditPasswordBox.Visibility = Visibility.Collapsed;
-
-            EditConfirmPasswordTextBoxVisible.Text = EditConfirmPasswordBox.Password;
-            EditConfirmPasswordTextBoxVisible.Visibility = Visibility.Visible;
-            EditConfirmPasswordBox.Visibility = Visibility.Collapsed;
-        }
-
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            // Ẩn mật khẩu
-            PasswordBox.Password = PasswordTextBoxVisible.Text;
-            PasswordBox.Visibility = Visibility.Visible;
-            PasswordTextBoxVisible.Visibility = Visibility.Collapsed;
-
-            ConfirmPasswordBox.Password = ConfirmPasswordTextBoxVisible.Text;
-            ConfirmPasswordBox.Visibility = Visibility.Visible;
-            ConfirmPasswordTextBoxVisible.Visibility = Visibility.Collapsed;
-
-            // Edit form
-            EditPasswordBox.Password = EditPasswordTextBoxVisible.Text;
-            EditPasswordBox.Visibility = Visibility.Visible;
-            EditPasswordTextBoxVisible.Visibility = Visibility.Collapsed;
-
-            EditConfirmPasswordBox.Password = EditConfirmPasswordTextBoxVisible.Text;
-            EditConfirmPasswordBox.Visibility = Visibility.Visible;
-            EditConfirmPasswordTextBoxVisible.Visibility = Visibility.Collapsed;
         }
 
         // Xử lý sự kiện khi nhấn vào nút Delete
         private void ShowDeleteForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            DeleteForm.Visibility = Visibility.Visible;
+            if (sender is Button button && button.DataContext is User user)
+            {
+                userToDelete = user;
+                DeleteForm.Visibility = Visibility.Visible;
+            }
         }
 
         private void HideDeleteForm_Click(object sender, RoutedEventArgs e)
         {
-            // Ẩn form
             DeleteForm.Visibility = Visibility.Collapsed;
         }
         private void ShowAddForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
             AddForm.Visibility = Visibility.Visible;
         }
 
         private void HideAddForm_Click(object sender, RoutedEventArgs e)
         {
-            // Ẩn form
             AddForm.Visibility = Visibility.Collapsed;
         }
         private void ShowEditForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiển thị form
-            EditForm.Visibility = Visibility.Visible;
+            if (sender is Button button && button.DataContext is User user)
+            {
+                selectedUser = user;
+
+                EditHoTenTextBox.Text = user.FullName;
+                EditEmailTextBox.Text = user.Email;
+                EditSoDienThoaiTextBox.Text = user.Phone;
+                EditLuongTextBox.Text = user.Salary.ToString();
+
+                EditGioiTinhComboBox.SelectedItem = EditGioiTinhComboBox.Items
+                    .Cast<ComboBoxItem>()
+                    .FirstOrDefault(item => item.Content.ToString() == user.Gender);
+
+                EditTrangThaiComboBox.SelectedItem = EditTrangThaiComboBox.Items
+                    .Cast<ComboBoxItem>()
+                    .FirstOrDefault(item => item.Content.ToString() == user.Status);
+
+                EditChucVuComboBox.SelectedItem = EditChucVuComboBox.Items
+                    .Cast<ComboBoxItem>()
+                    .FirstOrDefault(item => item.Content.ToString() == user.Role);
+
+                EditNgaySinhDatePicker.SelectedDate = user.Dob;
+                EditNgayBatDauDatePicker.SelectedDate = user.StartDay;
+                EditLoginHoTenTextBox.Text = user.Username;
+                EditPasswordTextBox.Text = user.Password;
+
+                EditForm.Visibility = Visibility.Visible;
+            }
         }
 
         private void HideEditForm_Click(object sender, RoutedEventArgs e)
         {
-            // Ẩn form
             EditForm.Visibility = Visibility.Collapsed;
         }
         private void YesButton_Click(object sender, RoutedEventArgs e)
         {
-            // Đóng cửa sổ sau khi người dùng nhấn "Có"
             this.Close();
         }        
-        // Hàm xử lý sự kiện cho nút "Thêm"
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            try
+            {
+                using (var context = new FunnyCafeContext())
+                {
+                    string fullName = HoTenTextBox.Text;
+                    string email = EmailTextBox.Text;
+                    string phone = SoDienThoaiTextBox.Text;
+                    string role = (ChucVuComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                    int salary = int.Parse(LuongTextBox.Text);
+                    string gender = (GioiTinhComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                    DateTime dob = NgaySinhDatePicker.SelectedDate ?? DateTime.Now;
+                    DateTime startDay = NgayBatDauDatePicker.SelectedDate ?? DateTime.Now;
+                    string status = (TrangThaiComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                    string username = LoginHoTenTextBox.Text;
+                    string password = PasswordTextBox.Text;
+
+                    var newUser = new User
+                    {
+                        FullName = fullName,
+                        Email = email,
+                        Phone = phone,
+                        Role = role,
+                        Salary = salary,
+                        Gender = gender,
+                        Dob = dob,
+                        StartDay = startDay,
+                        Status = status,
+                        Username = username,
+                        Password = password
+                    };
+
+                    context.Users.Add(newUser);
+                    context.SaveChanges();
+
+                    MessageBox.Show("Nhân viên đã được thêm thành công!");
+
+                    LoadEmployeeData();
+
+                    HideAddForm_Click(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi thêm nhân viên: " + ex.Message + "\n" + ex.InnerException?.Message);
+            }
         }
 
-        // hiện slide bar
         private void ShowSidebarForm_Click(object sender, RoutedEventArgs e)
         {
-            // Hiện SidebarForm và làm mờ phần còn lại
             SidebarForm.Visibility = Visibility.Visible;
             RightOverlay.Visibility = Visibility.Visible;
 
-            // Tạo hiệu ứng mờ cho RightOverlay
             var fadeIn = new DoubleAnimation(0, 0.5, TimeSpan.FromMilliseconds(300));
             DimBackground.BeginAnimation(OpacityProperty, fadeIn);
         }
 
         private void HideSidebarForm_Click(object sender, RoutedEventArgs e)
         {
-            // Ẩn SidebarForm và gỡ bỏ hiệu ứng mờ
             SidebarForm.Visibility = Visibility.Collapsed;
 
-            // Tạo hiệu ứng làm mờ ngược cho RightOverlay
             var fadeOut = new DoubleAnimation(0.5, 0, TimeSpan.FromMilliseconds(300));
             fadeOut.Completed += (s, a) =>
             {
@@ -392,6 +318,92 @@ namespace FunnyCafeManagerment
         private void CloseWindow_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void SaveEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectedUser != null)
+            {
+                try
+                {
+                    using (var context = new FunnyCafeContext())
+                    {
+                        // Tìm nhân viên trong cơ sở dữ liệu
+                        var userToUpdate = context.Users.FirstOrDefault(u => u.UserId == selectedUser.UserId);
+                        if (userToUpdate != null)
+                        {
+                            // Cập nhật thông tin nhân viên
+                            userToUpdate.FullName = EditHoTenTextBox.Text;
+                            userToUpdate.Email = EditEmailTextBox.Text;
+                            userToUpdate.Phone = EditSoDienThoaiTextBox.Text;
+                            userToUpdate.Salary = int.Parse(EditLuongTextBox.Text);
+                            userToUpdate.Gender = (EditGioiTinhComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                            userToUpdate.Dob = EditNgaySinhDatePicker.SelectedDate ?? DateTime.Now;
+                            userToUpdate.StartDay = EditNgayBatDauDatePicker.SelectedDate ?? DateTime.Now;
+                            userToUpdate.Status = (EditTrangThaiComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+                            userToUpdate.Username = EditLoginHoTenTextBox.Text;
+                            userToUpdate.Password = EditPasswordTextBox.Text;
+                            userToUpdate.Role = (EditChucVuComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
+
+                            // Lưu thay đổi vào cơ sở dữ liệu
+                            context.SaveChanges();
+
+                            MessageBox.Show("Thông tin nhân viên đã được cập nhật thành công!");
+
+                            // Tải lại dữ liệu nhân viên
+                            LoadEmployeeData();
+
+                            // Ẩn form chỉnh sửa
+                            HideEditForm_Click(sender, e);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi cập nhật thông tin nhân viên: " + ex.Message);
+                }
+            }
+        }
+
+        private void ConfirmDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (userToDelete != null)
+            {
+                try
+                {
+                    using (var context = new FunnyCafeContext())
+                    {
+                        var orders = context.Orders.Where(o => o.UserId == userToDelete.UserId).ToList();
+
+                        foreach (var order in orders)
+                        {
+                            var orderDetails = context.OrderDetails.Where(od => od.OrderId == order.OrderId).ToList();
+                            context.OrderDetails.RemoveRange(orderDetails);
+                        }
+
+                        context.Orders.RemoveRange(orders);
+
+                        var user = context.Users.FirstOrDefault(u => u.UserId == userToDelete.UserId);
+                        if (user != null)
+                        {
+                            context.Users.Remove(user); 
+                            context.SaveChanges(); 
+
+                            MessageBox.Show("Nhân viên đã được xóa thành công!");
+
+                            LoadEmployeeData();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    // Xử lý lỗi mà không hiển thị message box
+                }
+                finally
+                {
+                    HideDeleteForm_Click(sender, e);
+                }
+            }
         }
     }
 }

@@ -5,9 +5,9 @@ namespace FunnyCafeManagerment_DataAccess.Models;
 
 public partial class Inventory
 {
-    public string InventoryId { get; set; } = null!;
+    public int InventoryId { get; set; }
 
-    public string? ProductId { get; set; }
+    public int ProductId { get; set; }
 
     public int? StockQuantity { get; set; }
 

@@ -168,7 +168,7 @@ FontWeight="Bold" Background="Transparent" />
                                         <DataTemplate>
                                             <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="190" Height="300" Padding="10" Margin="10">
                                                 <StackPanel>
-                                                    <Image Source="./Images/dining-table.png" Height="180" Stretch="UniformToFill" Margin="0,0,0,10" />
+                                                    <Image Source="{Binding TableImage}" Height="180" Stretch="UniformToFill" Margin="0,0,0,10" />
                                                     <!-- số ghê 
                                                     <TextBlock Text="{Binding Seats}" FontSize="14" Foreground="#DD702E" Margin="0,5,0,0" HorizontalAlignment="Center"/>
                                                     -->

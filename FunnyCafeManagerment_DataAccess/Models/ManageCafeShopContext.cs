@@ -68,9 +68,6 @@ public partial class ManageCafeShopContext : DbContext
                 .HasColumnName("InventoryID");
             entity.Property(e => e.LastRestocked).HasColumnType("datetime");
             entity.Property(e => e.ProductId)
-                .HasMaxLength(5)
-                .IsUnicode(false)
-                .IsFixedLength()
                 .HasColumnName("ProductID");
 
             entity.HasOne(d => d.Product).WithMany(p => p.Inventories)

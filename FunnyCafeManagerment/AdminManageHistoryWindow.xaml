@@ -131,10 +131,8 @@ Foreground="#D7B08F" FontSize="20" HorizontalAlignment="Center"
 Cursor="Hand" Click="Favorite_Click"/>
 
 
-                            <!-- Date Filter wrapped inside a Border -->
+                            <!-- Date Filter wrapped inside a Border 
                             <Border Background="#FFECE5" Margin="30,30,10,0" Padding="0,10,15,0" Width="190" CornerRadius="10">
-                                <!-- Loại bỏ HorizontalAlignment="Center" -->
-                                <!-- Khung lọc có màu da -->
                                 <StackPanel>
                                     <TextBlock Text="Lịch sử bán" FontWeight="Bold" Foreground="#D8B694" FontSize="18" HorizontalAlignment="Center"/>
 
@@ -154,7 +152,6 @@ Cursor="Hand" Click="Favorite_Click"/>
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                    <!-- Apply DropShadowEffect to Border -->
                                                     <Border.Effect>
                                                         <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
                                                     </Border.Effect>
@@ -165,6 +162,7 @@ Cursor="Hand" Click="Favorite_Click"/>
                                     </Button>
                                 </StackPanel>
                             </Border>
+                        -->
 
                         </StackPanel>
 
@@ -231,19 +229,6 @@ ToolTip="Information" Click="ShowOrderDetailForm_Click">
                                                             </Style>
                                                         </Button.Style>
                                                     </Button>
-
-                                                    <!-- Trash Icon -->
-                                                    <Button Content="&#x1F5D1;" FontSize="16" Width="24" Height="24" 
-Background="Transparent" BorderThickness="0" Padding="0" 
-ToolTip="Delete" Click="ShowDeleteForm_Click">
-                                                        <Button.Style>
-                                                            <Style TargetType="Button">
-                                                                <Setter Property="Foreground" Value="#00AEEF"/>
-                                                                <!-- Màu xanh cho biểu tượng -->
-                                                                <Setter Property="Cursor" Value="Hand"/>
-                                                            </Style>
-                                                        </Button.Style>
-                                                    </Button>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
@@ -255,72 +240,6 @@ ToolTip="Delete" Click="ShowDeleteForm_Click">
                         </Border>
                     </Grid>
                 </Grid>
-            </Grid>
-            <Grid x:Name="DeleteForm" Visibility="Collapsed" Background="Transparent" Width="400" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
-                    <Grid Background="Transparent">
-                        <!-- Đặt Background là Transparent -->
-                        <!-- Thanh tiêu đề tùy chỉnh -->
-                        <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
-                            <Grid>
-                                <!-- Icon và Tiêu đề -->
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
-                                    <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
-                                    <TextBlock Text="Warning" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                                </StackPanel>
-
-                                <!-- Nút chức năng trên thanh tiêu đề -->
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
-                                    <Button Content="X" Width="30" Height="30" Click="HideDeleteForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
-                                </StackPanel>
-                            </Grid>
-                        </Border>
-
-                        <!-- Nội dung cửa sổ -->
-                        <Grid Margin="0,40,0,0" Background="Transparent">
-                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
-                                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                                    <TextBlock Text="⚠️" FontSize="40" Foreground="Red" HorizontalAlignment="Center"/>
-                                </StackPanel>
-
-                                <TextBlock Text="Bạn có chắc chắn muốn xóa không?" 
-           FontSize="16" 
-           FontWeight="Bold" 
-           Foreground="Black" 
-           HorizontalAlignment="Center" 
-           Margin="10"/>
-
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                                    <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="HideDeleteForm_Click" Margin="10,0">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="3" BlurRadius="10" Opacity="0.5" />
-                                                    </Border.Effect>
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-
-                                    <Button Content="Không" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#E85350" Foreground="White" Click="HideDeleteForm_Click" Margin="10,0" HorizontalAlignment="Right">
-                                        <Button.Template>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                    <Border.Effect>
-                                                        <DropShadowEffect ShadowDepth="3" BlurRadius="10" Opacity="0.5" />
-                                                    </Border.Effect>
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Button.Template>
-                                    </Button>
-                                </StackPanel>
-                            </StackPanel>
-                        </Grid>
-                    </Grid>
-                </Border>
             </Grid>
             <Grid x:Name="OrderDetailForm" Visibility="Collapsed" Background="Transparent" Width="600" Height="620" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">

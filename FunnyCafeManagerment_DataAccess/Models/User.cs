@@ -27,7 +27,6 @@ public partial class User
 
     public string? Role { get; set; }
     // Admin
-    // Manager
     // Employee
     public int Salary { get; set; }
 
