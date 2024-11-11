@@ -74,7 +74,7 @@ namespace FunnyCafeManagerment
         private void SearchTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
+            if (string.IsNullOrWhiteSpace(textBox.Text) || textBox.Text == "Tìm kiếm")
             {
                 textBox.Text = "Tìm kiếm";
                 textBox.Foreground = new SolidColorBrush(Colors.Gray); // Placeholder color
@@ -331,6 +331,40 @@ namespace FunnyCafeManagerment
             catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra khi thêm sự cố: " + ex.Message);
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string searchText = textBox.Text.ToLower();
+
+            using (var context = new FunnyCafeContext())
+            {
+                var filteredProblems = context.Problems
+                    .Where(p => p.ProblemName.ToLower().Contains(searchText) || 
+                                p.Status.ToLower().Contains(searchText) || 
+                                p.Note.ToLower().Contains(searchText))
+                    .Select(p => new ProblemItem
+                    {
+                        ProblemId = p.ProblemId,
+                        ProblemName = p.ProblemName,
+                        Status = p.Status,
+                        Note = p.Note
+                    })
+                    .ToList();
+
+                if (ProblemDataGrid != null)
+                {
+                    if (string.IsNullOrWhiteSpace(searchText) || searchText == "tìm kiếm")
+                    {
+                        LoadProblemItemData();
+                    }
+                    else
+                    {
+                        ProblemDataGrid.ItemsSource = filteredProblems;
+                    }
+                }
             }
         }
     }

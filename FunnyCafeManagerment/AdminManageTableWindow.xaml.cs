@@ -23,6 +23,7 @@ namespace FunnyCafeManagerment
     public partial class AdminManageTableWindow : Window
     {
         private int _currentEditingTableId; // Biến lưu trữ ID của bàn đang được chỉnh sửa
+        private string currentStatusFilter = "Tất cả";
 
         public AdminManageTableWindow()
         {
@@ -66,8 +67,8 @@ namespace FunnyCafeManagerment
             if (clickedButton != null)
             {
                 clickedButton.Style = (Style)FindResource("SelectedButtonStyle");
-                string statusFilter = clickedButton.Content.ToString();
-                LoadTableData(statusFilter);
+                currentStatusFilter = clickedButton.Content.ToString();
+                LoadTableData(currentStatusFilter);
             }
         }
 
@@ -250,7 +251,7 @@ namespace FunnyCafeManagerment
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy b��n để cập nhật.");
+                        MessageBox.Show("Không tìm thấy bàn để cập nhật.");
                     }
                 }
             }
@@ -382,7 +383,7 @@ namespace FunnyCafeManagerment
                     context.Tables.Add(newTable);
                     context.SaveChanges();
                     MessageBox.Show("Bàn mới đã được thêm thành công.");
-                    LoadTableData();
+                    LoadTableData(currentStatusFilter);
                 }
             }
             catch (Exception ex)
@@ -414,6 +415,37 @@ namespace FunnyCafeManagerment
             catch (Exception ex)
             {
                 MessageBox.Show("Có lỗi xảy ra khi xóa bàn: " + ex.Message);
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string searchText = textBox.Text.ToLower();
+
+            using (var context = new FunnyCafeContext())
+            {
+                var filteredTables = context.Tables
+                    .Where(t => (t.TableName.ToLower().Contains(searchText) || t.Status.ToLower().Contains(searchText)) &&
+                                (currentStatusFilter == "Tất cả" || t.Status == currentStatusFilter))
+                    .Select(table => new
+                    {
+                        table.TableId,
+                        TableName = table.TableName,
+                        Status = table.Status,
+                        StatusColor = table.Status == "Còn trống" ? "#3CB043" : "#FF0000",
+                        TableImage = new BitmapImage(new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images/dining-table.png"), UriKind.Absolute))
+                    })
+                    .ToList();
+
+                if (string.IsNullOrWhiteSpace(searchText) || searchText == "tìm kiếm")
+                {
+                    LoadTableData(currentStatusFilter);
+                }
+                else
+                {
+                    DataContext = filteredTables;
+                }
             }
         }
     }

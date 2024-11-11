@@ -115,11 +115,12 @@ Margin="10,0,0,0" VerticalAlignment="Center" BorderThickness="0"
 FontWeight="Bold" Background="Transparent" />
 
                             <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
-                                <!-- Username -->
-                                <TextBlock Text="Nguyen Van A" FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                <!-- User Icon Button -->
-                                <Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
-                            </StackPanel>
+                            <!-- Username
+<TextBlock Text="Nguyen Van A" FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
+ User Icon Button 
+<Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
+-->
+                        </StackPanel>
                         </Grid>
                         <Grid Margin="0,50,0,0">
                             <Grid.ColumnDefinitions>
@@ -161,7 +162,8 @@ FontWeight="Bold" Background="Transparent" />
 
                                         <!-- TextBox for entering search text -->
                                         <TextBox Width="120" Height="30" FontSize="16" Padding="10,4,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
-                 Foreground="#9E8D8D" Background="Transparent" BorderThickness="0" Text="Tìm kiếm" GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus"/>
+                 Foreground="#9E8D8D" Background="Transparent" BorderThickness="0" Text="Tìm kiếm" 
+                 GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus" TextChanged="SearchTextBox_TextChanged"/>
                                     </StackPanel>
                                 </Border>
 

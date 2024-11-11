@@ -405,5 +405,31 @@ namespace FunnyCafeManagerment
                 }
             }
         }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            string searchText = textBox.Text.ToLower();
+
+            using (var context = new FunnyCafeContext())
+            {
+                var filteredEmployees = context.Users
+                    .Where(u => u.FullName.ToLower().Contains(searchText) || 
+                                u.Email.ToLower().Contains(searchText))
+                    .ToList();
+
+                if (customerDataGrid != null)
+                {
+                    if (string.IsNullOrWhiteSpace(searchText) || searchText == "tìm kiếm")
+                    {
+                        LoadEmployeeData();
+                    }
+                    else
+                    {
+                        customerDataGrid.ItemsSource = filteredEmployees;
+                    }
+                }
+            }
+        }
     }
 }
