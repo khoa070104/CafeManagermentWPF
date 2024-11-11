@@ -71,15 +71,27 @@ namespace FunnyCafeManagerment
 				var user = userService.Login(userVM);
 				if (user != null && user.Role.Equals("Admin"))
 				{
+					userVM.UserId = user.UserId;
 					userVM.FullName = user.FullName;
 					App.MainViewModel.CurrentUser = userVM;
-					
-					AdminManageEmployeeWindow aME = new();
+
+					AdminHomePageWindow aHP = new();
 					this.Hide();
-					aME.Show();
+					aHP.Show();
 					return;
 				}
-			}
+                if (user != null && user.Role.Equals("Nhân viên"))
+                {
+					userVM.UserId = user.UserId;
+                    userVM.FullName = user.FullName;
+                    App.MainViewModel.CurrentUser = userVM;
+
+                    StaffHomePageWindow sHP = new();
+                    this.Hide();
+                    sHP.Show();
+                    return;
+                }
+            }
 			MessageBox.Show("Please enter invalid username or password", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
 
 			

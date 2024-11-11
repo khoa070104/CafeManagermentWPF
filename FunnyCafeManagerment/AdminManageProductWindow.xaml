@@ -244,7 +244,7 @@ FontWeight="Bold" Background="Transparent" />
                        Margin="10"/>
 
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
-                                        <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="HideDeleteForm_Click" Margin="10,0">
+                                        <Button Content="Có" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#63A8D8" Foreground="White" Click="ConfirmDeleteButton_Click" Margin="10,0">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="Button">
                                                     <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
@@ -316,11 +316,11 @@ FontWeight="Bold" Background="Transparent" />
                                 <!-- Danh mục -->
                                 <TextBlock Text="Danh mục" FontWeight="Bold"/>
                                 <ComboBox x:Name="DanhMucComboBox" HorizontalAlignment="Left" Width="250" Height="40" Margin="0,10,0,20" Padding="10" BorderBrush="#DDDDDD" BorderThickness="1" Background="#F5F5F5" SelectedIndex="0">
-                                    <ComboBoxItem Content="Trà"/>
-                                    <ComboBoxItem Content="Coffee"/>
-                                    <ComboBoxItem Content="Đồ ăn"/>
-                                    <ComboBoxItem Content="Freeze"/>
-                                    <ComboBoxItem Content="Khác"/>
+                                    <ComboBoxItem Content="Trà" Tag="C004"/>
+                                    <ComboBoxItem Content="Coffee" Tag="C001"/>
+                                    <ComboBoxItem Content="Đồ ăn" Tag="C003"/>
+                                    <ComboBoxItem Content="Freezee" Tag="C002"/>
+                                    <ComboBoxItem Content="Khác" Tag="C005"/>
                                 </ComboBox>
 
                                 <!-- Giá bán -->
@@ -343,18 +343,9 @@ FontWeight="Bold" Background="Transparent" />
                                 <Border BorderBrush="#D8B694" BorderThickness="2" CornerRadius="10" Width="180" Height="180" Padding="10" 
                                 HorizontalAlignment="Left" Margin="0,0,0,20">
                                     <StackPanel>
-                                        <Image Source="./Images/login_background.png" Height="135" Stretch="Uniform" />
-                                        <Button Content="&#x21E7; Upload" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Foreground="#DD702E" Cursor="Hand"/>
+                                        <Image x:Name="ProductImagePreview" Source="./Images/login_background.png" Height="135" Stretch="Uniform" />
+                                        <Button Content="&#x21E7; Upload" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Foreground="#DD702E" Cursor="Hand" Click="UploadButton_Click"/>
                                     </StackPanel>
-                                </Border>
-
-                                <!-- Ghi chú -->
-                                <TextBlock Text="Ghi chú" FontWeight="Bold" Foreground="#DD702E"/>
-                                <Border Grid.Row="1" Margin="0,10,0,0" BorderBrush="#D8B694" BorderThickness="2" CornerRadius="20" Padding="10" Background="White">
-                                    <Border Background="#DDDDDD" CornerRadius="10" Padding="5">
-                                        <TextBox x:Name="GhiChuTextBox" Text="Nhập ghi chú" Height="90" AcceptsReturn="True" Background="Transparent" BorderThickness="0" Foreground="Gray"
-                                        GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                    </Border>
                                 </Border>
                             </StackPanel>
 
@@ -396,7 +387,7 @@ FontWeight="Bold" Background="Transparent" />
                             </Grid.ColumnDefinitions>
 
                             <!-- Title -->
-                            <TextBlock Text="Thêm sản phẩm" FontSize="22" FontWeight="Bold" Foreground="#DD702E" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0,10,0,20"/>
+                            <TextBlock Text="Sửa sản phẩm" FontSize="22" FontWeight="Bold" Foreground="#DD702E" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0,10,0,20"/>
 
                             <!-- Column 1: Form Inputs -->
                             <StackPanel Grid.Column="0" Margin="20,50,20,20">
@@ -408,12 +399,12 @@ FontWeight="Bold" Background="Transparent" />
 
                                 <!-- Danh mục -->
                                 <TextBlock Text="Danh mục" FontWeight="Bold"/>
-                                <ComboBox x:Name="EditDanhMucComboBox" HorizontalAlignment="Left" Width="250" Height="40" Margin="0,10,0,20" Padding="10" BorderBrush="#DDDDDD" BorderThickness="1" Background="#F5F5F5" SelectedIndex="0">
-                                    <ComboBoxItem Content="Trà"/>
-                                    <ComboBoxItem Content="Coffee"/>
-                                    <ComboBoxItem Content="Đồ ăn"/>
-                                    <ComboBoxItem Content="Freeze"/>
-                                    <ComboBoxItem Content="Khác"/>
+                                <ComboBox x:Name="EditDanhMucComboBox" HorizontalAlignment="Left" Width="250" Height="40" Margin="0,10,0,20" Padding="10" BorderBrush="#DDDDDD" BorderThickness="1" Background="#F5F5F5" SelectedValuePath="Tag">
+                                    <ComboBoxItem Content="Trà" Tag="C004"/>
+                                    <ComboBoxItem Content="Coffee" Tag="C001"/>
+                                    <ComboBoxItem Content="Đồ ăn" Tag="C003"/>
+                                    <ComboBoxItem Content="Freezee" Tag="C002"/>
+                                    <ComboBoxItem Content="Khác" Tag="C005"/>
                                 </ComboBox>
 
                                 <!-- Giá bán -->
@@ -436,25 +427,15 @@ FontWeight="Bold" Background="Transparent" />
                                 <Border BorderBrush="#D8B694" BorderThickness="2" CornerRadius="10" Width="180" Height="180" Padding="10" 
                                 HorizontalAlignment="Left" Margin="0,0,0,20">
                                     <StackPanel>
-                                        <Image Source="./Images/login_background.png" Height="135" Stretch="Uniform" />
-                                        <Button Content="&#x21E7; Upload" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Foreground="#DD702E" Cursor="Hand"/>
+                                        <Image x:Name="EditProductImagePreview" Source="./Images/login_background.png" Height="135" Stretch="Uniform" />
+                                        <Button Content="&#x21E7; Upload" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Foreground="#DD702E" Cursor="Hand" Click="EditUploadButton_Click"/>
                                     </StackPanel>
-                                </Border>
-
-                                <!-- Ghi chú -->
-                                <TextBlock Text="Ghi chú" FontWeight="Bold" Foreground="#DD702E"/>
-                                <Border Grid.Row="1" Margin="0,10,0,0" BorderBrush="#D8B694" BorderThickness="2" CornerRadius="20" Padding="10" Background="White">
-                                    <Border Background="#DDDDDD" CornerRadius="10" Padding="5">
-                                        <TextBox x:Name="EditGhiChuTextBox" Text="kkk" Height="90" AcceptsReturn="True" 
-                                                 Background="Transparent" BorderThickness="0" Foreground="Black"
-                                        GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                    </Border>
                                 </Border>
                             </StackPanel>
 
                             <!-- Buttons: Thêm và Bỏ qua -->
                             <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,20">
-                                <Button Content="Thêm" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="120" Height="40" Background="#D7B08F" Foreground="White" Margin="10,0" Click="AddButton_Click"/>
+                                <Button Content="Sửa" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="120" Height="40" Background="#D7B08F" Foreground="White" Margin="10,0" Click="SaveEditButton_Click"/>
                                 <Button Content="Bỏ qua" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="120" Height="40" Background="#E0E0E0" Foreground="Black" Margin="10,0" Click="HideEditForm_Click"/>
                             </StackPanel>
                         </Grid>

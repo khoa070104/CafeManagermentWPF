@@ -47,7 +47,8 @@ namespace FunnyCafeManagerment
                         table.TableId,
                         TableName = table.TableName,
                         Status = table.Status,
-                        StatusColor = table.Status == "Còn trống" ? "#3CB043" : "#FF0000"
+                        StatusColor = table.Status == "Còn trống" ? "#3CB043" : "#FF0000",
+                        TableImage = new BitmapImage(new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images/dining-table.png"), UriKind.Absolute))
                     })
                     .ToList();
 
@@ -249,7 +250,7 @@ namespace FunnyCafeManagerment
                     }
                     else
                     {
-                        MessageBox.Show("Không tìm thấy bàn để cập nhật.");
+                        MessageBox.Show("Không tìm thấy b��n để cập nhật.");
                     }
                 }
             }

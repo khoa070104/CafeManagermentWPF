@@ -21,7 +21,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="1">
                             <Border.CornerRadius>
-                                <!-- Bo tròn tất cả 4 góc -->
+                                <!-- Bo tròn tất c 4 góc -->
                                 <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20"/>
                             </Border.CornerRadius>
                         </Border>
@@ -205,18 +205,6 @@ FontWeight="Bold" Background="Transparent" />
 
                             <!-- Row 2: Bàn (hiển thị ban đầu) -->
                             <StackPanel x:Name="BanFilterRow" Orientation="Horizontal" HorizontalAlignment="Center" Background="#FDF2EB" Margin="0,41,0,0" Grid.RowSpan="2" Width="577" Visibility="Visible">
-                                <Border BorderBrush="#9E8D8D" BorderThickness="1" CornerRadius="10" Background="#FFF4ED" Width="150" Height="33" Padding="5" Margin="20,0,10,0">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <!-- Search Icon (Magnifying glass) as a Button -->
-                                        <Button Width="30" Height="30" Background="Transparent" BorderThickness="0" Cursor="Hand" VerticalAlignment="Center">
-                                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE721;" FontSize="20" Foreground="#9E8D8D" />
-                                        </Button>
-
-                                        <!-- TextBox for entering search text -->
-                                        <TextBox Width="120" Height="30" FontSize="16" Padding="10,4,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
-                     Foreground="#9E8D8D" Background="Transparent" BorderThickness="0" Text="Tìm kiếm" />
-                                    </StackPanel>
-                                </Border>
                                 <Button Content="Tất cả" Name="ButtonAll" Style="{StaticResource SelectedFilterButtonStyle}" Click="FilterButton_Click"/>
                                 <Button Content="Đã đặt" Name="ButtonBooked" Style="{StaticResource FilterButtonStyle}" Click="FilterButton_Click"/>
                                 <Button Content="Còn trống" Name="ButtonAvailable" Style="{StaticResource FilterButtonStyle}" Click="FilterButton_Click"/>
@@ -225,47 +213,77 @@ FontWeight="Bold" Background="Transparent" />
 
                             <!-- Row 2: Thực đơn (ban đầu ẩn) -->
                             <StackPanel x:Name="ThucDonFilterRow" Orientation="Horizontal" HorizontalAlignment="Center" Background="#FDF2EB" Margin="0,41,0,0" Grid.RowSpan="2" Width="577" Visibility="Collapsed">
-                                <Border BorderBrush="#9E8D8D" BorderThickness="1" CornerRadius="10" Background="#FFF4ED" Width="150" Height="33" Padding="5" Margin="20,0,10,0">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <!-- Search Icon (Magnifying glass) as a Button -->
-                                        <Button Width="30" Height="30" Background="Transparent" BorderThickness="0" Cursor="Hand" VerticalAlignment="Center">
-                                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE721;" FontSize="20" Foreground="#9E8D8D" />
-                                        </Button>
-
-                                        <!-- TextBox for entering search text -->
-                                        <TextBox Width="120" Height="30" FontSize="16" Padding="10,4,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
-                     Foreground="#9E8D8D" Background="Transparent" BorderThickness="0" Text="Tìm kiếm" />
-                                    </StackPanel>
-                                </Border>
-                                <Button Content="Tất cả" Name="ButtonAllMenu" Style="{StaticResource SelectedFilterButtonStyle}" Click="FilterButton_Click"/>
-                                <Button Content="Coffee" Name="ButtonCoffee" Style="{StaticResource FilterButtonStyle}" Click="FilterButton_Click"/>
-                                <Button Content="Freezee" Name="ButtonFreezee" Style="{StaticResource FilterButtonStyle}" Click="FilterButton_Click"/>
-                                <Button Content="Đồ ăn" Name="ButtonFood" Style="{StaticResource FilterButtonStyle}" Click="FilterButton_Click"/>
-                                <Button Content="Trà" Name="ButtonTea" Style="{StaticResource FilterButtonStyle}" Click="FilterButton_Click"/>
-                                <Button Content="Khác" Name="ButtonOther" Style="{StaticResource FilterButtonStyle}" Click="FilterButton_Click"/>
+                                <Button Content="Tất cả" Name="ButtonAllMenu" Style="{StaticResource SelectedFilterButtonStyle}" Click="MenuButton_Click"/>
+                                <Button Content="Coffee" Name="ButtonCoffee" Style="{StaticResource FilterButtonStyle}" Click="MenuButton_Click"/>
+                                <Button Content="Freezee" Name="ButtonFreezee" Style="{StaticResource FilterButtonStyle}" Click="MenuButton_Click"/>
+                                <Button Content="Đồ ăn" Name="ButtonFood" Style="{StaticResource FilterButtonStyle}" Click="MenuButton_Click"/>
+                                <Button Content="Trà" Name="ButtonTea" Style="{StaticResource FilterButtonStyle}" Click="MenuButton_Click"/>
+                                <Button Content="Khác" Name="ButtonOther" Style="{StaticResource FilterButtonStyle}" Click="MenuButton_Click"/>
                             </StackPanel>
-
-
 
                             <!-- Row 3: Hien thi ban an-->
                             <Border x:Name="BanRow" Grid.Row="2" Background="#FDF2EB" CornerRadius="0,0,20,20" VerticalAlignment="Stretch" Visibility="Visible">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <ItemsControl ItemsSource="{Binding}">
+                                    <ItemsControl x:Name="BanRowItemsControl" ItemsSource="{Binding}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="230" HorizontalAlignment="Left"/>
+                                                <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="280" HorizontalAlignment="Left"/>
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
+                                                <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="260" Padding="10" Margin="10">
                                                     <StackPanel>
-                                                        <Image Source="./Images/dining-table.png" Height="140" Stretch="UniformToFill" Margin="0,0,0,5" />
+                                                        <Image Source="{Binding TableImage}" Height="140" Stretch="UniformToFill" Margin="0,0,0,5" />
                                                         <!--
                                                         <TextBlock Text="{Binding Seats}" FontSize="14" Foreground="#DD702E" Margin="0,0,0,0" HorizontalAlignment="Center"/>
                                                         -->
                                                         <TextBlock Text="{Binding TableName}" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                                                         <TextBlock Text="{Binding Status}" FontSize="14" Foreground="{Binding StatusColor}" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+                                                        <Button Content="Chọn bàn" Click="AddTable_Click" 
+                                                                Width="100" Height="30" Margin="0,10,0,0"
+                                                                Background="#D7B08F" Foreground="White"
+                                                                FontWeight="Bold" FontSize="14">
+                                                            <Button.Style>
+                                                                <Style TargetType="Button">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Status}" Value="Còn trống">
+                                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Button.Style>
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border x:Name="border" CornerRadius="15"
+                                                                            Background="{TemplateBinding Background}"
+                                                                            BorderBrush="Transparent"
+                                                                            BorderThickness="0">
+                                                                        <Border.Effect>
+                                                                            <DropShadowEffect ShadowDepth="3"
+                                                                                            BlurRadius="5"
+                                                                                            Opacity="0.3"/>
+                                                                        </Border.Effect>
+                                                                        <ContentPresenter HorizontalAlignment="Center"
+                                                                                        VerticalAlignment="Center"/>
+                                                                    </Border>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter TargetName="border" Property="Background" Value="#C19B7C"/>
+                                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                                            <Setter TargetName="border" Property="Effect">
+                                                                                <Setter.Value>
+                                                                                    <DropShadowEffect ShadowDepth="5"
+                                                                                                    BlurRadius="8"
+                                                                                                    Opacity="0.5"/>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
                                                     </StackPanel>
                                                 </Border>
                                             </DataTemplate>
@@ -273,22 +291,56 @@ FontWeight="Bold" Background="Transparent" />
                                     </ItemsControl>
                                 </ScrollViewer>
                             </Border>
-                            
+
                             <!-- Row 3: Hiển thị thực đơn (ban đầu ẩn) -->
                             <Border x:Name="ThucDonRow" Grid.Row="2" Background="#FDF2EB" CornerRadius="0,0,20,20" VerticalAlignment="Stretch" Visibility="Collapsed">
                                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                                     <ItemsControl ItemsSource="{Binding}">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="230" HorizontalAlignment="Left"/>
+                                                <WrapPanel Orientation="Horizontal" ItemWidth="180" ItemHeight="250" HorizontalAlignment="Left"/>
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="210" Padding="10" Margin="10">
+                                                <Border BorderBrush="#D8B694" BorderThickness="1" CornerRadius="10" Width="160" Height="230" Padding="10" Margin="10">
                                                     <StackPanel>
                                                         <Image Source="{Binding ProductImage}" Height="120" Stretch="UniformToFill" Margin="0,0,0,5" />
                                                         <TextBlock Text="{Binding ProductName}" FontSize="16" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,10,0,5"/>
+                                                        <Button Name="addbtn" Click="addbtn_Click" Content="Thêm" DataContext="{Binding}"
+                                                                Width="100" Height="30" Margin="0,5,0,0"
+                                                                Background="#D7B08F" Foreground="White" 
+                                                                FontWeight="Bold" FontSize="14">
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border x:Name="border" CornerRadius="15" 
+                                                                            Background="{TemplateBinding Background}"
+                                                                            BorderBrush="Transparent" 
+                                                                            BorderThickness="0">
+                                                                        <Border.Effect>
+                                                                            <DropShadowEffect ShadowDepth="3" 
+                                                                                            BlurRadius="5" 
+                                                                                            Opacity="0.3"/>
+                                                                        </Border.Effect>
+                                                                        <ContentPresenter HorizontalAlignment="Center" 
+                                                                                        VerticalAlignment="Center"/>
+                                                                    </Border>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter TargetName="border" Property="Background" Value="#C19B7C"/>
+                                                                            <Setter Property="Cursor" Value="Hand"/>
+                                                                            <Setter TargetName="border" Property="Effect">
+                                                                                <Setter.Value>
+                                                                                    <DropShadowEffect ShadowDepth="5" 
+                                                                                                    BlurRadius="8" 
+                                                                                                    Opacity="0.5"/>
+                                                                                </Setter.Value>
+                                                                            </Setter>
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
                                                         <Grid>
                                                             <Grid.ColumnDefinitions>
                                                                 <ColumnDefinition Width="*" />
@@ -332,30 +384,29 @@ FontWeight="Bold" Background="Transparent" />
                                 </Grid.ColumnDefinitions>
 
                                 <!-- TextBlock bàn 20 -->
-                                <TextBlock Text="bàn 20"
+                                <TextBlock x:Name="SelectedTableTextBlock" Text="Mang về"
                Background="Transparent" Foreground="#D7B08F" VerticalAlignment="Center" 
                HorizontalAlignment="Center" FontSize="20" Grid.Column="0" Margin="10,8,0,0"/>
 
-                                <!-- Border with Search TextBox -->
+                                <!-- Border with Customer Name -->
                                 <Border BorderBrush="#9E8D8D" BorderThickness="1" CornerRadius="10" Background="#FFF4ED"
             Width="170" Height="33" Padding="0" Margin="0,10,20,0" Grid.Column="1">
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                        <Button Width="30" Height="30" Background="Transparent" BorderThickness="0" Cursor="Hand" VerticalAlignment="Center">
-                                            <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE721;" FontSize="20" Foreground="#9E8D8D" />
-                                        </Button>
-                                        <TextBox Width="120" Height="30" FontSize="16" Padding="10,4,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
-                     Foreground="#9E8D8D" Background="Transparent" BorderThickness="0" Text="Tìm kiếm" 
-                     GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus"/>
-                                    </StackPanel>
+                                    <TextBlock x:Name="CustomerNameTextBlock" 
+                                             Text="Khách vãng lai"
+                                             FontSize="16"
+                                             Foreground="#9E8D8D"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
                                 </Border>
 
-                                <!-- Button Báo cáo sự cố -->
+                                <!-- Button Chọn Khách Hàng -->
                                 <Button Width="150" Height="30" Background="#D7B08F" Foreground="White" FontSize="16" Padding="10,0"
-            HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Cursor="Hand" Grid.Column="2" Margin="0,10,40,0">
+            HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Cursor="Hand" Grid.Column="2" Margin="0,10,40,0"
+            Click="OpenCustomerWindow_Click">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <TextBlock Text="+" FontSize="20" FontWeight="Bold" Margin="0,0,10,0" />
-                                            <TextBlock Text="Báo cáo sự cố" FontSize="16" VerticalAlignment="Center" />
+                                            <TextBlock Text="Chọn khách hàng" FontSize="16" VerticalAlignment="Center" />
                                         </StackPanel>
                                     </Button.Content>
                                     <Button.Template>
@@ -376,7 +427,7 @@ FontWeight="Bold" Background="Transparent" />
           CanUserAddRows="False" 
           HeadersVisibility="Column" 
           FontSize="14" 
-          ItemsSource="{Binding productItems}" 
+          ItemsSource="{Binding invoiceItems}" 
           Background="White" 
           BorderThickness="0" 
           RowBackground="White" 
@@ -475,7 +526,7 @@ FontWeight="Bold" Background="Transparent" />
 
                                 <TextBlock Text="Tổng:" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Right" 
                                            Margin="0,0,10,20"/>
-                                <TextBlock Text="180,000 đ" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" 
+                                <TextBlock x:Name="TotalAmountTextBlock" Text="0 đ" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" 
                                            HorizontalAlignment="Right" Grid.Column="1"  Margin="0,0,20,20"/>
                             </Grid>
 
@@ -494,7 +545,7 @@ FontWeight="Bold" Background="Transparent" />
 
                                     <!-- Nút "Kết thúc" -->
                                     <Button Grid.Column="1" Content="Kết Thúc" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100"
-        Height="30" Background="#D7B08F" Foreground="White" Margin="10,0,10,20">
+Height="30" Background="#D7B08F" Foreground="White" Margin="10,0,10,20" Click="EndButton_Click">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
@@ -509,7 +560,8 @@ FontWeight="Bold" Background="Transparent" />
                                     </Button>
                                     <!-- Nút "Thanh toán" -->
                                     <Button Grid.Column="2" Content="Thanh Toán" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100"
-Height="30" Background="#D7B08F" Foreground="White" Margin="10,0,10,20">
+Height="30" Background="#D7B08F" Foreground="White" Margin="10,0,10,20"
+Click="ShowOrderDetailForm_Click">
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
                                                 <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
@@ -531,6 +583,158 @@ Height="30" Background="#D7B08F" Foreground="White" Margin="10,0,10,20">
                         </Grid>
 
                     </Grid>
+                    
+                    <Grid x:Name="OrderDetailForm" Visibility="Collapsed" Background="Transparent" Width="600" Height="620" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+                            <Grid Background="Transparent">
+                                <!-- Đặt Background là Transparent -->
+                                <!-- Thanh tiêu đề tùy chỉnh -->
+                                <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
+                                    <Grid>
+                                        <!-- Icon và Tiêu đề -->
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                            <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
+                                            <TextBlock Text="Order Detail" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                        </StackPanel>
+
+                                        <!-- Nút chức năng trên thanh tiêu đề -->
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                                            <Button Content="X" Width="30" Height="30" Click="HideOrderDetailForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+
+                                <!-- Nội dung cửa sổ -->
+                                <Grid Margin="0,40,0,0" Background="Transparent">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <!-- Tiêu đề hóa đơn -->
+                                            <RowDefinition Height="Auto"/>
+                                            <!-- Thông tin khách hàng và nhân viên -->
+                                            <RowDefinition Height="*"/>
+                                            <!-- Bảng chi tiết hóa đơn (chiếm toàn bộ không gian trống) -->
+                                            <RowDefinition Height="Auto"/>
+                                            <!-- Thời gian và tổng tiền -->
+                                            <RowDefinition Height="Auto"/>
+                                            <!-- Nút Đóng -->
+                                        </Grid.RowDefinitions>
+
+                                        <!-- Title -->
+                                        <TextBlock Text="Chi tiết hóa đơn" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#DD702E" Margin="0,20,0,10"/>
+
+                                        <!-- Form Section -->
+                                        <Grid Grid.Row="1" Margin="0,0,0,0">
+                                            <!-- Define 2 Columns -->
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Column 1: Họ tên -->
+                                            <StackPanel Grid.Column="0" Margin="10">
+                                                <TextBlock Text="Họ tên" FontStyle="Italic" FontWeight="Bold"/>
+                                                <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="20" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
+                                                    <TextBox x:Name="HoTenTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+       Text="Nguyễn Văn B" Height="30" Background="Transparent" BorderThickness="0" IsReadOnly="True"/>
+                                                </Border>
+                                            </StackPanel>
+
+                                            <!-- Column 2: Nhân viên bán -->
+                                            <StackPanel Grid.Column="1" Margin="10">
+                                                <TextBlock Text="Nhân viên bán" FontStyle="Italic" FontWeight="Bold"/>
+                                                <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="20" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
+                                                    <TextBox x:Name="EmployeeBox" VerticalAlignment="Center" VerticalContentAlignment="Center" 
+       Text="Nguyễn Văn A" Height="30" Background="Transparent" BorderThickness="0" IsReadOnly="True"/>
+                                                </Border>
+                                            </StackPanel>
+
+                                        </Grid>
+
+                                        <!-- Bảng chi tiết hóa đơn -->
+                                        <Border Grid.Row="2" Margin="20" BorderBrush="#D8B694" BorderThickness="2" CornerRadius="20" Padding="10" Background="White">
+                                            <DataGrid x:Name="ProductDataGrid"
+                                                      AutoGenerateColumns="False"
+                                                      HeadersVisibility="Column"
+                                                      CanUserAddRows="False"
+                                                      Margin="10,0,10,0"
+                                                      Background="White"
+                                                      BorderBrush="Transparent"
+                                                      GridLinesVisibility="None"
+                                                      RowStyle="{StaticResource CustomRowStyle}"
+                                                      ColumnHeaderStyle="{StaticResource CustomColumnHeaderStyle}"
+                                                      ItemsSource="{Binding}">
+                                                <DataGrid.Columns>
+                                                    <DataGridTextColumn Header="STT" Width="auto" Binding="{Binding STT}" IsReadOnly="True">
+                                                        <DataGridTextColumn.ElementStyle>
+                                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                                        </DataGridTextColumn.ElementStyle>
+                                                    </DataGridTextColumn>
+
+                                                    <DataGridTextColumn Header="Tên sản phẩm" Width="auto" Binding="{Binding TenSanPham}" IsReadOnly="True">
+                                                        <DataGridTextColumn.ElementStyle>
+                                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                                        </DataGridTextColumn.ElementStyle>
+                                                    </DataGridTextColumn>
+
+                                                    <DataGridTextColumn Header="Số lượng" Width="auto" Binding="{Binding SoLuong}" IsReadOnly="True">
+                                                        <DataGridTextColumn.ElementStyle>
+                                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                                        </DataGridTextColumn.ElementStyle>
+                                                    </DataGridTextColumn>
+
+                                                    <DataGridTextColumn Header="Đơn giá" Width="*" Binding="{Binding DonGia, StringFormat=N0}" IsReadOnly="True">
+                                                        <DataGridTextColumn.ElementStyle>
+                                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                                        </DataGridTextColumn.ElementStyle>
+                                                    </DataGridTextColumn>
+
+                                                    <DataGridTextColumn Header="Thành tiền" Width="*" Binding="{Binding ThanhTien, StringFormat=N0}" IsReadOnly="True">
+                                                        <DataGridTextColumn.ElementStyle>
+                                                            <StaticResource ResourceKey="CenterAlignedTextBlock" />
+                                                        </DataGridTextColumn.ElementStyle>
+                                                    </DataGridTextColumn>
+                                                </DataGrid.Columns>
+                                            </DataGrid>
+                                        </Border>
+
+                                        <!-- Thời gian và Tổng tiền -->
+                                        <Grid Grid.Row="3" Margin="20,0,20,10">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Thời gian -->
+                                            <TextBlock x:Name="CurrentTimeTextBlock" Grid.Column="0" Text="Thời gian: " HorizontalAlignment="Left" FontWeight="Bold" VerticalAlignment="Center" />
+
+                                            <!-- Tổng tiền -->
+                                            <TextBlock x:Name="OrderDetailTotalAmountTextBlock" Grid.Column="1" Text="Tổng: " HorizontalAlignment="Right" FontWeight="Bold" VerticalAlignment="Center" />
+                                        </Grid>
+
+                                        <!-- Buttons -->
+                                        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,40">
+                                            <Button Content="Đóng" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#D7B08F"
+                                          Foreground="White" Click="HideOrderDetailForm_Click" Margin="10,0">
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                            <!-- Apply DropShadowEffect to Border -->
+                                                            <Border.Effect>
+                                                                <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
+                                                            </Border.Effect>
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    
                     <Grid x:Name="DeleteForm" Visibility="Collapsed" Background="Transparent" Width="400" Height="300" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
                             <Grid Background="Transparent">
