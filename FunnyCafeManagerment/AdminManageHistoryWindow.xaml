@@ -82,10 +82,11 @@ Margin="10,0,0,0" VerticalAlignment="Center" BorderThickness="0"
 FontWeight="Bold" Background="Transparent" />
 
                         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
-                            <!-- Username -->
-                            <TextBlock Text="Nguyen Van A" FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                            <!-- User Icon Button -->
-                            <Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
+                            <!-- Username
+<TextBlock Text="Nguyen Van A" FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
+ User Icon Button 
+<Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
+-->
                         </StackPanel>
                     </Grid>
 

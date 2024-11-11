@@ -452,6 +452,9 @@ namespace FunnyCafeManagerment
             DateTime currentTime = DateTime.Now;
             CurrentTimeTextBlock.Text = $"Thời gian: {currentTime:dd/MM/yyyy HH:mm:ss}";
 
+            // Hiển thị số bàn đã chọn
+            OrderDetailTableTextBlock.Text = $"{SelectedTableTextBlock.Text}";
+
             // Lưu thông tin vào cơ sở dữ liệu
             SaveOrderToDatabase();
 
@@ -637,6 +640,7 @@ namespace FunnyCafeManagerment
             UpdateTotalAmount();
 
             // Đặt lại lựa chọn khách hàng
+            SelectedTableTextBlock.Text = "Mang về";
             CustomerNameTextBlock.Text = "Khách vãng lai";
             selectedCustomerId = null;
 

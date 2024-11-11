@@ -74,10 +74,11 @@ Margin="10,0,0,0" VerticalAlignment="Center" BorderThickness="0"
 FontWeight="Bold" Background="Transparent" />
 
                         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
-                            <!-- Username -->
-                            <TextBlock Text="Nguyen Van A" FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                            <!-- User Icon Button -->
-                            <Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
+                            <!-- Username
+<TextBlock Text="Nguyen Van A" FontSize="20" Foreground="#D7B08F" VerticalAlignment="Center" Margin="0,0,5,0"/>
+ User Icon Button 
+<Button Content="&#x1F464;" FontSize="20" BorderThickness="0" Foreground="#D7B08F" Background="Transparent"/>
+-->
                         </StackPanel>
                     </Grid>
 
@@ -105,7 +106,7 @@ FontWeight="Bold" Background="Transparent" />
                                 <Border CornerRadius="15" Height="30" BorderBrush="#D8B694" BorderThickness="1" Background="#FCEFE8" Padding="5" VerticalAlignment="Center">
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBox Width="300" Height="30" VerticalAlignment="Center" Padding="5" Name="searchTextBox" Text="Tìm kiếm" Foreground="Gray"
-                 GotFocus="searchTextBox_GotFocus" LostFocus="searchTextBox_LostFocus" BorderThickness="0" Background="Transparent"/>
+                 GotFocus="searchTextBox_GotFocus" LostFocus="searchTextBox_LostFocus" TextChanged="SearchTextBox_TextChanged" BorderThickness="0" Background="Transparent"/>
                                         <Button Width="30" Height="30" Content="&#x1F50E;" VerticalAlignment="Center" BorderThickness="0" Background="Transparent"/>
                                     </StackPanel>
                                 </Border>
