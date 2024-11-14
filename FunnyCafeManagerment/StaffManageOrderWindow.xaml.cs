@@ -396,12 +396,14 @@ namespace FunnyCafeManagerment
         // Sự kiện đóng cửa sổ
         private void CloseWindow_Click(object sender, RoutedEventArgs e)
         {
+            ResetWindow();
             this.Close();
         }
         private void HideOrderDetailForm_Click(object sender, RoutedEventArgs e)
         {
             // Ẩn form
             OrderDetailForm.Visibility = Visibility.Collapsed;
+            ResetWindow();
         }
 
         private void AddTable_Click(object sender, RoutedEventArgs e)
@@ -435,6 +437,13 @@ namespace FunnyCafeManagerment
 
         private void ShowOrderDetailForm_Click(object sender, RoutedEventArgs e)
         {
+            // Kiểm tra nếu không có sản phẩm nào trong hóa đơn
+            if (!invoiceItems.Any())
+            {
+                MessageBox.Show("Bạn chưa chọn sản phẩm nào.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             // Cập nhật thông tin khách hàng và sản phẩm vào OrderDetailForm
             HoTenTextBox.Text = CustomerNameTextBlock.Text;
 
@@ -458,8 +467,24 @@ namespace FunnyCafeManagerment
             // Lưu thông tin vào cơ sở dữ liệu
             SaveOrderToDatabase();
 
+            // Cập nhật trạng thái bàn
+            UpdateTableStatus(SelectedTableTextBlock.Text, "Đã đặt");
+
             // Hiển thị form chi tiết hóa đơn
             OrderDetailForm.Visibility = Visibility.Visible;
+        }
+
+        private void UpdateTableStatus(string tableName, string newStatus)
+        {
+            using (var context = new FunnyCafeContext())
+            {
+                var table = context.Tables.FirstOrDefault(t => t.TableName == tableName);
+                if (table != null)
+                {
+                    table.Status = newStatus;
+                    context.SaveChanges();
+                }
+            }
         }
 
         private void SaveOrderToDatabase()
@@ -666,6 +691,11 @@ namespace FunnyCafeManagerment
         private void EndButton_Click(object sender, RoutedEventArgs e)
         {
             ResetWindow();
+        }
+
+        private void ResetTableSelection_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedTableTextBlock.Text = "Mang về";
         }
     }
 }

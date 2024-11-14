@@ -34,6 +34,7 @@ namespace FunnyCafeManagerment
         {
             InitializeComponent();
             LoadProductData();
+            SearchTextBox.TextChanged += SearchTextBox_TextChanged;
         }
 
         public class ProductViewModel
@@ -387,23 +388,30 @@ namespace FunnyCafeManagerment
 
         private void FilterProductsByCategory(string categoryName)
         {
-            using (var context = new FunnyCafeContext())
+            try
             {
-                var productItems = context.Products
-                    .Include(p => p.Category)
-                    .Where(p => categoryName == "Tất cả" || p.Category.CategoryName == categoryName)
-                    .Select(p => new ProductViewModel
-                    {
-                        ProductId = p.ProductId,
-                        ProductName = p.ProductName,
-                        CategoryName = p.Category != null ? p.Category.CategoryName : "Unknown",
-                        Price = p.Price ?? 0,
-                        ProductImage = new BitmapImage(new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, p.ProductImage.TrimStart('/')), UriKind.Absolute)),
-                        Product = p
-                    })
-                    .ToList();
-
-                ProductItemsControl.ItemsSource = productItems;
+                using (var context = new FunnyCafeContext())
+                {
+                    var productItems = context.Products
+                        .Include(p => p.Category)
+                        .Where(p => categoryName == "Tất cả" || p.Category.CategoryName == categoryName)
+                        .Select(p => new ProductViewModel
+                        {
+                            ProductId = p.ProductId,
+                            ProductName = p.ProductName,
+                            CategoryName = p.Category != null ? p.Category.CategoryName : "Unknown",
+                            Price = p.Price ?? 0,
+                            ProductImage = new BitmapImage(new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, p.ProductImage.TrimStart('/')), UriKind.Absolute)),
+                            Product = p
+                        })
+                        .ToList();
+                        ProductItemsControl.ItemsSource = productItems;
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi lọc sản phẩm: " + ex.Message);
             }
         }
 
@@ -534,6 +542,41 @@ namespace FunnyCafeManagerment
                     HideDeleteForm_Click(sender, e); // Ẩn form xóa
                 }
             }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+
+            string searchText = textBox.Text.ToLower();
+
+                using (var context = new FunnyCafeContext())
+                {
+                    var filteredProducts = context.Products
+                        .Include(p => p.Category)
+                        .Where(p => (p.ProductName.ToLower().Contains(searchText) || 
+                                     p.Category.CategoryName.ToLower().Contains(searchText)) &&
+                                    (currentCategory == "Tất cả" || p.Category.CategoryName == currentCategory))
+                        .Select(p => new ProductViewModel
+                        {
+                            ProductId = p.ProductId,
+                            ProductName = p.ProductName,
+                            CategoryName = p.Category != null ? p.Category.CategoryName : "Unknown",
+                            Price = p.Price ?? 0,
+                            ProductImage = new BitmapImage(new Uri(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, p.ProductImage.TrimStart('/')), UriKind.Absolute)),
+                            Product = p
+                        })
+                        .ToList();
+
+                    if (string.IsNullOrWhiteSpace(searchText) || searchText == "tìm kiếm")
+                    {
+                        FilterProductsByCategory(currentCategory);
+                    }
+                    else
+                    {
+                        ProductItemsControl.ItemsSource = filteredProducts;
+                    }
+                }
         }
     }
 }

@@ -379,30 +379,37 @@ FontWeight="Bold" Background="Transparent" />
 
                             <Grid HorizontalAlignment="Center" Background="#FDF2EB" Margin="0,41,0,0" Width="577">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="130" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <!-- TextBlock bàn 20 -->
+                                <!-- Nút Reload -->
+                                <Button Width="30" Height="30" Background="Transparent" BorderThickness="0" 
+        VerticalAlignment="Center" HorizontalAlignment="Center" Click="ResetTableSelection_Click" Grid.Column="0" Margin="20,8,0,0">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE72C;" FontSize="20" Foreground="#D7B08F"/>
+                                </Button>
+
+                                <!-- TextBlock bàn-->
                                 <TextBlock x:Name="SelectedTableTextBlock" Text="Mang về"
                Background="Transparent" Foreground="#D7B08F" VerticalAlignment="Center" 
-               HorizontalAlignment="Center" FontSize="20" Grid.Column="0" Margin="10,8,0,0"/>
+               HorizontalAlignment="Center" FontSize="20" Grid.Column="1" Margin="10,8,0,0"/>                                
 
                                 <!-- Border with Customer Name -->
                                 <Border BorderBrush="#9E8D8D" BorderThickness="1" CornerRadius="10" Background="#FFF4ED"
-            Width="170" Height="33" Padding="0" Margin="0,10,20,0" Grid.Column="1">
+                                        Width="170" Height="33" Padding="0" Margin="0,10,20,0" Grid.Column="2">
                                     <TextBlock x:Name="CustomerNameTextBlock" 
-                                             Text="Khách vãng lai"
-                                             FontSize="16"
-                                             Foreground="#9E8D8D"
-                                             VerticalAlignment="Center"
-                                             HorizontalAlignment="Center"/>
+                                               Text="Khách vãng lai"
+                                               FontSize="16"
+                                               Foreground="#9E8D8D"
+                                               VerticalAlignment="Center"
+                                               HorizontalAlignment="Center"/>
                                 </Border>
 
                                 <!-- Button Chọn Khách Hàng -->
                                 <Button Width="150" Height="30" Background="#D7B08F" Foreground="White" FontSize="16" Padding="10,0"
-            HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Cursor="Hand" Grid.Column="2" Margin="0,10,40,0"
+            HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Cursor="Hand" Grid.Column="3" Margin="0,10,40,0"
             Click="OpenCustomerWindow_Click">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
