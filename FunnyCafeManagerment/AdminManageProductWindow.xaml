@@ -129,8 +129,9 @@ FontWeight="Bold" Background="Transparent" />
                                     </Button>
 
                                     <!-- TextBox for entering search text -->
-                                    <TextBox Width="120" Height="30" FontSize="16" Padding="10,4,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
-             Foreground="#9E8D8D" Background="Transparent" BorderThickness="0" Text="Tìm kiếm" GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus"/>
+                                    <TextBox x:Name="SearchTextBox" Width="120" Height="30" FontSize="16" Padding="10,4,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"
+             Foreground="#9E8D8D" Background="Transparent" BorderThickness="0" Text="Tìm kiếm" 
+             GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus"/>
                                 </StackPanel>
                             </Border>
 
@@ -179,23 +180,20 @@ FontWeight="Bold" Background="Transparent" />
                                                 <StackPanel>
                                                     <!-- Hình ảnh sản phẩm -->
                                                     <Image Source="{Binding ProductImage}" Height="120" Stretch="UniformToFill" Margin="0,0,0,10" />
-
                                                     <!-- Tên sản phẩm -->
                                                     <TextBlock Text="{Binding ProductName}" FontWeight="Bold" FontSize="16" Foreground="Black" TextWrapping="Wrap" VerticalAlignment="Top"/>
-
                                                     <!-- Giá sản phẩm -->
                                                     <TextBlock Text="{Binding Price, StringFormat={}{0:C}}" FontSize="14" Foreground="#D7B08F" Margin="0,5,0,0"/>
-
                                                     <!-- Nút chỉnh sửa và xóa -->
                                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
                                                         <!-- Nút chỉnh sửa -->
                                                         <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand"
-                                                                Click="ShowEditForm_Click">
+                                Click="ShowEditForm_Click">
                                                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE70F;" FontSize="16" Foreground="#D8B694"/>
                                                         </Button>
                                                         <!-- Nút xóa -->
                                                         <Button Width="20" Height="20" Background="Transparent" BorderThickness="0" Cursor="Hand" 
-                                                                Margin="5,0,0,0" Click="ShowDeleteForm_Click">
+                                Margin="5,0,0,0" Click="ShowDeleteForm_Click">
                                                             <TextBlock FontFamily="Segoe MDL2 Assets" Text="&#xE74D;" FontSize="16" Foreground="#D8B694"/>
                                                         </Button>
                                                     </StackPanel>

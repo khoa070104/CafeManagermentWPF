@@ -227,28 +227,46 @@ namespace FunnyCafeManagerment
         // Hàm xử lý sự kiện cho nút "Thêm"
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // Tạo đối tượng Customer mới
-            var newCustomer = new Customer
+            try
             {
-                FullName = HoTenTextBox.Text,
-                Email = EmailTextBox.Text,
-                PhoneNumber = SoDienThoaiTextBox.Text,
-                Spending = decimal.TryParse(ChiTieuTextBox.Text, out var spending) ? spending : (decimal?)null,
-                Notes = GhiChuTextBox.Text
-            };
+                using (var context = new FunnyCafeContext())
+                {
+                    // Chuyển đổi truy vấn sang client-side evaluation
+                    bool isEmailExists = context.Customers
+                        .AsEnumerable() // Chuyển đổi sang client-side evaluation
+                        .Any(c => c.Email.Equals(EmailTextBox.Text, StringComparison.OrdinalIgnoreCase));
 
-            // Lưu vào cơ sở dữ liệu
-            using (var context = new FunnyCafeContext())
-            {
-                context.Customers.Add(newCustomer);
-                context.SaveChanges();
+                    if (isEmailExists)
+                    {
+                        MessageBox.Show("Email đã tồn tại. Vui lòng chọn email khác.");
+                        return;
+                    }
+
+                    // Tạo đối tượng Customer mới
+                    var newCustomer = new Customer
+                    {
+                        FullName = HoTenTextBox.Text,
+                        Email = EmailTextBox.Text,
+                        PhoneNumber = SoDienThoaiTextBox.Text,
+                        Spending = decimal.TryParse(ChiTieuTextBox.Text, out var spending) ? spending : (decimal?)null,
+                        Notes = GhiChuTextBox.Text
+                    };
+
+                    // Lưu vào cơ sở dữ liệu
+                    context.Customers.Add(newCustomer);
+                    context.SaveChanges();
+                }
+
+                // Cập nhật lại DataGrid
+                LoadCustomerData();
+
+                // Ẩn form thêm
+                AddForm.Visibility = Visibility.Collapsed;
             }
-
-            // Cập nhật lại DataGrid
-            LoadCustomerData();
-
-            // Ẩn form thêm
-            AddForm.Visibility = Visibility.Collapsed;
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi thêm khách hàng: " + ex.Message);
+            }
         }
         // hiện slide bar
         private void ShowSidebarForm_Click(object sender, RoutedEventArgs e)

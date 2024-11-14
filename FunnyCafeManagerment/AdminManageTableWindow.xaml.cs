@@ -374,6 +374,17 @@ namespace FunnyCafeManagerment
             {
                 using (var context = new FunnyCafeContext())
                 {
+                    // Chuyển đổi truy vấn sang client-side evaluation
+                    bool isTableNameExists = context.Tables
+                        .AsEnumerable() // Chuyển đổi sang client-side evaluation
+                        .Any(t => t.TableName.Equals(tableName, StringComparison.OrdinalIgnoreCase));
+
+                    if (isTableNameExists)
+                    {
+                        MessageBox.Show("Tên bàn đã tồn tại. Vui lòng chọn tên khác.");
+                        return;
+                    }
+
                     var newTable = new FunnyCafeManagerment_DataAccess.Models.Table
                     {
                         TableName = tableName,
