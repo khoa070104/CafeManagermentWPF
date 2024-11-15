@@ -8,40 +8,72 @@
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
-                        <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
+                        <Border Background="#F5F5F5" BorderBrush="Gray" BorderThickness="1" CornerRadius="15" Padding="10,5">
                             <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <!-- Focus effect: Bold border -->
-            <Style.Triggers>    
+            <Style.Triggers>
+                <!-- Thay đổi màu khi focus vào -->
                 <Trigger Property="IsKeyboardFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="Black"/>
-                    <Setter Property="BorderThickness" Value="3"/>
+                    <Setter Property="BorderBrush" Value="#4CAF50"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Background" Value="#FFFFFF"/>
+                </Trigger>
+
+                <!-- Màu sắc khi hover -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#3E8E41"/>
+                    <Setter Property="Background" Value="#F1F1F1"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
 
-        <!-- Style for PasswordBox with Focus Effect -->
+        <!-- Kiểu cho Label -->
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#fff"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Margin" Value="0,20,0,0"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Gray" Direction="315" BlurRadius="4" ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
         <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
-                        <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="10">
+                        <Border Background="#F5F5F5" BorderBrush="Gray" BorderThickness="1" CornerRadius="15" Padding="10,5">
                             <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <!-- Focus effect: Bold border -->
             <Style.Triggers>
+                <!-- Thay đổi màu khi focus vào -->
                 <Trigger Property="IsKeyboardFocused" Value="True">
-                    <Setter Property="BorderBrush" Value="Black"/>
-                    <Setter Property="BorderThickness" Value="3"/>
+                    <Setter Property="BorderBrush" Value="#4CAF50"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter Property="Background" Value="#FFFFFF"/>
+                </Trigger>
+
+                <!-- Màu sắc khi hover -->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#3E8E41"/>
+                    <Setter Property="Background" Value="#F1F1F1"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
+
 
         <!-- Style for Buttons with Shadow and Hover Effect -->
         <Style x:Key="ButtonStyle" TargetType="Button">
@@ -271,6 +303,44 @@
             </Setter>
         </Style>
 
+        <!-- Định nghĩa Style cho nút Navbar với bo tròn -->
+        <Style x:Key="NavbarButtonStyle" TargetType="Button">
+            <Style.Setters>
+                <!-- Màu nền mặc định của nút -->
+                <Setter Property="Background" Value="#D7B08F"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Width" Value="35"/>
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Margin" Value="5"/>
+                <!-- Bo tròn góc cho nút -->
+                <Setter Property="Padding" Value="5"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <!-- Hiệu ứng khi nhấn -->
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#B89E6D"/>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="0.9" ScaleY="0.9"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="Title" TargetType="Button">
+            <Setter Property="Foreground" Value="#D7B08F"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="28"/>
+            <Setter Property="Width" Value="118"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,0,0,0"/>
+        </Style>
 
     </Application.Resources> 
     
