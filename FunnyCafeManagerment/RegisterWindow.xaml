@@ -49,11 +49,25 @@
                     <!-- Nút chức năng trên thanh tiêu đề -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
                         <!-- Nút thu nhỏ -->
-                        <Button Content="-" Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 4,10 L 16,10" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
                         <!-- Nút phóng to/thu nhỏ -->
-                        <Button Content="□" Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 5,15 L 15,15 L 15,5 Z" Stroke="White" StrokeThickness="2" Fill="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
                         <!-- Nút đóng -->
-                        <Button Content="X" Width="30" Height="30" Click="CloseWindow_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="CloseWindow_Click" Style="{StaticResource CloseButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 15,15 M 15,5 L 5,15" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -74,32 +88,32 @@
                         <Label Content="Đăng kí" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource CustomFont}" Margin="0,14,0,0" />
 
                         <!-- Label "Username" -->
-                        <Label Content="Username:" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,60,0,0" Foreground="White" FontStyle="Italic"/>
+                        <Label Content="Username:"  Style="{StaticResource LabelStyle}" Margin="18,61,0,0"/>
 
                         <!-- Ô nhập Username -->
-                        <TextBox Style="{StaticResource TextBoxStyle}" Width="202" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,60,0,0" FontSize="22"/>
+                        <TextBox Style="{StaticResource TextBoxStyle}" Width="202" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,51,0,0" FontSize="22"/>
 
                         <!-- Label "Password" -->
-                        <Label Content="Password:" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,96,0,0" Foreground="White" FontStyle="Italic"/>
+                        <Label Content="Password:" Style="{StaticResource LabelStyle}"  Margin="18,105,0,0"/>
 
                         <!-- Ô nhập Password -->
-                        <PasswordBox Style="{StaticResource PasswordBoxStyle}" Width="202" Height="30"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,95,0,0" FontSize="22"/>
+                        <PasswordBox Style="{StaticResource PasswordBoxStyle}" Width="202" Height="40"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,95,0,0" FontSize="22"/>
                         <!-- Label và ô nhập CPass -->
-                        <Label Content="C.Password:" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,131,0,0" Foreground="White" FontStyle="Italic"/>
+                        <Label Content="C.Password:" Style="{StaticResource LabelStyle}" Margin="10,150,0,0"/>
 
-                        <PasswordBox Style="{StaticResource PasswordBoxStyle}" Width="202" Height="30"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,130,0,0" FontSize="22"/>
+                        <PasswordBox Style="{StaticResource PasswordBoxStyle}" Width="202" Height="40"   HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,140,0,0" FontSize="22"/>
 
-                        <Label Content="Email:" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="33,166,0,0" Foreground="White" FontStyle="Italic"/>
+                        <Label Content="Email:" Style="{StaticResource LabelStyle}"  Margin="29,195,0,0"/>
 
                         <!-- Ô nhập Username -->
-                        <TextBox Style="{StaticResource TextBoxStyle}" Width="202" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,165,0,0" FontSize="22"/>
+                        <TextBox Style="{StaticResource TextBoxStyle}" Width="202" Height="40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,185,0,0" FontSize="22"/>
 
 
                         <!-- Nút Đăng nhập -->
-                        <Button x:Name="LoginButton" Content="Đăng nhập" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,225,0,0" Background="#E3C241" Foreground="White" Click="LoginButton_Click"/>
+                        <Button x:Name="LoginButton" Content="Đăng nhập" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,233,0,0" Background="#E3C241" Foreground="White" Click="LoginButton_Click"/>
 
                         <!-- Nút Đăng kí -->
-                        <Button Content="Đăng kí" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="177,225,0,0" Background="#E3C241" Foreground="White"/>
+                        <Button Content="Đăng kí" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="178,233,0,0" Background="#E3C241" Foreground="White"/>
 
                         <!-- Nút Quên mật khẩu -->
                         <Label Content="funnycoffee" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontStyle="Italic" Height="46" Width="137"/>
