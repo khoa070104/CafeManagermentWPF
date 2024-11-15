@@ -49,11 +49,25 @@
                     <!-- Nút chức năng trên thanh tiêu đề -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
                         <!-- Nút thu nhỏ -->
-                        <Button Content="-" Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 4,10 L 16,10" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
                         <!-- Nút phóng to/thu nhỏ -->
-                        <Button Content="□" Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 5,15 L 15,15 L 15,5 Z" Stroke="White" StrokeThickness="2" Fill="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
                         <!-- Nút đóng -->
-                        <Button Content="X" Width="30" Height="30" Click="CloseWindow_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="CloseWindow_Click" Style="{StaticResource CloseButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 15,15 M 15,5 L 5,15" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -71,19 +85,15 @@
                         </Grid.RowDefinitions>
                         <Image Source="Images/logo.png" RenderTransformOrigin="1.921,-0.147" Margin="257,-21,-20,230" />
                         <!-- Label "Đăng nhập" -->
-                        <Label Content="Đăng nhập" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource CustomFont}" Margin="0,46,0,0" />
+                        <Label Content="Đăng nhập" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Style="{StaticResource CustomFont}" Margin="0,34,0,0" />
 
-                        <!-- Label "Username" -->
-                        <Label Content="Username" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,72,0,0" Foreground="White" FontStyle="Italic"/>
+                        <Label Content="Username" Style="{StaticResource LabelStyle}" Margin="0,68,0,0" RenderTransformOrigin="0.512,-1.83"/>
+                        <TextBox x:Name="txtUsername" Style="{StaticResource TextBoxStyle}" Width="296" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,93,0,0" FontSize="20"/>
 
-                        <!-- Ô nhập Username -->
-                        <TextBox x:Name="txtUsername" Style="{StaticResource TextBoxStyle}" Width="296" Height="30" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,101,0,0" FontSize="22"/>
-
-                        <!-- Label "Password" -->
-                        <Label Content="Password" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,136,0,0" Foreground="White" FontStyle="Italic"/>
+                        <Label Content="Password" Style="{StaticResource LabelStyle}" Margin="4,141,0,0"/>
 
                         <!-- Ô nhập Password -->
-                        <PasswordBox x:Name="txtPassword" Style="{StaticResource PasswordBoxStyle}" Width="296" Height="30"   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,165,0,0" FontSize="22"/>
+                        <PasswordBox x:Name="txtPassword" Style="{StaticResource PasswordBoxStyle}" Width="296" Height="40"   HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,165,0,0" FontSize="22"/>
 
                         <!-- Nút Đăng nhập -->
                         <Button x:Name="LoginButton" Content="Đăng nhập" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="24,225,0,0" Background="#E3C241" Foreground="White" Click="LoginButton_Click"/>
@@ -92,7 +102,7 @@
                         <Button x:Name="RegisterButton" Content="Đăng kí" Style="{StaticResource ButtonStyle}" Width="120" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="177,225,0,0" Background="#E3C241" Foreground="White" Click="RegisterButton_Click"/>
 
                         <!-- Nút Quên mật khẩu -->
-                        <Button x:Name="ForgetPasswordButton" Content="Quên mật khẩu?" Style="{StaticResource ButtonStyle}" Width="80" FontSize="8" Height="13" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,200,0,0" Background="Transparent" Foreground="White" Click="ForgetPasswordButton_Click"/>
+                        <Button x:Name="ForgetPasswordButton" Content="Quên mật khẩu?" Style="{StaticResource ButtonStyle}" Width="80" FontSize="8" Height="13" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,207,0,0" Background="Transparent" Foreground="White" Click="ForgetPasswordButton_Click"/>
                         <Label Content="funnycoffee" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontStyle="Italic" Height="46" Width="137"/>
 
                     </Grid>
