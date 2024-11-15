@@ -43,7 +43,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
                         <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
                         <!-- Đường dẫn đến logo của bạn -->
-                        <TextBlock Text="Logining..." Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        <TextBlock Text="FU Coffee" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
                     </StackPanel>
 
                     <!-- Nút chức năng trên thanh tiêu đề -->
@@ -103,7 +103,7 @@
 
                         <!-- Nút Quên mật khẩu -->
                         <Button x:Name="ForgetPasswordButton" Content="Quên mật khẩu?" Style="{StaticResource ButtonStyle}" Width="80" FontSize="8" Height="13" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="217,207,0,0" Background="Transparent" Foreground="White" Click="ForgetPasswordButton_Click"/>
-                        <Label Content="funnycoffee" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontStyle="Italic" Height="46" Width="137"/>
+                        <Label Content="Funny Coffee" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontStyle="Italic" Height="46" Width="137"/>
 
                     </Grid>
                 </Border>
