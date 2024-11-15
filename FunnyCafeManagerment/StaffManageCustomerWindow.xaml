@@ -13,51 +13,65 @@
         Background="Transparent"
         ResizeMode="NoResize">
 
-        <Window.Resources>
-            <Style TargetType="Window">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Window">
-                            <Border Background="{TemplateBinding Background}"
+    <Window.Resources>
+        <Style TargetType="Window">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Window">
+                        <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="1">
-                                <Border.CornerRadius>
-                                    <!-- Bo tròn tất cả 4 góc -->
-                                    <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20"/>
-                                </Border.CornerRadius>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Window.Resources>
+                            <Border.CornerRadius>
+                                <!-- Bo tròn tất cả 4 góc -->
+                                <CornerRadius BottomLeft="20" BottomRight="20" TopLeft="20" TopRight="20"/>
+                            </Border.CornerRadius>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
-        <!-- Main content with rounded corners -->
-        <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
-            <Grid>
-                <!-- Thanh tiêu đề tùy chỉnh -->
-                <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
-                    <Grid>
-                        <!-- Icon và Tiêu đề -->
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
-                            <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
-                            <!-- Đường dẫn đến logo của bạn -->
-                            <TextBlock Text="Manage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                        </StackPanel>
+    <!-- Main content with rounded corners -->
+    <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+        <Grid>
+            <!-- Thanh tiêu đề tùy chỉnh -->
+            <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
+                <Grid>
+                    <!-- Icon và Tiêu đề -->
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                        <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
+                        <!-- Đường dẫn đến logo của bạn -->
+                        <TextBlock Text="Manage Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </StackPanel>
 
-                        <!-- Nút chức năng trên thanh tiêu đề -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
-                            <!-- Nút thu nhỏ -->
-                            <Button Content="-" Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
-                            <!-- Nút phóng to/thu nhỏ -->
-                            <Button Content="□" Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
-                            <!-- Nút đóng -->
-                            <Button Content="X" Width="30" Height="30" Click="CloseWindow_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+                    <!-- Nút chức năng trên thanh tiêu đề -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                        <!-- Nút thu nhỏ -->
+                        <Button Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 4,10 L 16,10" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
 
-                <!-- Nội dung cửa sổ -->
+                        <!-- Nút phóng to/thu nhỏ -->
+                        <Button Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 5,15 L 15,15 L 15,5 Z" Stroke="White" StrokeThickness="2" Fill="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
+                        <!-- Nút đóng -->
+                        <Button Width="30" Height="30" Click="CloseWindow_Click" Style="{StaticResource CloseButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 15,15 M 15,5 L 5,15" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Nội dung cửa sổ -->
             <Grid Margin="0,40,0,0">
                 <Grid>
                     <!-- Header -->
@@ -67,11 +81,11 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-
+                        
                         <!-- Title Button -->
                         <Button Grid.Column="0" Content="Coffee Shop" Foreground="#D7B08F" FontSize="20" HorizontalAlignment="Left" 
-Margin="10,0,0,0" VerticalAlignment="Center" BorderThickness="0" 
-FontWeight="Bold" Background="Transparent" />
+Margin="74,0,0,0" VerticalAlignment="Center" BorderThickness="0" 
+FontWeight="Bold" Background="Transparent" Grid.ColumnSpan="2" />
 
                         <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
                             <!-- Username
@@ -240,127 +254,127 @@ FontWeight="Bold" Background="Transparent" />
                     </Grid>
                 </Grid>
             </Grid>
-                
+
             <Grid x:Name="AddForm" Visibility="Collapsed" Background="Transparent" Width="600" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
-                        <Grid>
-                            <!-- Thanh tiêu đề tùy chỉnh -->
-                            <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
-                                <Grid>
-                                    <!-- Icon và Tiêu đề -->
-                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
-                                        <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
-                                        <!-- Đường dẫn đến logo của bạn -->
-                                        <TextBlock Text="Add Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
+                    <Grid>
+                        <!-- Thanh tiêu đề tùy chỉnh -->
+                        <Border Background="Brown" Height="40" VerticalAlignment="Top" CornerRadius="20,20,0,0">
+                            <Grid>
+                                <!-- Icon và Tiêu đề -->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0">
+                                    <Image Source="Images/coffee-cup.ico" Width="24" Height="24" />
+                                    <!-- Đường dẫn đến logo của bạn -->
+                                    <TextBlock Text="Add Customer" Foreground="White" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                                </StackPanel>
+
+                                <!-- Nút chức năng trên thanh tiêu đề -->
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                                    <!-- Nút đóng -->
+                                    <Button Content="X" Width="30" Height="30" Click="HideAddForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Grid Margin="0,40,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+
+                                <!-- Title -->
+                                <TextBlock Text="Thêm khách hàng" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#DD702E" Margin="0,20,0,10"/>
+
+                                <!-- Form Section -->
+                                <Grid Grid.Row="1" Margin="0,0,0,0">
+                                    <!-- Define 2 Columns -->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="1*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!-- Column 1: Họ tên, Email, Chi tiêu -->
+                                    <StackPanel Grid.Column="0" Margin="10">
+                                        <TextBlock Text="Họ tên" FontStyle="Italic" FontWeight="Bold"/>
+                                        <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
+                                            <TextBox x:Name="HoTenTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập họ tên"
+                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                        </Border>
+
+                                        <!-- Email -->
+                                        <TextBlock Text="Email" FontStyle="Italic" FontWeight="Bold"/>
+                                        <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
+                                            <TextBox x:Name="EmailTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập email"
+                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                        </Border>
+
+                                        <!-- Chi tiêu -->
+                                        <TextBlock Text="Chi tiêu" FontStyle="Italic" FontWeight="Bold"/>
+                                        <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
+                                            <TextBox x:Name="ChiTieuTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập chi tiêu"
+                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                        </Border>
                                     </StackPanel>
 
-                                    <!-- Nút chức năng trên thanh tiêu đề -->
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
-                                        <!-- Nút đóng -->
-                                        <Button Content="X" Width="30" Height="30" Click="HideAddForm_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                                    <!-- Column 2: Số điện thoại, Ghi chú -->
+                                    <StackPanel Grid.Column="1" Margin="10">
+                                        <!-- Số điện thoại -->
+                                        <TextBlock Text="Số điện thoại" FontStyle="Italic" FontWeight="Bold"/>
+                                        <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
+                                            <TextBox x:Name="SoDienThoaiTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập số điện thoại"
+                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                        </Border>
+
+                                        <!-- Ghi chú with Border -->
+                                        <TextBlock Text="Ghi chú" FontWeight="Bold" Foreground="#DD702E"/>
+                                        <Border Grid.Row="1" Margin="0,10,0,0" BorderBrush="#D8B694" BorderThickness="2" CornerRadius="20" Padding="10" Background="White">
+                                            <Border Background="#DDDDDD" CornerRadius="10" Padding="5">
+                                                <TextBox x:Name="GhiChuTextBox" Text="Nhập ghi chú" Height="90" AcceptsReturn="True" Background="Transparent" BorderThickness="0" Foreground="Gray"
+                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
+                                            </Border>
+                                        </Border>
                                     </StackPanel>
                                 </Grid>
-                            </Border>
-                            <Grid Margin="0,40,0,0">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
 
-                                    <!-- Title -->
-                                    <TextBlock Text="Thêm khách hàng" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#DD702E" Margin="0,20,0,10"/>
-
-                                    <!-- Form Section -->
-                                    <Grid Grid.Row="1" Margin="0,0,0,0">
-                                        <!-- Define 2 Columns -->
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="1*" />
-                                            <ColumnDefinition Width="1*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <!-- Column 1: Họ tên, Email, Chi tiêu -->
-                                        <StackPanel Grid.Column="0" Margin="10">
-                                            <TextBlock Text="Họ tên" FontStyle="Italic" FontWeight="Bold"/>
-                                            <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
-                                                <TextBox x:Name="HoTenTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập họ tên"
-                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                            </Border>
-
-                                            <!-- Email -->
-                                            <TextBlock Text="Email" FontStyle="Italic" FontWeight="Bold"/>
-                                            <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
-                                                <TextBox x:Name="EmailTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập email"
-                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                            </Border>
-
-                                            <!-- Chi tiêu -->
-                                            <TextBlock Text="Chi tiêu" FontStyle="Italic" FontWeight="Bold"/>
-                                            <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
-                                                <TextBox x:Name="ChiTieuTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập chi tiêu"
-                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                            </Border>
-                                        </StackPanel>
-
-                                        <!-- Column 2: Số điện thoại, Ghi chú -->
-                                        <StackPanel Grid.Column="1" Margin="10">
-                                            <!-- Số điện thoại -->
-                                            <TextBlock Text="Số điện thoại" FontStyle="Italic" FontWeight="Bold"/>
-                                            <Border Background="#F5F5F5" BorderThickness="1" CornerRadius="10" Padding="5" Margin="0,5,0,20" BorderBrush="Black">
-                                                <TextBox x:Name="SoDienThoaiTextBox" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="30" Background="Transparent" BorderThickness="0" Text="Nhập số điện thoại"
-                     Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                            </Border>
-
-                                            <!-- Ghi chú with Border -->
-                                            <TextBlock Text="Ghi chú" FontWeight="Bold" Foreground="#DD702E"/>
-                                            <Border Grid.Row="1" Margin="0,10,0,0" BorderBrush="#D8B694" BorderThickness="2" CornerRadius="20" Padding="10" Background="White">
-                                                <Border Background="#DDDDDD" CornerRadius="10" Padding="5">
-                                                    <TextBox x:Name="GhiChuTextBox" Text="Nhập ghi chú" Height="90" AcceptsReturn="True" Background="Transparent" BorderThickness="0" Foreground="Gray"
-                         GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus"/>
-                                                </Border>
-                                            </Border>
-                                        </StackPanel>
-                                    </Grid>
-
-                                    <!-- Buttons -->
-                                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,40">
-                                        <Button Content="Thêm" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" 
+                                <!-- Buttons -->
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,40">
+                                    <Button Content="Thêm" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" 
                                 Height="30" Background="#D7B08F" Foreground="White" Margin="10,0"
                                 Click="AddButton_Click">
-                                            <Button.Template>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                        <!-- Apply DropShadowEffect to Border -->
-                                                        <Border.Effect>
-                                                            <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
-                                                        </Border.Effect>
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Button.Template>
-                                        </Button>
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                    <!-- Apply DropShadowEffect to Border -->
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
+                                                    </Border.Effect>
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
 
-                                        <Button Content="Bỏ qua" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#E0E0E0" Foreground="Black" Margin="10,0"
+                                    <Button Content="Bỏ qua" Style="{StaticResource ButtonStyle}" FontWeight="Bold" Width="100" Height="30" Background="#E0E0E0" Foreground="Black" Margin="10,0"
                                 Click="HideAddForm_Click">
-                                            <Button.Template>
-                                                <ControlTemplate TargetType="Button">
-                                                    <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
-                                                        <!-- Apply DropShadowEffect to Border -->
-                                                        <Border.Effect>
-                                                            <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
-                                                        </Border.Effect>
-                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Button.Template>
-                                        </Button>
-                                    </StackPanel>
-                                </Grid>
+                                        <Button.Template>
+                                            <ControlTemplate TargetType="Button">
+                                                <Border CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                                                    <!-- Apply DropShadowEffect to Border -->
+                                                    <Border.Effect>
+                                                        <DropShadowEffect ShadowDepth="5" BlurRadius="10" Opacity="0.5" />
+                                                    </Border.Effect>
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Border>
+                                            </ControlTemplate>
+                                        </Button.Template>
+                                    </Button>
+                                </StackPanel>
                             </Grid>
                         </Grid>
-                    </Border>
-                </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
 
             <Grid x:Name="EditForm" Visibility="Collapsed" Background="Transparent" Width="600" Height="450" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Border Background="White" CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
@@ -482,5 +496,5 @@ FontWeight="Bold" Background="Transparent" />
                 </Border>
             </Grid>
         </Grid>
-        </Border>
-    </Window>
+    </Border>
+</Window>
