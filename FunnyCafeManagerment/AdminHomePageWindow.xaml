@@ -48,11 +48,25 @@
                     <!-- Nút chức năng trên thanh tiêu đề -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
                         <!-- Nút thu nhỏ -->
-                        <Button Content="-" Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="MinimizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 4,10 L 16,10" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
                         <!-- Nút phóng to/thu nhỏ -->
-                        <Button Content="□" Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="MaximizeWindow_Click" Style="{StaticResource WindowButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 5,15 L 15,15 L 15,5 Z" Stroke="White" StrokeThickness="2" Fill="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
                         <!-- Nút đóng -->
-                        <Button Content="X" Width="30" Height="30" Click="CloseWindow_Click" Foreground="White" Style="{StaticResource CloseButtonStyle}"/>
+                        <Button Width="30" Height="30" Click="CloseWindow_Click" Style="{StaticResource CloseButtonStyle}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                            <Grid>
+                                <Path Data="M 5,5 L 15,15 M 15,5 L 5,15" Stroke="White" StrokeThickness="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
                     </StackPanel>
                 </Grid>
             </Border>
